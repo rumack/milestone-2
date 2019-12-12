@@ -1,0 +1,1812 @@
+[
+    {
+        "constituencies": [
+            {
+                "id": "BE",
+                "Constituency": "BELFAST EAST",
+                "2017": {
+                    "Electorate": 63495,
+                    "Scores": {
+                        "DUP": 56,
+                        "SF": 2,
+                        "SDLP": 0,
+                        "UUP": 3,
+                        "Alliance": 36,
+                        "Others": 2
+                    },
+                    "AffiliationScore": {
+                        "uni": 60,
+                        "nat": 3,
+                        "oth": 37
+                    },
+                    "Turnout": 68,
+                    "Winner": {
+                        "Candidate": "Gavin Robinson",
+                        "Party": "DUP"
+                    }
+                },
+                "2015": {
+                    "Electorate": 63157,
+                    "Scores": {
+                        "DUP": 49,
+                        "SF": 2,
+                        "SDLP": 0,
+                        "UUP": null,
+                        "Alliance": 43,
+                        "Others": 2
+                    },
+                    "AffiliationScore": {
+                        "uni": 52,
+                        "nat": 3,
+                        "oth": 45
+                    },
+                    "Turnout": 63,
+                    "Winner": {
+                        "Candidate": "Gavin Robinson",
+                        "Party": "DUP"
+                    }
+                },
+                "2010": {
+                    "Electorate": 59007,
+                    "Scores": {
+                        "DUP": 33,
+                        "SF": 2,
+                        "SDLP": 1,
+                        "UUP": false,
+                        "Alliance": 37,
+                        "Others": 27
+                    },
+                    "AffiliationScore": {
+                        "uni": 60,
+                        "nat": 3,
+                        "oth": 37
+                    },
+                    "Turnout": 59,
+                    "Winner": {
+                        "Candidate": "Naomi Long",
+                        "Party": "Alliance"
+                    }
+                },
+                "2005": {
+                    "Electorate": 52899,
+                    "Scores": {
+                        "DUP": 49,
+                        "SF": 3,
+                        "SDLP": 3,
+                        "UUP": 30,
+                        "Alliance": 12,
+                        "Others": 3
+                    },
+                    "AffiliationScore": {
+                        "uni": 80,
+                        "nat": 6,
+                        "oth": 14
+                    },
+                    "Turnout": 59,
+                    "Winner": {
+                        "Candidate": "Peter Robinson",
+                        "Party": "DUP"
+                    }
+                },
+                "Brex": {
+                    "Remain": 48.6,
+                    "Leave": 51.4,
+                    "Turnout": 66.17
+                }
+            },
+            {
+                "id": "BN",
+                "Constituency": "BELFAST NORTH",
+                "2017": {
+                    "Electorate": 68249,
+                    "Scores": {
+                        "DUP": 46,
+                        "SF": 42,
+                        "SDLP": 4,
+                        "UUP": null,
+                        "Alliance": 5,
+                        "Others": 2
+                    },
+                    "AffiliationScore": {
+                        "uni": 46,
+                        "nat": 46,
+                        "oth": 8
+                    },
+                    "Turnout": 67,
+                    "Winner": {
+                        "Candidate": "Nigel Dodds",
+                        "Party": "DUP"
+                    }
+                },
+                "2015": {
+                    "Electorate": 68553,
+                    "Scores": {
+                        "DUP": 47,
+                        "SF": 34,
+                        "SDLP": 8,
+                        "UUP": null,
+                        "Alliance": 7,
+                        "Others": 4
+                    },
+                    "AffiliationScore": {
+                        "uni": 47,
+                        "nat": 42,
+                        "oth": 11
+                    },
+                    "Turnout": 59,
+                    "Winner": {
+                        "Candidate": "Nigel Dodds",
+                        "Party": "DUP"
+                    }
+                },
+                "2010": {
+                    "Electorate": 65504,
+                    "Scores": {
+                        "DUP": 40,
+                        "SF": 34,
+                        "SDLP": 12,
+                        "UUP": null,
+                        "Alliance": 5,
+                        "Others": 9
+                    },
+                    "AffiliationScore": {
+                        "uni": 49,
+                        "nat": 46,
+                        "oth": 5
+                    },
+                    "Turnout": 57,
+                    "Winner": {
+                        "Candidate": "Nigel Dodds",
+                        "Party": "DUP"
+                    }
+                },
+                "2005": {
+                    "Electorate": 52535,
+                    "Scores": {
+                        "DUP": 46,
+                        "SF": 29,
+                        "SDLP": 16,
+                        "UUP": 7,
+                        "Alliance": 1,
+                        "Others": 1
+                    },
+                    "AffiliationScore": {
+                        "uni": 53,
+                        "nat": 45,
+                        "oth": 11
+                    },
+                    "Turnout": 59,
+                    "Winner": {
+                        "Candidate": "Nigel Dodds",
+                        "Party": "DUP"
+                    }
+                },
+                "Brex": {
+                    "Remain": 50.4,
+                    "Leave": 49.6,
+                    "Turnout": 57.39
+                }
+            },
+            {
+                "id": "BS",
+                "Constituency": "BELFAST SOUTH",
+                "2017": {
+                    "Electorate": 66105,
+                    "Scores": {
+                        "DUP": 30,
+                        "SF": 16,
+                        "SDLP": 26,
+                        "UUP": 3,
+                        "Alliance": 18,
+                        "Others": 6
+                    },
+                    "AffiliationScore": {
+                        "uni": 35,
+                        "nat": 42,
+                        "oth": 23
+                    },
+                    "Turnout": 66,
+                    "Winner": {
+                        "Candidate": "Emma Little Pengelly",
+                        "Party": "DUP"
+                    }
+                },
+                "2015": {
+                    "Electorate": 64927,
+                    "Scores": {
+                        "DUP": 22,
+                        "SF": 14,
+                        "SDLP": 25,
+                        "UUP": 9,
+                        "Alliance": 17,
+                        "Others": 13
+                    },
+                    "AffiliationScore": {
+                        "uni": 38,
+                        "nat": 39,
+                        "oth": 23
+                    },
+                    "Turnout": 60,
+                    "Winner": {
+                        "Candidate": "Alasdair McDonnell",
+                        "Party": "SDLP"
+                    }
+                },
+                "2010": {
+                    "Electorate": 59524,
+                    "Scores": {
+                        "DUP": 24,
+                        "SF": null,
+                        "SDLP": 41,
+                        "UUP": null,
+                        "Alliance": 15,
+                        "Others": 20
+                    },
+                    "AffiliationScore": {
+                        "uni": 41,
+                        "nat": 41,
+                        "oth": 18
+                    },
+                    "Turnout": 66,
+                    "Winner": {
+                        "Candidate": "Alasdair McDonnell",
+                        "Party": "SDLP"
+                    }
+                },
+                "2005": {
+                    "Electorate": 52218,
+                    "Scores": {
+                        "DUP": 28,
+                        "SF": 9,
+                        "SDLP": 32,
+                        "UUP": 23,
+                        "Alliance": 7,
+                        "Others": 1
+                    },
+                    "AffiliationScore": {
+                        "uni": 51,
+                        "nat": 41,
+                        "oth": 8
+                    },
+                    "Turnout": 62,
+                    "Winner": {
+                        "Candidate": "Alasdair McDonnell",
+                        "Party": "SDLP"
+                    }
+                },
+                "Brex": {
+                    "Remain": 69.5,
+                    "Leave": 30.5,
+                    "Turnout": 66.88
+                }
+            },
+            {
+                "id": "BW",
+                "Constituency": "BELFAST WEST",
+                "2017": {
+                    "Electorate": 62423,
+                    "Scores": {
+                        "DUP": 13,
+                        "SF": 67,
+                        "SDLP": 7,
+                        "UUP": null,
+                        "Alliance": 2,
+                        "Others": 11
+                    },
+                    "AffiliationScore": {
+                        "uni": 13,
+                        "nat": 74,
+                        "oth": 13
+                    },
+                    "Turnout": 65,
+                    "Winner": {
+                        "Candidate": "Paul Maskey",
+                        "Party": "SF"
+                    }
+                },
+                "2015": {
+                    "Electorate": 62697,
+                    "Scores": {
+                        "DUP": 8,
+                        "SF": 54,
+                        "SDLP": 10,
+                        "UUP": 3,
+                        "Alliance": 2,
+                        "Others": 24
+                    },
+                    "AffiliationScore": {
+                        "uni": 13,
+                        "nat": 64,
+                        "oth": 23
+                    },
+                    "Others": 24,
+                    "Turnout": 56,
+                    "Winner": {
+                        "Candidate": "Paul Maskey",
+                        "Party": "SF"
+                    }
+                },
+                "2010": {
+                    "Electorate": 59522,
+                    "Scores": {
+                        "DUP": 8,
+                        "SF": 71,
+                        "SDLP": 16,
+                        "UUP": null,
+                        "Alliance": 2,
+                        "Others": 3
+                    },
+                    "AffiliationScore": {
+                        "uni": 11,
+                        "nat": 87,
+                        "oth": 2
+                    },
+                    "Turnout": 55,
+                    "Winner": {
+                        "Candidate": "Gerry Adams",
+                        "Party": "SF"
+                    }
+                },
+                "2005": {
+                    "Electorate": 53536,
+                    "Scores": {
+                        "DUP": 11,
+                        "SF": 70,
+                        "SDLP": 15,
+                        "UUP": 2,
+                        "Alliance": null,
+                        "Others": 2
+                    },
+                    "AffiliationScore": {
+                        "uni": 13,
+                        "nat": 85,
+                        "oth": 2
+                    },
+                    "Turnout": 65,
+                    "Winner": {
+                        "Candidate": "Gerry Adams",
+                        "Party": "SF"
+                    }
+                },
+                "Brex": {
+                    "Remain": 74.1,
+                    "Leave": 25.9,
+                    "Turnout": 48.85
+                }
+            },
+            {
+                "id": "EA",
+                "Constituency": "EAST ANTRIM",
+                "2017": {
+                    "Electorate": 62908,
+                    "Scores": {
+                        "DUP": 57,
+                        "SF": 9,
+                        "SDLP": 3,
+                        "UUP": 12,
+                        "Alliance": 16,
+                        "Others": 3
+                    },
+                    "AffiliationScore": {
+                        "uni": 71,
+                        "nat": 12,
+                        "oth": 17
+                    },
+                    "Turnout": 61,
+                    "Winner": {
+                        "Candidate": "Sammy Wilson",
+                        "Party": "DUP"
+                    }
+                },
+                "2015": {
+                    "Electorate": 62811,
+                    "Scores": {
+                        "DUP": 36,
+                        "SF": 7,
+                        "SDLP": 5,
+                        "UUP": 19,
+                        "Alliance": 15,
+                        "Others": 19
+                    },
+                    "AffiliationScore": {
+                        "uni": 73,
+                        "nat": 12,
+                        "oth": 15
+                    },
+                    "Turnout": 53,
+                    "Winner": {
+                        "Candidate": "Sammy Wilson",
+                        "Party": "DUP"
+                    }
+                },
+                "2010": {
+                    "Electorate": 60204,
+                    "Scores": {
+                        "DUP": 46,
+                        "SF": 7,
+                        "SDLP": 7,
+                        "UUP": null,
+                        "Alliance": 11,
+                        "Others": 29
+                    },
+                    "AffiliationScore": {
+                        "uni": 75,
+                        "nat": 14,
+                        "oth": 11
+                    },
+                    "Turnout": 51,
+                    "Winner": {
+                        "Candidate": "Sammy Wilson",
+                        "Party": "DUP"
+                    }
+                },
+                "2005": {
+                    "Electorate": 57966,
+                    "Scores": {
+                        "DUP": 50,
+                        "SF": 3,
+                        "SDLP": 5,
+                        "UUP": 27,
+                        "Alliance": 15,
+                        "Others": 0
+                    },
+                    "AffiliationScore": {
+                        "uni": 77,
+                        "nat": 8,
+                        "oth": 15
+                    },
+                    "Turnout": 55,
+                    "Winner": {
+                        "Candidate": "Sammy Wilson",
+                        "Party": "DUP"
+                    }
+                },
+                "Brex": {
+                    "Remain": 44.8,
+                    "Leave": 55.2,
+                    "Turnout": 64.95
+                }
+            },
+            {
+                "id": "EL",
+                "Constituency": "EAST LONDONDERRY",
+                "2017": {
+                    "Electorate": 67038,
+                    "Scores": {
+                        "DUP": 48,
+                        "SF": 27,
+                        "SDLP": 11,
+                        "UUP": 8,
+                        "Alliance": 6,
+                        "Others": 1
+                    },
+                    "AffiliationScore": {
+                        "uni": 56,
+                        "nat": 38,
+                        "oth": 6
+                    },
+                    "Turnout": 61,
+                    "Winner": {
+                        "Candidate": "Gregory Campbell",
+                        "Party": "DUP"
+                    }
+                },
+                "2015": {
+                    "Electorate": 66926,
+                    "Scores": {
+                        "DUP": 42,
+                        "SF": 20,
+                        "SDLP": 12,
+                        "UUP": 15,
+                        "Alliance": 8,
+                        "Others": 3
+                    },
+                    "AffiliationScore": {
+                        "uni": 58,
+                        "nat": 32,
+                        "oth": 10
+                    },
+                    "Turnout": 52,
+                    "Winner": {
+                        "Candidate": "Gregory Campbell",
+                        "Party": "DUP"
+                    }
+                },
+                "2010": {
+                    "Electorate": 63220,
+                    "Scores": {
+                        "DUP": 35,
+                        "SF": 19,
+                        "SDLP": 16,
+                        "UUP": null,
+                        "Alliance": 6,
+                        "Others": 24
+                    },
+                    "AffiliationScore": {
+                        "uni": 59,
+                        "nat": 35,
+                        "oth": 6
+                    },
+                    "Turnout": 56,
+                    "Winner": {
+                        "Candidate": "Gregory Campbell",
+                        "Party": "DUP"
+                    }
+                },
+                "2005": {
+                    "Electorate": 58461,
+                    "Scores": {
+                        "DUP": 43,
+                        "SF": 16,
+                        "SDLP": 17,
+                        "UUP": 21,
+                        "Alliance": 3,
+                        "Others": 0
+                    },
+                    "AffiliationScore": {
+                        "uni": 64,
+                        "nat": 33,
+                        "oth": 3
+                    },
+                    "Turnout": 61,
+                    "Winner": {
+                        "Candidate": "Gregory Campbell",
+                        "Party": "DUP"
+                    }
+                },
+                "Brex": {
+                    "Remain": 52,
+                    "Leave": 48,
+                    "Turnout": 59.69
+                }
+            },
+            {
+                "id": "FAST",
+                "Constituency": "FERMANAGH AND SOUTH TYRONE",
+                "2017": {
+                    "Electorate": 70601,
+                    "Scores": {
+                        "DUP": null,
+                        "SF": 47,
+                        "SDLP": 5,
+                        "UUP": 46,
+                        "Alliance": 2,
+                        "Others": 1
+                    },
+                    "AffiliationScore": {
+                        "uni": 46,
+                        "nat": 52,
+                        "oth": 2
+                    },
+                    "Turnout": 76,
+                    "Winner": {
+                        "Candidate": "Michelle Gildernew",
+                        "Party": "SF"
+                    }
+                },
+                "2015": {
+                    "Electorate": 70108,
+                    "Scores": {
+                        "DUP": null,
+                        "SF": 45,
+                        "SDLP": 5,
+                        "UUP": 46,
+                        "Alliance": 1,
+                        "Others": 2
+                    },
+                    "AffiliationScore": {
+                        "uni": 46,
+                        "nat": 51,
+                        "oth": 3
+                    },
+                    "Turnout": 73,
+                    "Winner": {
+                        "Candidate": "Tom Elliott",
+                        "Party": "UUP"
+                    }
+                },
+                "2010": {
+                    "Electorate": 67908,
+                    "Scores": {
+                        "DUP": null,
+                        "SF": 46,
+                        "SDLP": 8,
+                        "UUP": null,
+                        "Alliance": 1,
+                        "Others": 46
+                    },
+                    "AffiliationScore": {
+                        "uni": 46,
+                        "nat": 53,
+                        "oth": 1
+                    },
+                    "Turnout": 69,
+                    "Winner": {
+                        "Candidate": "Michelle Gildernew",
+                        "Party": "SF"
+                    }
+                },
+                "2005": {
+                    "Electorate": 66415,
+                    "Scores": {
+                        "DUP": 29,
+                        "SF": 38,
+                        "SDLP": 15,
+                        "UUP": 18,
+                        "Alliance": null,
+                        "Others": null
+                    },
+                    "AffiliationScore": {
+                        "uni": 47,
+                        "nat": 53,
+                        "oth": 0
+                    },
+                    "Turnout": 74,
+                    "Winner": {
+                        "Candidate": "Michelle Gildernew",
+                        "Party": "SF"
+                    }
+                },
+                "Brex": {
+                    "Remain": 58.6,
+                    "Leave": 41.4,
+                    "Turnout": 67.82
+                }
+            },
+            {
+                "id": "F",
+                "Constituency": "FOYLE",
+                "2017": {
+                    "Electorate": 70324,
+                    "Scores": {
+                        "DUP": 16,
+                        "SF": 40,
+                        "SDLP": 39,
+                        "UUP": null,
+                        "Alliance": 2,
+                        "Others": 3
+                    },
+                    "AffiliationScore": {
+                        "uni": 16,
+                        "nat": 79,
+                        "oth": 5
+                    },
+                    "Turnout": 65,
+                    "Winner": {
+                        "Candidate": "Elisha McCallion",
+                        "Party": "SF"
+                    }
+                },
+                "2015": {
+                    "Electorate": 70036,
+                    "Scores": {
+                        "DUP": 12,
+                        "SF": 32,
+                        "SDLP": 48,
+                        "UUP": 3,
+                        "Alliance": 2,
+                        "Others": 2
+                    },
+                    "AffiliationScore": {
+                        "uni": 18,
+                        "nat": 80,
+                        "oth": 2
+                    },
+                    "Turnout": 53,
+                    "Winner": {
+                        "Candidate": "Mark Durkan",
+                        "Party": "SDLP"
+                    }
+                },
+                "2010": {
+                    "Electorate": 65843,
+                    "Scores": {
+                        "DUP": 12,
+                        "SF": 32,
+                        "SDLP": 45,
+                        "UUP": null,
+                        "Alliance": 1,
+                        "Others": 11
+                    },
+                    "AffiliationScore": {
+                        "uni": 15,
+                        "nat": 77,
+                        "oth": 1
+                    },
+                    "Turnout": 58,
+                    "Winner": {
+                        "Candidate": "Mark Durkan",
+                        "Party": "SDLP"
+                    }
+                },
+                "2005": {
+                    "Electorate": 68758,
+                    "Scores": {
+                        "DUP": 14,
+                        "SF": 33,
+                        "SDLP": 46,
+                        "UUP": 2,
+                        "Alliance": null,
+                        "Others": 4
+                    },
+                    "AffiliationScore": {
+                        "uni": 17,
+                        "nat": 79,
+                        "oth": 4
+                    },
+                    "Turnout": 67,
+                    "Winner": {
+                        "Candidate": "Mark Durkan",
+                        "Party": "SDLP"
+                    }
+                },
+                "Brex": {
+                    "Remain": 78.3,
+                    "Leave": 21.7,
+                    "Turnout": 57.18
+                }
+            },
+            {
+                "id": "LV",
+                "Constituency": "LAGAN VALLEY",
+                "2017": {
+                    "Electorate": 72380,
+                    "Scores": {
+                        "DUP": 60,
+                        "SF": 3,
+                        "SDLP": 8,
+                        "UUP": 17,
+                        "Alliance": 11,
+                        "Others": 1
+                    },
+                    "AffiliationScore": {
+                        "uni": 77,
+                        "nat": 11,
+                        "oth": 12
+                    },
+                    "Turnout": 62,
+                    "Winner": {
+                        "Candidate": "Jeffrey Donaldson",
+                        "Party": "DUP"
+                    }
+                },
+                "2015": {
+                    "Electorate": 71152,
+                    "Scores": {
+                        "DUP": 48,
+                        "SF": 3,
+                        "SDLP": 6,
+                        "UUP": 15,
+                        "Alliance": 14,
+                        "Others": 7
+                    },
+                    "AffiliationScore": {
+                        "uni": 74,
+                        "nat": 9,
+                        "oth": 17
+                    },
+                    "Turnout": 56,
+                    "Winner": {
+                        "Candidate": "Jeffrey Donaldson",
+                        "Party": "DUP"
+                    }
+                },
+                "2010": {
+                    "Electorate": 65257,
+                    "Scores": {
+                        "DUP": 50,
+                        "SF": 4,
+                        "SDLP": 5,
+                        "UUP": null,
+                        "Alliance": 11,
+                        "Others": 30
+                    },
+                    "AffiliationScore": {
+                        "uni": 80,
+                        "nat": 9,
+                        "oth": 11
+                    },
+                    "Turnout": 56,
+                    "Winner": {
+                        "Candidate": "Jeffrey Donaldson",
+                        "Party": "DUP"
+                    }
+                },
+                "2005": {
+                    "Electorate": 70238,
+                    "Scores": {
+                        "DUP": 55,
+                        "SF": 8,
+                        "SDLP": 6,
+                        "UUP": 22,
+                        "Alliance": 10,
+                        "Others": null
+                    },
+                    "AffiliationScore": {
+                        "uni": 76,
+                        "nat": 14,
+                        "oth": 10
+                    },
+                    "Turnout": 61,
+                    "Winner": {
+                        "Candidate": "Jeffrey Donaldson",
+                        "Party": "DUP"
+                    }
+                },
+                "Brex": {
+                    "Remain": 46.9,
+                    "Leave": 53.1,
+                    "Turnout": 66.25
+                }
+            },
+            {
+                "id": "MU",
+                "Constituency": "MID ULSTER",
+                "2017": {
+                    "Electorate": 68485,
+                    "Scores": {
+                        "DUP": 27,
+                        "SF": 55,
+                        "SDLP": 10,
+                        "UUP": 6,
+                        "Alliance": 2,
+                        "Others": null
+                    },
+                    "AffiliationScore": {
+                        "uni": 33,
+                        "nat": 65,
+                        "oth": 2
+                    },
+                    "Turnout": 68,
+                    "Winner": {
+                        "Candidate": "Francie Molloy",
+                        "Party": "SF"
+                    }
+                },
+                "2015": {
+                    "Electorate": 67832,
+                    "Scores": {
+                        "DUP": 13,
+                        "SF": 49,
+                        "SDLP": 12,
+                        "UUP": 15,
+                        "Alliance": 2,
+                        "Others": 6
+                    },
+                    "AffiliationScore": {
+                        "uni": 36,
+                        "nat": 61,
+                        "oth": 2
+                    },
+                    "Turnout": 60,
+                    "Winner": {
+                        "Candidate": "Francie Molloy",
+                        "Party": "SF"
+                    }
+                },
+                "2010": {
+                    "Electorate": 64594,
+                    "Scores": {
+                        "DUP": 14,
+                        "SF": 52,
+                        "SDLP": 14,
+                        "UUP": null,
+                        "Alliance": 1,
+                        "Others": 18
+                    },
+                    "AffiliationScore": {
+                        "uni": 32,
+                        "nat": 66,
+                        "oth": 1
+                    },
+                    "Turnout": 64,
+                    "Winner": {
+                        "Candidate": "Martin McGuinness",
+                        "Party": "SF"
+                    }
+                },
+                "2005": {
+                    "Electorate": 62088,
+                    "Scores": {
+                        "DUP": 24,
+                        "SF": 48,
+                        "SDLP": 17,
+                        "UUP": 11,
+                        "Alliance": 2,
+                        "Others": 1
+                    },
+                    "AffiliationScore": {
+                        "uni": 35,
+                        "nat": 65,
+                        "oth": 0
+                    },
+                    "Turnout": 56,
+                    "Winner": {
+                        "Candidate": "Martin McGuinness",
+                        "Party": "SF"
+                    }
+                },
+                "Brex": {
+                    "Remain": 60.4,
+                    "Leave": 39.6,
+                    "Turnout": 61.56
+                }
+            },
+            {
+                "id": "NAA",
+                "Constituency": "NEWRY AND ARMAGH",
+                "2017": {
+                    "Electorate": 78266,
+                    "Scores": {
+                        "DUP": 25,
+                        "SF": 48,
+                        "SDLP": 17,
+                        "UUP": 8,
+                        "Alliance": 2,
+                        "Others": null
+                    },
+                    "AffiliationScore": {
+                        "uni": 33,
+                        "nat": 65,
+                        "oth": 2
+                    },
+                    "Turnout": 68,
+                    "Winner": {
+                        "Candidate": "Mickey Brady",
+                        "Party": "SF"
+                    }
+                },
+                "2015": {
+                    "Electorate": 77633,
+                    "Scores": {
+                        "DUP": null,
+                        "SF": 41,
+                        "SDLP": 24,
+                        "UUP": 33,
+                        "Alliance": 2,
+                        "Others": null
+                    },
+                    "AffiliationScore": {
+                        "uni": 33,
+                        "nat": 65,
+                        "oth": 2
+                    },
+                    "Turnout": 64,
+                    "Winner": {
+                        "Candidate": "Mickey Brady",
+                        "Party": "SF"
+                    }
+                },
+                "2010": {
+                    "Electorate": 74308,
+                    "Scores": {
+                        "DUP": 13,
+                        "SF": 42,
+                        "SDLP": 23,
+                        "UUP": null,
+                        "Alliance": 1,
+                        "Others": 20
+                    },
+                    "AffiliationScore": {
+                        "uni": 33,
+                        "nat": 65,
+                        "oth": 2
+                    },
+                    "Turnout": 61,
+                    "Winner": {
+                        "Candidate": "Conor Murphy",
+                        "Party": "SF"
+                    }
+                },
+                "2005": {
+                    "Electorate": 71771,
+                    "Scores": {
+                        "DUP": 18,
+                        "SF": 41,
+                        "SDLP": 26,
+                        "UUP": 14,
+                        "Alliance": null,
+                        "Others": 1
+                    },
+                    "AffiliationScore": {
+                        "uni": 32,
+                        "nat": 67,
+                        "oth": 1
+                    },
+                    "Turnout": 72,
+                    "Winner": {
+                        "Candidate": "Conor Murphy",
+                        "Party": "SF"
+                    }
+                },
+                "Brex": {
+                    "Remain": 62.9,
+                    "Leave": 37.1,
+                    "Turnout": 63.94
+                }
+            },
+            {
+                "id": "NA",
+                "Constituency": "NORTH ANTRIM",
+                "2017": {
+                    "Electorate": 75657,
+                    "Scores": {
+                        "DUP": 59,
+                        "SF": 16,
+                        "SDLP": 5,
+                        "UUP": 7,
+                        "Alliance": 6,
+                        "Others": 7
+                    },
+                    "AffiliationScore": {
+                        "uni": 72,
+                        "nat": 21,
+                        "oth": 7
+                    },
+                    "Turnout": 64,
+                    "Winner": {
+                        "Candidate": "Ian Paisley",
+                        "Party": "DUP"
+                    }
+                },
+                "2015": {
+                    "Electorate": 75876,
+                    "Scores": {
+                        "DUP": 43,
+                        "SF": 12,
+                        "SDLP": 7,
+                        "UUP": 12,
+                        "Alliance": 6,
+                        "Others": 20
+                    },
+                    "AffiliationScore": {
+                        "uni": 75,
+                        "nat": 19,
+                        "oth": 6
+                    },
+                    "Turnout": 55,
+                    "Winner": {
+                        "Candidate": "Ian Paisley",
+                        "Party": "DUP"
+                    }
+                },
+                "2010": {
+                    "Electorate": 73338,
+                    "Scores": {
+                        "DUP": 46,
+                        "SF": 12,
+                        "SDLP": 9,
+                        "UUP": null,
+                        "Alliance": 3,
+                        "Others": 30
+                    },
+                    "AffiliationScore": {
+                        "uni": 76,
+                        "nat": 21,
+                        "oth": 3
+                    },
+                    "Turnout": 58,
+                    "Winner": {
+                        "Candidate": "Ian Paisley",
+                        "Party": "DUP"
+                    }
+                },
+                "2005": {
+                    "Electorate": 73938,
+                    "Scores": {
+                        "DUP": 55,
+                        "SF": 16,
+                        "SDLP": 12,
+                        "UUP": 14,
+                        "Alliance": 3,
+                        "Others": null
+                    },
+                    "AffiliationScore": {
+                        "uni": 69,
+                        "nat": 28,
+                        "oth": 3
+                    },
+                    "Turnout": 63,
+                    "Winner": {
+                        "Candidate": "Ian Paisley",
+                        "Party": "DUP"
+                    }
+                },
+                "Brex": {
+                    "Remain": 37.8,
+                    "Leave": 62.2,
+                    "Turnout": 64.67
+                }
+            },
+            {
+                "id": "ND",
+                "Constituency": "NORTH DOWN",
+                "2017": {
+                    "Electorate": 64334,
+                    "Scores": {
+                        "DUP": 38,
+                        "SF": 1,
+                        "SDLP": 1,
+                        "UUP": null,
+                        "Alliance": 9,
+                        "Others": 50
+                    },
+                    "AffiliationScore": {
+                        "uni": 88,
+                        "nat": 2,
+                        "oth": 10
+                    },
+                    "Turnout": 61,
+                    "Winner": {
+                        "Candidate": "Sylvia Hermon",
+                        "Party": "IND"
+                    }
+                },
+                "2015": {
+                    "Electorate": 64207,
+                    "Scores": {
+                        "DUP": 24,
+                        "SF": 1,
+                        "SDLP": 1,
+                        "UUP": null,
+                        "Alliance": 9,
+                        "Others": 65
+                    },
+                    "AffiliationScore": {
+                        "uni": 83,
+                        "nat": 2,
+                        "oth": 15
+                    },
+                    "Turnout": 56,
+                    "Winner": {
+                        "Candidate": "Sylvia Hermon",
+                        "Party": "IND"
+                    }
+                },
+                "2010": {
+                    "Electorate": 60698,
+                    "Scores": {
+                        "DUP": null,
+                        "SF": 1,
+                        "SDLP": 2,
+                        "UUP": null,
+                        "Alliance": 6,
+                        "Others": 89
+                    },
+                    "AffiliationScore": {
+                        "uni": 89,
+                        "nat": 3,
+                        "oth": 6
+                    },
+                    "Turnout": 55,
+                    "Winner": {
+                        "Candidate": "Sylvia Hermon",
+                        "Party": "IND"
+                    }
+                },
+                "2005": {
+                    "Electorate": 59358,
+                    "Scores": {
+                        "DUP": 35,
+                        "SF": 1,
+                        "SDLP": 3,
+                        "UUP": 50,
+                        "Alliance": 8,
+                        "Others": 3
+                    },
+                    "AffiliationScore": {
+                        "uni": 87,
+                        "nat": 4,
+                        "oth": 9
+                    },
+                    "Turnout": 55,
+                    "Winner": {
+                        "Candidate": "Sylvia Hermon",
+                        "Party": "UUP"
+                    }
+                },
+                "Brex": {
+                    "Remain": 52.4,
+                    "Leave": 47.6,
+                    "Turnout": 67.33
+                }
+            },
+            {
+                "id": "SA",
+                "Constituency": "SOUTH ANTRIM",
+                "2017": {
+                    "Electorate": 68244,
+                    "Scores": {
+                        "DUP": 38,
+                        "SF": 18,
+                        "SDLP": 5,
+                        "UUP": 31,
+                        "Alliance": 7,
+                        "Others": null
+                    },
+                    "AffiliationScore": {
+                        "uni": 69,
+                        "nat": 23,
+                        "oth": 8
+                    },
+                    "Turnout": 63,
+                    "Winner": {
+                        "Candidate": "Paul Girvan",
+                        "Party": "DUP"
+                    }
+                },
+                "2015": {
+                    "Electorate": 67425,
+                    "Scores": {
+                        "DUP": 30,
+                        "SF": 13,
+                        "SDLP": 8,
+                        "UUP": 33,
+                        "Alliance": 10,
+                        "Others": 6
+                    },
+                    "AffiliationScore": {
+                        "uni": 69,
+                        "nat": 21,
+                        "oth": 10
+                    },
+                    "Turnout": 54,
+                    "Winner": {
+                        "Candidate": "Danny Kinahan",
+                        "Party": "UUP"
+                    }
+                },
+                "2010": {
+                    "Electorate": 63054,
+                    "Scores": {
+                        "DUP": 34,
+                        "SF": 14,
+                        "SDLP": 9,
+                        "UUP": null,
+                        "Alliance": 8,
+                        "Others": 35
+                    },
+                    "AffiliationScore": {
+                        "uni": 69,
+                        "nat": 23,
+                        "oth": 8
+                    },
+                    "Turnout": 54,
+                    "Winner": {
+                        "Candidate": "William McCrea",
+                        "Party": "DUP"
+                    }
+                },
+                "2005": {
+                    "Electorate": 66580,
+                    "Scores": {
+                        "DUP": 38,
+                        "SF": 12,
+                        "SDLP": 12,
+                        "UUP": 29,
+                        "Alliance": 9,
+                        "Others": null
+                    },
+                    "AffiliationScore": {
+                        "uni": 67,
+                        "nat": 24,
+                        "oth": 9
+                    },
+                    "Turnout": 57,
+                    "Winner": {
+                        "Candidate": "William McCrea",
+                        "Party": "DUP"
+                    }
+                },
+                "Brex": {
+                    "Remain": 49.4,
+                    "Leave": 50.6,
+                    "Turnout": 63.12
+                }
+            },
+            {
+                "id": "SD",
+                "Constituency": "SOUTH DOWN",
+                "2017": {
+                    "Electorate": 75685,
+                    "Scores": {
+                        "DUP": 17,
+                        "SF": 40,
+                        "SDLP": 35,
+                        "UUP": 4,
+                        "Alliance": 4,
+                        "Others": null
+                    },
+                    "AffiliationScore": {
+                        "uni": 21,
+                        "nat": 75,
+                        "oth": 4
+                    },
+                    "Turnout": 67,
+                    "Winner": {
+                        "Candidate": "Chris Hazzard",
+                        "Party": "SF"
+                    }
+                },
+                "2015": {
+                    "Electorate": 75220,
+                    "Scores": {
+                        "DUP": 8,
+                        "SF": 29,
+                        "SDLP": 42,
+                        "UUP": 9,
+                        "Alliance": 4,
+                        "Others": 8
+                    },
+                    "AffiliationScore": {
+                        "uni": 25,
+                        "nat": 71,
+                        "oth": 4
+                    },
+                    "Turnout": 57,
+                    "Winner": {
+                        "Candidate": "Margaret Ritchie",
+                        "Party": "SDLP"
+                    }
+                },
+                "2010": {
+                    "Electorate": 70784,
+                    "Scores": {
+                        "DUP": 9,
+                        "SF": 29,
+                        "SDLP": 49,
+                        "UUP": null,
+                        "Alliance": 1,
+                        "Others": 12
+                    },
+                    "AffiliationScore": {
+                        "uni": 19,
+                        "nat": 78,
+                        "oth": 3
+                    },
+                    "Turnout": 61,
+                    "Winner": {
+                        "Candidate": "Margaret Richie",
+                        "Party": "SDLP"
+                    }
+                },
+                "2005": {
+                    "Electorate": 73175,
+                    "Scores": {
+                        "DUP": 18,
+                        "SF": 26,
+                        "SDLP": 45,
+                        "UUP": 10,
+                        "Alliance": 1,
+                        "Others": null
+                    },
+                    "AffiliationScore": {
+                        "uni": 28,
+                        "nat": 71,
+                        "oth": 1
+                    },
+                    "Turnout": 67,
+                    "Winner": {
+                        "Candidate": "Eddie McGrady",
+                        "Party": "SDLP"
+                    }
+                },
+                "Brex": {
+                    "Remain": 67.2,
+                    "Leave": 32.8,
+                    "Turnout": 62.22
+                }
+            },
+            {
+                "id": "S",
+                "Constituency": "STRANGFORD",
+                "2017": {
+                    "Electorate": 64327,
+                    "Scores": {
+                        "DUP": 62,
+                        "SF": 3,
+                        "SDLP": 6,
+                        "UUP": 11,
+                        "Alliance": 15,
+                        "Others": 3
+                    },
+                    "AffiliationScore": {
+                        "uni": 75,
+                        "nat": 9,
+                        "oth": 16
+                    },
+                    "Turnout": 60,
+                    "Winner": {
+                        "Candidate": "Jim Shannon",
+                        "Party": "DUP"
+                    }
+                },
+                "2015": {
+                    "Electorate": 64289,
+                    "Scores": {
+                        "DUP": 44,
+                        "SF": 3,
+                        "SDLP": 7,
+                        "UUP": 14,
+                        "Alliance": 14,
+                        "Others": 18
+                    },
+                    "AffiliationScore": {
+                        "uni": 76,
+                        "nat": 10,
+                        "oth": 14
+                    },
+                    "Others": 18,
+                    "Turnout": 53,
+                    "Winner": {
+                        "Candidate": "Jim Shannon",
+                        "Party": "DUP"
+                    }
+                },
+                "2010": {
+                    "Electorate": 60539,
+                    "Scores": {
+                        "DUP": 46,
+                        "SF": 4,
+                        "SDLP": 6,
+                        "UUP": null,
+                        "Alliance": 9,
+                        "Others": 35
+                    },
+                    "AffiliationScore": {
+                        "uni": 80,
+                        "nat": 9,
+                        "oth": 11
+                    },
+                    "Turnout": 54,
+                    "Winner": {
+                        "Candidate": "Jim Shannon",
+                        "Party": "DUP"
+                    }
+                },
+                "2005": {
+                    "Electorate": 68570,
+                    "Scores": {
+                        "DUP": 57,
+                        "SF": 3,
+                        "SDLP": 7,
+                        "UUP": 21,
+                        "Alliance": 9,
+                        "Others": 3
+                    },
+                    "AffiliationScore": {
+                        "uni": 81,
+                        "nat": 10,
+                        "oth": 9
+                    },
+                    "Turnout": 54,
+                    "Winner": {
+                        "Candidate": "Iris Robinson",
+                        "Party": "DUP"
+                    }
+                },
+                "Brex": {
+                    "Remain": 44.5,
+                    "Leave": 55.5,
+                    "Turnout": 64.17
+                }
+            },
+            {
+                "id": "UB",
+                "Constituency": "UPPER BANN",
+                "2017": {
+                    "Electorate": 80168,
+                    "Scores": {
+                        "DUP": 44,
+                        "SF": 28,
+                        "SDLP": 9,
+                        "UUP": 15,
+                        "Alliance": 5,
+                        "Others": null
+                    },
+                    "AffiliationScore": {
+                        "uni": 59,
+                        "nat": 37,
+                        "oth": 4
+                    },
+                    "Turnout": 64,
+                    "Winner": {
+                        "Candidate": "David Simpson",
+                        "Party": "DUP"
+                    }
+                },
+                "2015": {
+                    "Electorate": 80060,
+                    "Scores": {
+                        "DUP": 33,
+                        "SF": 25,
+                        "SDLP": 9,
+                        "UUP": 28,
+                        "Alliance": 4,
+                        "Others": 2
+                    },
+                    "AffiliationScore": {
+                        "uni": 61,
+                        "nat": 34,
+                        "oth": 5
+                    },
+                    "Turnout": 59,
+                    "Winner": {
+                        "Candidate": "David Simpson",
+                        "Party": "DUP"
+                    }
+                },
+                "2010": {
+                    "Electorate": 74732,
+                    "Scores": {
+                        "DUP": 34,
+                        "SF": 25,
+                        "SDLP": 13,
+                        "UUP": null,
+                        "Alliance": 3,
+                        "Others": 26
+                    },
+                    "AffiliationScore": {
+                        "uni": 60,
+                        "nat": 37,
+                        "oth": 3
+                    },
+                    "Turnout": 56,
+                    "Winner": {
+                        "Candidate": "David Simpson",
+                        "Party": "DUP"
+                    }
+                },
+                "2005": {
+                    "Electorate": 71645,
+                    "Scores": {
+                        "DUP": 38,
+                        "SF": 21,
+                        "SDLP": 13,
+                        "UUP": 26,
+                        "Alliance": 2,
+                        "Others": 1
+                    },
+                    "AffiliationScore": {
+                        "uni": 64,
+                        "nat": 34,
+                        "oth": 2
+                    },
+                    "Turnout": 62,
+                    "Winner": {
+                        "Candidate": "David Simpson",
+                        "Party": "DUP"
+                    }
+                },
+                "Brex": {
+                    "Remain": 47.4,
+                    "Leave": 52.6,
+                    "Turnout": 63.64
+                }
+            },
+            {
+                "id": "WT",
+                "Constituency": "WEST TYRONE",
+                "2017": {
+                    "Electorate": 64009,
+                    "Scores": {
+                        "DUP": 27,
+                        "SF": 51,
+                        "SDLP": 13,
+                        "UUP": 5,
+                        "Alliance": 2,
+                        "Others": 2
+                    },
+                    "AffiliationScore": {
+                        "uni": 32,
+                        "nat": 64,
+                        "oth": 4
+                    },
+                    "Turnout": 68,
+                    "Winner": {
+                        "Candidate": "Barry McElduff",
+                        "Party": "SF"
+                    }
+                },
+                "2015": {
+                    "Electorate": 63856,
+                    "Scores": {
+                        "DUP": 17,
+                        "SF": 43,
+                        "SDLP": 17,
+                        "UUP": 16,
+                        "Alliance": 2,
+                        "Others": 4
+                    },
+                    "AffiliationScore": {
+                        "uni": 33,
+                        "nat": 60,
+                        "oth": 7
+                    },
+                    "Turnout": 61,
+                    "Winner": {
+                        "Candidate": "Pat Doherty",
+                        "Party": "SF"
+                    }
+                },
+                "2010": {
+                    "Electorate": 61148,
+                    "Scores": {
+                        "DUP": 20,
+                        "SF": 48,
+                        "SDLP": 14,
+                        "UUP": null,
+                        "Alliance": 2,
+                        "Others": 15
+                    },
+                    "AffiliationScore": {
+                        "uni": 34,
+                        "nat": 62,
+                        "oth": 4
+                    },
+                    "Turnout": 62,
+                    "Winner": {
+                        "Candidate": "Pat Doherty",
+                        "Party": "SF"
+                    }
+                },
+                "2005": {
+                    "Electorate": 59842,
+                    "Scores": {
+                        "DUP": 18,
+                        "SF": 39,
+                        "SDLP": 9,
+                        "UUP": 7,
+                        "Alliance": null,
+                        "Others": 27
+                    },
+                    "AffiliationScore": {
+                        "uni": 25,
+                        "nat": 48,
+                        "oth": 27
+                    },
+                    "Turnout": 74,
+                    "Winner": {
+                        "Candidate": "Pat Doherty",
+                        "Party": "SF"
+                    }
+                },
+                "Brex": {
+                    "Remain": 66.8,
+                    "Leave": 33.2,
+                    "Turnout": 61.69
+                }
+            }
+        ]
+    },
+    {
+        "totals": [
+            {
+                "year": "2017",
+                "Turnout": 65.6,
+                "Results": {
+                    "DUP": {
+                        "total": 36,
+                        "seats": 10
+                    },
+                    "SF": {
+                        "total": 29.4,
+                        "seats": 7
+                    },
+                    "SDLP": {
+                        "total": 11.7,
+                        "seats": 0
+                    },                
+                    "UUP": {
+                        "total": 10.3,
+                        "seats": 0
+                    },
+                    "Alliance": {
+                        "total": 7.9,
+                        "seats": 0
+                    },
+                    "Others": {
+                        "total": 4.7,
+                        "seats": 1
+                    }
+                }
+            },
+            {
+                "year": "2015",
+                "Turnout": 58.45,
+                "Results": {
+                    "DUP": {
+                        "total": 25.7,
+                        "seats": 8
+                    },
+                    "SF": {
+                        "total": 24.5,
+                        "seats": 4
+                    },
+                    "SDLP": {
+                        "total": 13.9,
+                        "seats": 3
+                    },
+                    "UUP": {
+                        "total": 16,
+                        "seats": 2
+                    },
+                    "Alliance": {
+                        "total": 8.6,
+                        "seats": 0
+                    },
+                    "Others": {
+                        "total": 11.3,
+                        "seats": 1
+                    }
+                }
+            },
+            {
+                "year": "2010",
+                "Turnout": 58,
+                "Results": {
+                    "DUP": {
+                        "total": 25,
+                        "seats": 8
+                    },
+                    "SF": {
+                        "total": 26,
+                        "seats": 5
+                    },
+                    "SDLP": {
+                        "total": 17,
+                        "seats": 3
+                    },                
+                    "UUP": {
+                        "total": null,
+                        "seats": null
+                    },
+                    "Alliance": {
+                        "total": 6,
+                        "seats": 1
+                    },
+                    "Others": {
+                        "total": 18,
+                        "seats": 1
+                    }
+                }
+            },
+            {
+                "year": "2005",
+                "Turnout": 63,
+                "Results": {
+                    "DUP": {
+                        "total": 34,
+                        "seats": 9
+                    },
+                    "SF": {
+                        "total": 24,
+                        "seats": 5
+                    },
+                    "SDLP": {
+                        "total": 18,
+                        "seats": 3
+                    },                
+                    "UUP": {
+                        "total": 18,
+                        "seats": 1
+                    },
+                    "Alliance": {
+                        "total": 4,
+                        "seats": 0
+                    },
+                    "Others": {
+                        "total": 2,
+                        "seats": 0
+                    }
+                }
+            },
+            {
+                "year": "Brex",
+                "Turnout": 62.7,
+                "Remain": 55.78,
+                "Leave": 44.22
+            }
+        ]
+    }
+]
