@@ -10,14 +10,14 @@ const margin = {
 	bottom: 80
 };
 
+// Declare global variables
+let svg, xScale, yScale, bodyGroup; 
+
 // Set color function
 const colors = (idx) => {
 	const colorRange = ['#c13525', '#6da06f', '#b6e9d1', '#ff8652', '#ffbb43', '#afcfcf'];
 	return colorRange[idx];
 }
-
-// Declare global variables
-let svg, xScale, yScale, bodyGroup; 
 
 // Function to parse data for chart specific data
 const genChartData = (data, year, constitID) => {
@@ -49,6 +49,7 @@ const genChartData = (data, year, constitID) => {
 		const totalsArray = data[1].totals;
 		// Filter 'totals' array to target specific year
 		const totalsData = totalsArray.filter(el => el.year === year)[0];
+		console.log(totalsData);
 		// Store the election scores for specific year in an object
 		const dataobj = totalsData.Results;
 		// Loop through the object to create final bar chart dataset
@@ -69,7 +70,8 @@ const createSVG = (width, height, DOMTarget) => {
 
 	if (!svg) {
 		svg = d3.select(DOMTarget)
-			.append("svg")
+			.append('svg')
+			.attr('class', 'svg--bar')
 			.attr('height', height)
 			.attr('width', width);
 	}
@@ -82,14 +84,14 @@ const renderGraphTitle = (width, height, year, chartData) => {
 	// Check if data obj is for a constituency or for national
 	if (!chartData[0].seats) {
 		const constitName = chartData[0].constit;
-		const text = svg.append("text")
+		const text = svg.append('text')
 			.attr('class', 'title')
 	        .attr('x', (width / 2))             
 	        .attr('y', (0 + 25));
 
 	    text.append('tspan')
 	    	.attr('dx', 0)
-	    	.attr("dy", 0)
+	    	.attr('dy', 0)
 	        .text(`Vote share by party - General Election, ${year}`);
 
 	    text.append('tspan')
@@ -98,10 +100,10 @@ const renderGraphTitle = (width, height, year, chartData) => {
 	    	.text(`Constituency: ${constitName}`);
 	// Check if data obj is for a constituency or for national
 	} else if (chartData[0].seats) {
-		const text = svg.append("text")
+		const text = svg.append('text')
 			.attr('class', 'title')
-	        .attr("x", (width / 2))             
-	        .attr("y", 0 + 25 )
+	        .attr('x', (width / 2))             
+	        .attr('y', 0 + 25 )
 	     
 	    text.append('tspan')
 	    	.attr('dy', 0)
@@ -118,13 +120,13 @@ const renderGraphTitle = (width, height, year, chartData) => {
 // Function to render the axis label on y
 const createAxesLabels = (width, height) => {
 	// Add the text label for the Y axis
-    svg.append("text")
+    svg.append('text')
 	    	.attr('class', 'label y')
-	        .attr("transform", "rotate(-90)")
-	        .attr("y", 0 + 20)
-	        .attr("x",0 - (height / 2))
-	        .attr("dy", "1em")
-	        .style("text-anchor", "middle")
+	        .attr('transform', 'rotate(-90)')
+	        .attr('y', 0 + 20)
+	        .attr('x',0 - (height / 2))
+	        .attr('dy', '1em')
+	        .style('text-anchor', 'middle')
 	        .text('Percentage share of vote');
 };
 
@@ -235,9 +237,10 @@ const renderBars = (DOMTarget, width, height, datasrc) => {
 	const barPadding = 1;
 	// Create tooltip and hide it
 	const tooltip = d3.select(DOMTarget)
-						  .append('div')
-						  .attr('class', 'barchart-tooltip')
-						  .style('opacity', 0);
+					  .append('div')
+					  .attr('class', 'barchart-tooltip')
+					  .style('opacity', 0);
+	
 	// Join the data
 	const bars = bodyGroup.selectAll('rect.bar')
 							.data(datasrc);
@@ -246,15 +249,15 @@ const renderBars = (DOMTarget, width, height, datasrc) => {
 			.append('rect')
 		.merge(bars)
 			.attr('class', 'bar')
-			// Add tooltip on hover
+			// Add tooltip on hove
 			.on('mouseover', function(d) {
 				tooltip.transition()
 						.duration(500)
 						.style('opacity', .8);
 
 				tooltip.html(genHTML(d))
-						.style('left', () => (d3.event.pageX - 20) + "px")
-						.style('top', () => (d3.event.pageY - 100) + "px");
+						.style('left', () => (d3.event.pageX - 20) + 'px')
+						.style('top', () => (d3.event.pageY - 100) + 'px');
 			})
 			// Remove tooltip on mouseout
 			.on('mouseout', function(d) {
@@ -270,7 +273,7 @@ const renderBars = (DOMTarget, width, height, datasrc) => {
 				.attr('fill', (d, i) => colors(i));
 }
 
-// Function to render the chart body (lines and circles)
+// Function to render the chart body 
 const renderBody = (width, height, DOMTarget, datasrc) => {
 
 	if (!bodyGroup) {
