@@ -284,7 +284,6 @@ const renderLines = (datasrc, tooltip) => {
 			d3.selectAll(`.dot_${d[0].party}`).raise();
 			// Display tooltip
 			tooltip.transition()
-					//.duration()
 					.style('opacity', .8);
 			// Insert tooltip HTML
 			tooltip.html(genHTML(d[0]))
@@ -315,19 +314,13 @@ const renderDots = (datasrc, tooltip) => {
 				.append('circle')
 			.merge(circle)
 				.attr('class', (d, i) => `dot _${idx} dot_${d.party}`)
-				//.raise()
-			.transition()
-				.duration(5000)
-				.attr('cx', (d) => xScale(d.year))
-				.attr('cy', (d) => yScale(d.vote))
-				.attr('r', 4.5)
-				.style('stroke', (d) => colors(d.party))	
+				.raise()
+				
 			.on('mouseover', (d, i) => {
 				d3.select(`.line-${d.party}`).classed('line-selected', true).raise();
 				d3.selectAll(`.dot_${d.party}`).raise();
 				// Display tooltip
 				tooltip.transition()
-						//.duration()
 						.style('opacity', .8);
 				// Insert tooltip HTML
 				tooltip.html(genHTML(d))
@@ -340,6 +333,11 @@ const renderDots = (datasrc, tooltip) => {
 				// Hide tooltip
 				tooltip.transition().style('opacity', 0);
 			})
+			.transition()
+				.attr('cx', (d) => xScale(d.year))
+				.attr('cy', (d) => yScale(d.vote))
+				.attr('r', 4.5)
+				.style('stroke', (d) => colors(d.party))
 			
 	});
 }
