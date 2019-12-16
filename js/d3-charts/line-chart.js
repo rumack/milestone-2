@@ -1,4 +1,4 @@
-// ********** AREA CHART MODULE **********
+// ********** LINE CHART MODULE **********
 
 // Exported functions at bottom of file
 
@@ -24,7 +24,7 @@ const colors = (party) => {
 }
 
 // Declare global variables
-let svg, xScale, yScale, bodyGroup; 
+let svg, xScale, yScale, bodyGroup, tooltip; 
 
 // Function to parse data needed for chart 
 const genChartData = (data, constitID) => {
@@ -175,12 +175,12 @@ const renderXAxis = (axesGroup, width, height) => {
 					.ticks(5);
 
 	axesGroup.append('g')
-		.attr('class', 'x axis axis--areachart')
+		.attr('class', 'x axis axis--linechart')
 		.attr('transform', () => `translate(${margin.left}, ${height - margin.bottom})`)
 		.call(xAxis);
 
 	// Draw x axis grid lines
-	d3.selectAll('g.x.axis--areachart g.tick')
+	d3.selectAll('g.x.axis--linechart g.tick')
 		.append('line')
 			.classed('grid-line', true)
 			.attr('x1', 0)
@@ -197,12 +197,12 @@ const renderYAxis = (axesGroup, width, height) => {
 			.tickFormat(d => d + '%');
 
 	axesGroup.append('g')
-		.attr('class', 'y axis axis--areachart')
+		.attr('class', 'y axis axis--linechart')
 		.attr('transform', () => `translate(${margin.left}, ${margin.top})`)
 		.call(yAxis);
 
 	// Draw y axis grid lines
-	d3.selectAll('g.y.axis--areachart g.tick')
+	d3.selectAll('g.y.axis--linechart g.tick')
 		.append('line')
 		.classed('grid-line', true)
 		.attr('x1', 0)
@@ -216,7 +216,7 @@ const updateAxisX = () => {
 					.scale(xScale)
 					.ticks(5);
 
-	svg.select('g.x.axis--areachart')
+	svg.select('g.x.axis--linechart')
 		.transition()
 		.call(xAxis);
 }
@@ -228,7 +228,7 @@ const updateAxisY = () => {
 			.ticks(5)
 			.tickFormat(d => d + '%');
 
-	svg.select('g.y.axis--areachart')
+	svg.select('g.y.axis--linechart')
 		.transition()
 		.call(yAxis);
 }
@@ -248,7 +248,7 @@ const defineBodyClip = (width, height) => {
 	const padding = 10;
 	const clip = svg.append('defs');
 	clip.append('clipPath')
-	.attr('id', 'body-clip-area')
+	.attr('id', 'body-clip-line')
 	.append('rect')
 	.attr('x', 0 - padding)
 	.attr('y', 0 - padding)
@@ -259,14 +259,13 @@ const defineBodyClip = (width, height) => {
 // Function to render html for tooltip
 const genHTML = data => {
 	const html = `
-	<h4>${data[0].party}</h4>
+	<h4>${data.party}</h4>
 	`;
 	return html;
 };
 
 // Function to render path line
-const renderLines = (datasrc) => {
-	console.log(datasrc);
+const renderLines = (datasrc, tooltip) => {
 	const line = d3.line()
 		.x((d) => xScale(d.year))
 		.y((d) => yScale(d.vote));
@@ -278,7 +277,27 @@ const renderLines = (datasrc) => {
 			.append('path')
 		.merge(paths)
 			.style('stroke', (d, i) => colors(d[0].party))
-			.attr('class', 'line')
+			//.style('stroke-width', 3)
+			.attr('class', (d) => `line line-${d[0].party}`)
+			// Avoiding arrow function to use 'this'
+		.on('mouseover', function(d, i) {
+			d3.select(this).classed('line-selected', true).raise();
+			d3.selectAll(`.dot_${d[0].party}`).raise();
+			// Display tooltip
+			tooltip.transition()
+					//.duration()
+					.style('opacity', .8);
+			// Insert tooltip HTML
+			tooltip.html(genHTML(d[0]))
+					.style('left', () => (d3.event.pageX - 20) + 'px')
+					.style('top', () => (d3.event.pageY - 100) + 'px');
+		})
+		.on('mouseout', function(d, i) {
+			d3.selectAll(`.dot_${d[0].party}`).lower();
+			d3.select(this).classed('line-selected', false).lower();
+			// Hide tooltip
+			tooltip.transition().style('opacity', 0);
+		})
 		.transition()
 			.attr('d', (d) => line(d))
 	paths.exit()
@@ -287,8 +306,7 @@ const renderLines = (datasrc) => {
 }
 
 // Function to render the circles
-const renderDots = (datasrc) => {
-	console.log(datasrc);
+const renderDots = (datasrc, tooltip) => {
 	datasrc.forEach((el, idx) => {
 		const circle = bodyGroup.selectAll(`circle._${idx}`)
 								.data(el);
@@ -297,54 +315,11 @@ const renderDots = (datasrc) => {
 				.append('circle')
 			.merge(circle)
 				.attr('class', (d, i) => `dot _${idx} dot_${d.party}`)
-				.style('stroke', (d) => colors(d.party))
-			.transition()
-				.attr('cx', (d) => xScale(d.year))
-				.attr('cy', (d) => yScale(d.vote))
-				.attr('r', 4.5);
-	});
-}
-
-// Function to render shaded areas
-const renderAreas =(DOMTarget, width, height, datasrc) => {
-    const area = d3.area() 
-                .x((d) => xScale(d.year))
-                .y0(height - (margin.bottom + margin.top))
-                .y1((d) => yScale(d.vote));
-    // Insert and hide tooltip
-    const tooltip = d3.select(DOMTarget)
-						  .append('div')
-						  .attr('class', 'areachart--tooltip')
-						  .style('opacity', 0);
-
-    const pathAreas = bodyGroup.selectAll(`path.areachart--area`)
-            .data(datasrc);
-
-    pathAreas.enter() 
-            .append('path')
-        .merge(pathAreas)
-            .style('fill', (d, i) => colors(d[0].party))
-            .attr('class', (d, i) => `areachart--area area_${i}`)
-            // Using D3 sort function to order the layering of elements according to highest vote (this makes hover highlighting possible) *** No z-index available for SVG
-            .sort((a, b) => {
-            	const highestVoteA = d3.max(a, d => d.vote);
-            	const highestVoteB = d3.max(b, d => d.vote);
-            	if (highestVoteA < highestVoteB) {
-            		return 1;
-            	} else {
-            		return -1;
-            	}
-            })
-            // Add tooltip and selection effects on hover
-			.on('mouseover', function(d, i) {
-				// Select circles/dots and apply hover effect
-				d3.selectAll(`.dot_${d[0].party}`)
-					.raise()
-					.transition()
-					.duration(500)
-					.style('fill', (d, i) => colors(d.party))
-					.style('stroke', 'white')
-					.attr('r', 5.5);
+				.raise()
+				
+			.on('mouseover', (d, i) => {
+				d3.select(`.line-${d.party}`).classed('line-selected', true).raise();
+				d3.selectAll(`.dot_${d.party}`).raise();
 				// Display tooltip
 				tooltip.transition()
 						//.duration()
@@ -354,40 +329,46 @@ const renderAreas =(DOMTarget, width, height, datasrc) => {
 						.style('left', () => (d3.event.pageX - 20) + 'px')
 						.style('top', () => (d3.event.pageY - 100) + 'px');
 			})
-			// Remove circle hover effects and hide tooltip on mouseout
-			.on('mouseout', function(d, i) {
-				// Select circles/dots and remove hover effects
-				d3.selectAll(`circle.dot_${d[0].party}`)
-					.transition()
-					.duration(500)
-					.style('fill', 'white')
-					.style('stroke', d => colors(d.party))
-					.attr('r', 4.5);
+			.on('mouseout', (d, i) => {
+				d3.selectAll(`.dot_${d.party}`).lower();
+				d3.select(`.line-${d.party}`).classed('line-selected', false).lower();
+				
 				// Hide tooltip
-				tooltip.transition().style('opacity', 0);
-			})
-			// Transition for area generator must come at the end, after mouse events
-			.transition()
-				.attr('d', (d) => area(d));
+				tooltip.transition().style('opacity', 0)
 
-				pathAreas.exit()
-							.transition()
-							.remove();
+
+			})
+			.transition()
+				.attr('cx', (d) => xScale(d.year))
+				.attr('cy', (d) => yScale(d.vote))
+				.attr('r', 4.5)
+				.style('stroke', (d) => colors(d.party));
+			
+	});
 }
 
 // Function to render the chart body (area, lines and circles)
 const renderBody = (width, height, DOMTarget, datasrc) => {
 
+	// Insert and hide tooltip
+	if (!tooltip) {
+		tooltip = d3.select(DOMTarget)
+						  .append('div')
+						  .attr('class', 'linechart--tooltip')
+						  .style('opacity', 0);
+	}
+   
+
 	if (!bodyGroup) {
 		bodyGroup = svg.append('g')
 			.attr('class', 'body')
 			.attr('transform', `translate(${margin.left}, ${margin.top})`)
-			.attr('clip-path', 'url(#body-clip-area)');
+			.attr('clip-path', 'url(#body-clip-line)');
 	} 
 
-	renderLines(datasrc);
-	renderAreas(DOMTarget, width, height, datasrc);
-	renderDots(datasrc);
+	renderLines(datasrc, tooltip);
+	renderDots(datasrc, tooltip);
+	
 }
 // Export a function that uses all of the above to generate final chart
 export const renderChart = (data, width, height, DOMTarget, constitID) => {
@@ -403,10 +384,11 @@ export const renderChart = (data, width, height, DOMTarget, constitID) => {
 }	
 
 // Export function to update chart with new data
-export const updateAreaChart = (data, width, height, DOMTarget, constitID) => {
+export const updateLineChart = (data, width, height, DOMTarget, constitID) => {
 	const chartData = genChartData(data, constitID);
 	generateScales(width, height, chartData);
 	createSVG(width, height, DOMTarget);
+	defineBodyClip(width, height);
 	renderBody(width, height, DOMTarget, chartData);
 	renderGraphTitle(width, height, chartData);
 	updateAxisX();

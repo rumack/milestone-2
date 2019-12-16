@@ -11,7 +11,7 @@ const margin = {
 };
 
 // Declare global variables
-let svg, xScale, yScale, bodyGroup; 
+let svg, xScale, yScale, bodyGroup, tooltip; 
 
 // Set color function
 const colors = (idx) => {
@@ -147,7 +147,8 @@ const generateScales = (width, height, chartData) => {
 	// Set scale for axes
 	xScale = d3.scaleBand()
 				.domain(xDomain)
-				.range([0, width - (margin.right + margin.left)]);
+				.range([0, width - (margin.right + margin.left)])
+				.padding(0.4);
 				
 	yScale = d3.scaleLinear()
 				.domain(yExtent)
@@ -235,11 +236,14 @@ const genHTML = data => {
 // Function to render bars for chart
 const renderBars = (DOMTarget, width, height, datasrc) => {
 	const barPadding = 1;
-	// Create tooltip and hide it
-	const tooltip = d3.select(DOMTarget)
+	// Create tooltip and hide it (bugfix: if it doesn't already exist)
+	if (!tooltip) {
+		tooltip = d3.select(DOMTarget)
 					  .append('div')
 					  .attr('class', 'barchart-tooltip')
 					  .style('opacity', 0);
+	}
+	
 	
 	// Join the data
 	const bars = bodyGroup.selectAll('rect.bar')
@@ -251,13 +255,16 @@ const renderBars = (DOMTarget, width, height, datasrc) => {
 			.attr('class', 'bar')
 			// Add tooltip on hove
 			.on('mouseover', function(d) {
-				tooltip.transition()
-						.duration(500)
-						.style('opacity', .8);
 
 				tooltip.html(genHTML(d))
 						.style('left', () => (d3.event.pageX - 20) + 'px')
 						.style('top', () => (d3.event.pageY - 100) + 'px');
+
+				tooltip.transition()
+						.duration(500)
+						.style('opacity', .8);
+
+				
 			})
 			// Remove tooltip on mouseout
 			.on('mouseout', function(d) {
@@ -271,6 +278,7 @@ const renderBars = (DOMTarget, width, height, datasrc) => {
 				.attr('height', d => (height - (margin.bottom + margin.top)) - (yScale(d.score) - 5))
 				.attr('width', xScale.bandwidth() - barPadding)
 				.attr('fill', (d, i) => colors(i));
+				//.attr('pointer-events', 'auto');
 }
 
 // Function to render the chart body 

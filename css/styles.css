@@ -12,7 +12,7 @@ svg {
 /* Containers */
 
 .bar-chart-container,
-.area-chart-container {
+.line-chart-container {
     margin-left: 20px;
 }
 
@@ -20,12 +20,17 @@ svg {
 
 .line {
     fill: none;    
-    stroke-width: 2;
+    stroke-width: 3;
+    transition: all .5s;
+}
+
+.line-selected {
+    stroke-width: 5;
 }
 
 .dot {
   fill: #fff;
-  pointer-events: none;
+  /*pointer-events: none;*/
 }
 
 /* Generic - Axes, ticks, grid lines, labels, titles */
@@ -55,7 +60,7 @@ svg {
 
 /* Generic - Tooltips  */
 
-.areachart--tooltip,
+.linechart--tooltip,
 .barchart-tooltip {
     position: absolute;
     max-width: 200px;
@@ -83,20 +88,6 @@ svg {
     font-size: 10px;
     line-height: 20px;
     text-align: center;
-}
-
-/* Area chart */
-
-.areachart--area {
-    stroke: none;
-    fill-opacity: .2;
-    filter: brightness(100%);
-    transition:; all 1s;
-}
-
-.areachart--area:hover {
-    filter: brightness(50%);
-    fill-opacity: .9;
 }
 
 

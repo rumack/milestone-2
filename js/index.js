@@ -1,5 +1,5 @@
 import * as barChart from './d3-charts/bar-chart.js';
-import * as areaChart from './d3-charts/area-chart.js';
+import * as lineChart from './d3-charts/line-chart.js';
 
 d3.json('../data/ni-elections.json', (err, d) => {
 	if (err) {
@@ -14,10 +14,10 @@ d3.json('../data/ni-elections.json', (err, d) => {
 	}, 5000);
 
 	// Instantiate area chart, and update in 5 seconds to check transition effects
-	areaChart.renderChart(d, 450, 350, '.area-chart', 'MU');
+	lineChart.renderChart(d, 450, 350, '.line-chart', 'MU');
 
 	setTimeout(() => {
-		areaChart.updateAreaChart(d, 450, 350, '.area-chart', 'NA');
+		lineChart.updateLineChart(d, 450, 350, '.line-chart', 'NA');
 	}, 5000);
 
 });
