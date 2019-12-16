@@ -4,10 +4,10 @@
 
 // Set margins for chart
 const margin = {
-	top: 80,
+	top: 100,
 	left: 100,
 	right: 80,
-	bottom: 80
+	bottom: 60
 };
 
 // Declare global variables

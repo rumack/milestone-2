@@ -4,10 +4,10 @@
 
 // Set margins for chart
 const margin = {
-	top: 60,
+	top: 100,
 	left: 80,
 	right: 80,
-	bottom: 80
+	bottom: 60
 };
 
 // Set colour function
@@ -25,6 +25,7 @@ const colors = (party) => {
 
 // Declare global variables
 let svg, xScale, yScale, bodyGroup, tooltip; 
+
 
 // Function to parse data needed for chart 
 const genChartData = (data, constitID) => {
@@ -276,8 +277,6 @@ const renderLines = (datasrc, tooltip) => {
 	paths.enter()
 			.append('path')
 		.merge(paths)
-			.style('stroke', (d, i) => colors(d[0].party))
-			//.style('stroke-width', 3)
 			.attr('class', (d) => `line line-${d[0].party}`)
 			// Avoiding arrow function to use 'this'
 		.on('mouseover', function(d, i) {
@@ -299,6 +298,7 @@ const renderLines = (datasrc, tooltip) => {
 			tooltip.transition().style('opacity', 0);
 		})
 		.transition()
+			.style('stroke', (d, i) => colors(d[0].party))
 			.attr('d', (d) => line(d))
 	paths.exit()
 	.transition()
@@ -315,8 +315,13 @@ const renderDots = (datasrc, tooltip) => {
 				.append('circle')
 			.merge(circle)
 				.attr('class', (d, i) => `dot _${idx} dot_${d.party}`)
-				.raise()
-				
+				//.raise()
+			.transition()
+				.duration(5000)
+				.attr('cx', (d) => xScale(d.year))
+				.attr('cy', (d) => yScale(d.vote))
+				.attr('r', 4.5)
+				.style('stroke', (d) => colors(d.party))	
 			.on('mouseover', (d, i) => {
 				d3.select(`.line-${d.party}`).classed('line-selected', true).raise();
 				d3.selectAll(`.dot_${d.party}`).raise();
@@ -332,17 +337,9 @@ const renderDots = (datasrc, tooltip) => {
 			.on('mouseout', (d, i) => {
 				d3.selectAll(`.dot_${d.party}`).lower();
 				d3.select(`.line-${d.party}`).classed('line-selected', false).lower();
-				
 				// Hide tooltip
-				tooltip.transition().style('opacity', 0)
-
-
+				tooltip.transition().style('opacity', 0);
 			})
-			.transition()
-				.attr('cx', (d) => xScale(d.year))
-				.attr('cy', (d) => yScale(d.vote))
-				.attr('r', 4.5)
-				.style('stroke', (d) => colors(d.party));
 			
 	});
 }

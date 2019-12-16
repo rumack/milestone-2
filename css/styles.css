@@ -1,6 +1,7 @@
 /* Base styling */
 
 body {
+    padding-top: 80px;
 	display: flex;
 	flex-wrap: wrap;
 }
@@ -12,7 +13,8 @@ svg {
 /* Containers */
 
 .bar-chart-container,
-.line-chart-container {
+.line-chart-container,
+.pie-chart-container {
     margin-left: 20px;
 }
 
@@ -89,6 +91,22 @@ svg {
     line-height: 20px;
     text-align: center;
 }
+
+
+/* PIE CHART */
+
+.pie-label {
+    fill: white;
+    font-size: 11px;
+    pointer-events: none;
+}
+
+.legend,
+.arc {
+    fill-opacity: 0.8;
+}
+
+
 
 
 
