@@ -4,7 +4,7 @@
 
 // Set margins for chart
 const margin = {
-	top: 100,
+	top: 70,
 	left: 80,
 	right: 80,
 	bottom: 60
@@ -24,7 +24,7 @@ const colors = (party) => {
 }
 
 // Declare global variables
-let svg, xScale, yScale, bodyGroup, tooltip; 
+let svg, xScale, yScale, bodyGroup, tooltip, selectMenu; 
 
 
 // Function to parse data needed for chart 
@@ -273,11 +273,12 @@ const renderLines = (datasrc, tooltip) => {
 
 	const paths = bodyGroup.selectAll('path.line')
 						.data(datasrc);
+	console.log(datasrc);
 
 	paths.enter()
 			.append('path')
 		.merge(paths)
-			.attr('class', (d) => `line line-${d[0].party}`)
+			.attr('class', (d) => `line line_party line_${d[0].party}`)
 			// Avoiding arrow function to use 'this'
 		.on('mouseover', function(d, i) {
 			d3.select(this).classed('line-selected', true).raise();
@@ -304,6 +305,55 @@ const renderLines = (datasrc, tooltip) => {
 		.remove();
 }
 
+const renderSelectMenu = (width, height, datasrc) => {
+	console.log(datasrc);
+	const options = ['All Parties','DUP', 'SF', 'SDLP', 'UUP', 'Alliance', 'Others'];
+	if (!document.querySelector('.linechart-select-menu')) {
+		selectMenu = d3.select('.line-chart')
+						.append('select')
+						.attr('class', 'linechart-select-menu');
+						// .attr('position', 'absolute')
+						// .attr('top', 0)
+						// .attr('left', width / 2);
+
+		selectMenu.selectAll('menuOptions')
+					.data(options)
+					.enter()
+					.append('option')
+					.text(d => d)
+					.attr('value', (d) => d);
+
+		selectMenu.on('change', function() {
+			const selected = d3.select(this).property('value');
+			if (selected === 'All Parties') {
+				d3.selectAll('path.line_party')
+					//.transition()
+					.style('opacity', 1);
+				d3.selectAll('circle.dot')
+					//.transition()
+					.style('opacity', 1)
+					.raise();
+			} else {
+				const partiesToHide = options.filter(el => el !== 'All Parties' && el !== selected);
+				d3.select(`path.line_${selected}`)
+					//.transition()
+					.style('opacity', 1);
+				d3.selectAll(`circle.dot_${selected}`)
+					//.transition()
+					.style('opacity', 1);
+				partiesToHide.forEach(el => {
+					d3.select(`path.line_${el}`)
+						//.transition()
+						.style('opacity', 0);
+					d3.selectAll(`circle.dot_${el}`)
+						//.transition()
+						.style('opacity', 0);
+				})
+			}
+		})
+	}
+}
+
 // Function to render the circles
 const renderDots = (datasrc, tooltip) => {
 	datasrc.forEach((el, idx) => {
@@ -317,7 +367,7 @@ const renderDots = (datasrc, tooltip) => {
 				.raise()
 				
 			.on('mouseover', (d, i) => {
-				d3.select(`.line-${d.party}`).classed('line-selected', true).raise();
+				d3.select(`.line_${d.party}`).classed('line-selected', true).raise();
 				d3.selectAll(`.dot_${d.party}`).raise();
 				// Display tooltip
 				tooltip.transition()
@@ -329,7 +379,7 @@ const renderDots = (datasrc, tooltip) => {
 			})
 			.on('mouseout', (d, i) => {
 				d3.selectAll(`.dot_${d.party}`).lower();
-				d3.select(`.line-${d.party}`).classed('line-selected', false).lower();
+				d3.select(`.line_${d.party}`).classed('line-selected', false).lower();
 				// Hide tooltip
 				tooltip.transition().style('opacity', 0);
 			})
@@ -337,7 +387,7 @@ const renderDots = (datasrc, tooltip) => {
 				.attr('cx', (d) => xScale(d.year))
 				.attr('cy', (d) => yScale(d.vote))
 				.attr('r', 4.5)
-				.style('stroke', (d) => colors(d.party))
+				.style('stroke', (d) => colors(d.party));
 			
 	});
 }
@@ -363,7 +413,7 @@ const renderBody = (width, height, DOMTarget, datasrc) => {
 
 	renderLines(datasrc, tooltip);
 	renderDots(datasrc, tooltip);
-	
+	renderSelectMenu(width, height, datasrc);
 }
 // Export a function that uses all of the above to generate final chart
 export const renderChart = (data, width, height, DOMTarget, constitID) => {
@@ -373,6 +423,7 @@ export const renderChart = (data, width, height, DOMTarget, constitID) => {
 	defineBodyClip(width, height);
 	renderAxes(width, height);
 	renderBody(width, height, DOMTarget, chartData);
+	//renderButtons(width, height, chartData);
 	renderGraphTitle(width, height, chartData);
 	createAxesLabels(width, height);
 	

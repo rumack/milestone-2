@@ -1,6 +1,6 @@
-import * as barChart from './d3-charts/bar-chart.js';
-import * as lineChart from './d3-charts/line-chart.js';
-import * as pieChart from './d3-charts/pie-chart.js';
+import * as barChart from './charts/bar-chart.js';
+import * as lineChart from './charts/line-chart.js';
+import * as pieChart from './charts/pie-chart.js';
 
 d3.json('../data/ni-elections.json', (err, d) => {
 	if (err) {
@@ -15,14 +15,14 @@ d3.json('../data/ni-elections.json', (err, d) => {
 	}, 5000);
 
 	// Instantiate line chart, and update in 5 seconds to check transition effects
-	lineChart.renderChart(d, 450, 350, '.line-chart', 'MU');
+	lineChart.renderChart(d, 450, 350, '.line-chart', 'BW');
 
 	setTimeout(() => {
-		lineChart.updateLineChart(d, 450, 350, '.line-chart', 'NA');
+		lineChart.updateLineChart(d, 450, 350, '.line-chart');
 	}, 5000);
 
 	// Instantiate pie chart, and update in 5 seconds to check transition effects
-	pieChart.renderChart(d, 450, 350, '.pie-chart', 'F');
+	pieChart.renderChart(d, 450, 350, '.pie-chart', 'BW');
 
 	setTimeout(() => {
 		pieChart.updatePieChart(d, 450, 350, '.pie-chart');

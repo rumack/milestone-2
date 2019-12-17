@@ -138,9 +138,7 @@ const renderGraphTitle = (width, height, chartData, constitID) => {
 	// Prepare for update - if title, remove title
 	svg.selectAll('text.title').remove();
 
-	console.log(chartData);
 	if (constitID) {
-		console.log(chartData[0].constit);
 
 		const text = svg.append('text')
 			.attr('class', 'title')

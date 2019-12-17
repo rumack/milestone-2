@@ -49,7 +49,6 @@ const genChartData = (data, year, constitID) => {
 		const totalsArray = data[1].totals;
 		// Filter 'totals' array to target specific year
 		const totalsData = totalsArray.filter(el => el.year === year)[0];
-		console.log(totalsData);
 		// Store the election scores for specific year in an object
 		const dataobj = totalsData.Results;
 		// Loop through the object to create final bar chart dataset
