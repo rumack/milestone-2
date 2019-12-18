@@ -1,31 +1,43 @@
 import * as barChart from './charts/bar-chart.js';
 import * as lineChart from './charts/line-chart.js';
 import * as pieChart from './charts/pie-chart.js';
+import * as map from './charts/map.js';
 
-d3.json('../data/ni-elections.json', (err, d) => {
+// Queuing calls for data sources (election data and map data)
+const q = d3.queue();
+q.defer(d3.json, '../data/ni-elections.json');
+q.defer(d3.json, '../data/ireland_norn.json');
+
+// Act on results when returned
+q.await((err, data, mapData) => {
+
 	if (err) {
 		console.log(err);
 	}
 
-	// Instantiate column chart, and update in 5 seconds to check transition effects
-	barChart.renderChart(d, 450, 350, '.bar-chart', '2017', 'BW');
+	// Instantiate map
+	map.renderMap(mapData, 500, 500, '.map');
+	// setTimeout(() => {
+	// 	map.updateMap(mapData, 500, 300, '.map');
+	// }, 5000);
 
+	// Instantiate column chart, and update in 5 seconds to check transition effects
+	barChart.renderChart(data, 450, 350, '.bar-chart', '2017', 'BW');
 	setTimeout(() => {
-		barChart.updateBarchart(d, 450, 350, '.bar-chart', '2017');
+		barChart.updateBarchart(data, 450, 350, '.bar-chart', '2017');
 	}, 5000);
 
 	// Instantiate line chart, and update in 5 seconds to check transition effects
-	lineChart.renderChart(d, 450, 350, '.line-chart', 'BW');
-
+	lineChart.renderChart(data, 450, 350, '.line-chart', 'BW');
 	setTimeout(() => {
-		lineChart.updateLineChart(d, 450, 350, '.line-chart');
+		lineChart.updateLineChart(data, 450, 350, '.line-chart');
 	}, 5000);
 
 	// Instantiate pie chart, and update in 5 seconds to check transition effects
-	pieChart.renderChart(d, 450, 350, '.pie-chart', 'BW');
-
+	pieChart.renderChart(data, 450, 350, '.pie-chart', 'BW');
 	setTimeout(() => {
-		pieChart.updatePieChart(d, 450, 350, '.pie-chart');
+		pieChart.updatePieChart(data, 450, 350, '.pie-chart');
 	}, 5000);
+
 });
 

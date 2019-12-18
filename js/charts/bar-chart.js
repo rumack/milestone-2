@@ -6,7 +6,7 @@
 const margin = {
 	top: 100,
 	left: 100,
-	right: 80,
+	right: 60,
 	bottom: 60
 };
 

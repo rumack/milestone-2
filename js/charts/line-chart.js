@@ -4,9 +4,9 @@
 
 // Set margins for chart
 const margin = {
-	top: 70,
+	top: 100,
 	left: 80,
-	right: 80,
+	right: 60,
 	bottom: 60
 };
 
@@ -386,7 +386,7 @@ const renderDots = (datasrc, tooltip) => {
 			.transition()
 				.attr('cx', (d) => xScale(d.year))
 				.attr('cy', (d) => yScale(d.vote))
-				.attr('r', 4.5)
+				.attr('r', 5.5)
 				.style('stroke', (d) => colors(d.party));
 			
 	});
