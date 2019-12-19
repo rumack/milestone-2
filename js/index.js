@@ -16,28 +16,31 @@ q.await((err, data, mapData) => {
 	}
 
 	// Instantiate map
-	map.renderMap(mapData, 500, 500, '.map');
-	// setTimeout(() => {
-	// 	map.updateMap(mapData, 500, 300, '.map');
-	// }, 5000);
+	map.renderMap(mapData, 500, 500, '.map-ireland');
 
-	// Instantiate column chart, and update in 5 seconds to check transition effects
+	// Instantiate column chart
 	barChart.renderChart(data, 450, 350, '.bar-chart', '2017', 'BW');
-	setTimeout(() => {
-		barChart.updateBarchart(data, 450, 350, '.bar-chart', '2017');
-	}, 5000);
-
-	// Instantiate line chart, and update in 5 seconds to check transition effects
+	
+	// Instantiate line chart
 	lineChart.renderChart(data, 450, 350, '.line-chart', 'BW');
-	setTimeout(() => {
-		lineChart.updateLineChart(data, 450, 350, '.line-chart');
-	}, 5000);
 
-	// Instantiate pie chart, and update in 5 seconds to check transition effects
+	// Instantiate pie chart
 	pieChart.renderChart(data, 450, 350, '.pie-chart', 'BW');
-	setTimeout(() => {
-		pieChart.updatePieChart(data, 450, 350, '.pie-chart');
-	}, 5000);
 
+	// Collect array of constituency areas
+	const constitArray = Array.from(document.querySelectorAll('.map'));
+
+	// Iterate over array of constituencies to set event listeners and update charts
+	constitArray.forEach(el => {
+		// Extract class name (constituency code)
+		const constitID = el.classList[1];
+		el.addEventListener('click', () => {
+			// Use class name to update charts
+			barChart.updateBarchart(data, 450, 350, '.bar-chart', '2017', `${constitID}`);
+			lineChart.updateLineChart(data, 450, 350, '.line-chart', `${constitID}`);
+			pieChart.updatePieChart(data, 450, 350, '.pie-chart', `${constitID}`);
+		});
+		
+	});
 });
 

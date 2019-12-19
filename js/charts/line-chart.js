@@ -273,7 +273,6 @@ const renderLines = (datasrc, tooltip) => {
 
 	const paths = bodyGroup.selectAll('path.line')
 						.data(datasrc);
-	console.log(datasrc);
 
 	paths.enter()
 			.append('path')
@@ -285,11 +284,11 @@ const renderLines = (datasrc, tooltip) => {
 			d3.selectAll(`.dot_${d[0].party}`).raise();
 			// Display tooltip
 			tooltip.transition()
-					.style('opacity', .8);
+					.style('opacity', 1);
 			// Insert tooltip HTML
 			tooltip.html(genHTML(d[0]))
-					.style('left', () => (d3.event.pageX - 20) + 'px')
-					.style('top', () => (d3.event.pageY - 100) + 'px');
+					.style('left', () => (d3.event.pageX - 40) + 'px')
+					.style('top', () => (d3.event.pageY - 50) + 'px');
 		})
 		.on('mouseout', function(d, i) {
 			d3.selectAll(`.dot_${d[0].party}`).lower();
@@ -306,7 +305,6 @@ const renderLines = (datasrc, tooltip) => {
 }
 
 const renderSelectMenu = (width, height, datasrc) => {
-	console.log(datasrc);
 	const options = ['All Parties','DUP', 'SF', 'SDLP', 'UUP', 'Alliance', 'Others'];
 	if (!document.querySelector('.linechart-select-menu')) {
 		selectMenu = d3.select('.line-chart')
@@ -374,8 +372,8 @@ const renderDots = (datasrc, tooltip) => {
 						.style('opacity', .8);
 				// Insert tooltip HTML
 				tooltip.html(genHTML(d))
-						.style('left', () => (d3.event.pageX - 20) + 'px')
-						.style('top', () => (d3.event.pageY - 100) + 'px');
+						.style('left', () => (d3.event.pageX - 40) + 'px')
+						.style('top', () => (d3.event.pageY - 50) + 'px');
 			})
 			.on('mouseout', (d, i) => {
 				d3.selectAll(`.dot_${d.party}`).lower();
@@ -399,7 +397,7 @@ const renderBody = (width, height, DOMTarget, datasrc) => {
 	if (!tooltip) {
 		tooltip = d3.select(DOMTarget)
 						  .append('div')
-						  .attr('class', 'linechart--tooltip')
+						  .attr('class', 'tooltip linechart--tooltip')
 						  .style('opacity', 0);
 	}
    

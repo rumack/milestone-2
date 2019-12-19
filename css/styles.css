@@ -82,19 +82,30 @@ svg {
 
 /* Generic - Tooltips  */
 
-.linechart--tooltip,
-.barchart-tooltip {
+.tooltip {
     position: absolute;
     max-width: 200px;
     height: auto;
-    padding: 5px 10px;
-    background-color: rgba(255, 255, 255, .8);
-    color: black;
+    background-color: rgba(255, 255, 255, .95);
+    color: rgba(0, 0, 0, .7);
     font-family: sans-serif;
+    text-align: center;
+    line-height: 20px;
     border: 1px solid rgba(0, 0, 0, .4);
-    border-radius: 3px;
+    border-radius: 1px;
     box-shadow: .5px 1px 2px rgba(0, 0, 0, 0.3);
     pointer-events: none;
+}
+
+.tooltip h4 {
+    padding: 4px 10px;
+    margin: 0;
+    font-size: 14px;
+}
+
+.tooltip span {
+    font-size: 12px;
+    font-weight: normal;
 }
 
 /* Bar chart */
@@ -104,12 +115,6 @@ svg {
 
 .bar:hover {
     filter: brightness(80%);
-}
-
-.barchart-tooltip p {
-    font-size: 10px;
-    line-height: 20px;
-    text-align: center;
 }
 
 

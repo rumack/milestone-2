@@ -226,8 +226,7 @@ const defineBodyClip = (width, height) => {
 // Function to render html for tooltip
 const genHTML = data => {
 	const html = `
-	<h4>${data.party}</h4>
-	<p>${data.score}%</p>
+	<h4>${data.party}: <span>${data.score}%</span></h4>
 	`;
 	return html;
 };
@@ -239,10 +238,9 @@ const renderBars = (DOMTarget, width, height, datasrc) => {
 	if (!tooltip) {
 		tooltip = d3.select(DOMTarget)
 					  .append('div')
-					  .attr('class', 'barchart-tooltip')
+					  .attr('class', 'tooltip barchart-tooltip')
 					  .style('opacity', 0);
 	}
-	
 	
 	// Join the data
 	const bars = bodyGroup.selectAll('rect.bar')
@@ -252,16 +250,16 @@ const renderBars = (DOMTarget, width, height, datasrc) => {
 			.append('rect')
 		.merge(bars)
 			.attr('class', 'bar')
-			// Add tooltip on hove
+			// Add tooltip on hover
 			.on('mouseover', function(d) {
 
 				tooltip.html(genHTML(d))
-						.style('left', () => (d3.event.pageX - 20) + 'px')
-						.style('top', () => (d3.event.pageY - 100) + 'px');
+						.style('left', () => (d3.event.pageX - 40) + 'px')
+						.style('top', () => (d3.event.pageY - 50) + 'px');
 
 				tooltip.transition()
 						.duration(500)
-						.style('opacity', .8);
+						.style('opacity', 1);
 
 				
 			})
