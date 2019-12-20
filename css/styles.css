@@ -1,35 +1,76 @@
+ /***** CSS reset *****/
+
+*,
+*::before,
+*::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: inherit; 
+}
+
+html {
+    box-sizing: border-box;
+     /*The browser standard font size is 16px. I want 1rem to equal 10px. 10px is 62.5% of 16px, hence the setting below. The percentage setting means that screen zooming will work coherently on the page. Thanks to Jonas Schmedtmann for this tip. */
+    /*font-size: 62.5%; 
+    scroll-behavior: smooth;*/
+}
+    
+body {
+    font-family: "Lato", sans-serif;
+    font-weight: 400;
+    line-height: 1.7; 
+    color: $color-black;
+}
+
 /* Base styling */
 
 body {
+
     padding-top: 80px;
-	display: flex;
-	flex-wrap: wrap;
+	display: grid;
+	grid-template-columns: minmax(2rem, .5fr) repeat(9, 1fr) minmax(2rem, .5fr);
+    grid-template-rows: 2fr 1fr;
+    justify-items: center;
 }
 
-svg {
-    
-   
+.map-container {
+    width: 100%;
+    grid-row: 1 / span 1;
+    grid-column: 2 / span 9;
 }
 
-/* Containers */
+.map-ireland {
+    display: flex;
+    justify-content: flex-end;
+}
 
-.bar-chart-container,
-.line-chart-container,
+.bar-chart-container {
+    grid-row: 2 / span 1;
+    grid-column: 2 / span 3;
+}
+
+.line-chart-container {
+    grid-row: 2 /span 1;
+    grid-column: 5 / span 3;
+}
+
 .pie-chart-container {
-    margin-left: 20px;
-    border: 1px solid rgba(0, 0, 0, .1);
+    grid-row: 2 / span 1;
+    grid-column: 8 / span 3;
 }
 
 .line-chart-container {
     /*padding: 10px;*/
 }
 
+.map-container {
+    position: relative;
+}
+
 /* Specific to line chart - to control positioning of the added dropdown menu */
 .line-chart {
-    /*z-index: -1;*/
     display: grid;
     justify-items: center;
-    /*align-items: center;*/
 }
 
 .linechart-select-menu {
@@ -108,6 +149,18 @@ svg {
     font-weight: normal;
 }
 
+
+
+.hidden {
+    visibility: hidden;
+    opacity: 0;
+}
+
+.displayed {
+    visibility: visible;
+    opacity: 1;
+}
+
 /* Bar chart */
 .bar {
     transition: .5s filter;
@@ -141,7 +194,6 @@ svg {
 }
 
 
-/* MAP */
 
 .brexit {
     margin: 50px auto;
@@ -149,4 +201,57 @@ svg {
     display: grid;
     justify-items: center;
     align-items: center;
+}
+
+/* MAP */
+
+.constit {
+    fill-opacity: 0.5;
+    transition: fill-opacity .5s;
+}
+
+/*.constit:hover {
+    fill-opacity: 0.7;
+}*/
+
+.constit-rep {
+    fill-opacity: 0.3;
+}
+
+.constit-selected {
+    fill-opacity: 1;
+}
+
+.constit-hovered {
+    fill-opacity: 0.7;
+}
+
+/* Map - Dispay box */
+
+.display-box {
+    position: absolute;
+    top: 30px;
+    left: 30px;
+    /*max-width: 100px;
+    height: auto;*/
+    font-family: sans-serif;
+    font-size: 14px;
+    color: #ffffff;
+    border: none;
+    padding: 1rem 2rem;
+    margin: 0;
+    text-decoration: none;
+    background: white;
+    cursor: pointer;
+    text-align: center;
+    transition: background 250ms ease-in-out, 
+                transform 150ms ease;
+}
+
+.display-btn {
+    z-index: 20;
+}
+
+.btn:hover {
+    background: #616161;
 }

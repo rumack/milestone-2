@@ -24,7 +24,7 @@ const colors = (party) => {
 }
 
 // Declare global variables
-let svg, xScale, yScale, bodyGroup, tooltip, selectMenu; 
+let svg, xScale, yScale, bodyGroup, tooltip; 
 
 
 // Function to parse data needed for chart 
@@ -52,6 +52,7 @@ const genChartData = (data, constitID) => {
 			})
 		})
 		// Return final chart data (array)
+		console.log(dataset);
 		return dataset;
 	} else {
 		// Otherwise, if national level
@@ -306,50 +307,51 @@ const renderLines = (datasrc, tooltip) => {
 
 const renderSelectMenu = (width, height, datasrc) => {
 	const options = ['All Parties','DUP', 'SF', 'SDLP', 'UUP', 'Alliance', 'Others'];
-	if (!document.querySelector('.linechart-select-menu')) {
-		selectMenu = d3.select('.line-chart')
-						.append('select')
-						.attr('class', 'linechart-select-menu');
-						// .attr('position', 'absolute')
-						// .attr('top', 0)
-						// .attr('left', width / 2);
+	// If menu exists, restore default
+	d3.selectAll('.linechart-select-menu').remove();
+	d3.selectAll('path.line').style('opacity', 1);
+	d3.selectAll('circle.dot').style('opacity', 1);
+		
+	const selectMenu = d3.select('.line-chart')
+					.append('select')
+					.attr('class', 'linechart-select-menu');
+					
+	selectMenu.selectAll('menuOptions')
+				.data(options)
+				.enter()
+				.append('option')
 
-		selectMenu.selectAll('menuOptions')
-					.data(options)
-					.enter()
-					.append('option')
-					.text(d => d)
-					.attr('value', (d) => d);
+				.text(d => d)
+				.attr('value', (d) => d);
 
-		selectMenu.on('change', function() {
-			const selected = d3.select(this).property('value');
-			if (selected === 'All Parties') {
-				d3.selectAll('path.line_party')
+	selectMenu.on('change', function() {
+		const selected = d3.select(this).property('value');
+		if (selected === 'All Parties') {
+			d3.selectAll('path.line_party')
+				//.transition()
+				.style('opacity', 1);
+			d3.selectAll('circle.dot')
+				//.transition()
+				.style('opacity', 1)
+				.raise();
+		} else {
+			const partiesToHide = options.filter(el => el !== 'All Parties' && el !== selected);
+			d3.select(`path.line_${selected}`)
+				//.transition()
+				.style('opacity', 1);
+			d3.selectAll(`circle.dot_${selected}`)
+				//.transition()
+				.style('opacity', 1);
+			partiesToHide.forEach(el => {
+				d3.select(`path.line_${el}`)
 					//.transition()
-					.style('opacity', 1);
-				d3.selectAll('circle.dot')
+					.style('opacity', 0);
+				d3.selectAll(`circle.dot_${el}`)
 					//.transition()
-					.style('opacity', 1)
-					.raise();
-			} else {
-				const partiesToHide = options.filter(el => el !== 'All Parties' && el !== selected);
-				d3.select(`path.line_${selected}`)
-					//.transition()
-					.style('opacity', 1);
-				d3.selectAll(`circle.dot_${selected}`)
-					//.transition()
-					.style('opacity', 1);
-				partiesToHide.forEach(el => {
-					d3.select(`path.line_${el}`)
-						//.transition()
-						.style('opacity', 0);
-					d3.selectAll(`circle.dot_${el}`)
-						//.transition()
-						.style('opacity', 0);
-				})
-			}
-		})
-	}
+					.style('opacity', 0);
+			})
+		}
+	})
 }
 
 // Function to render the circles
@@ -409,10 +411,11 @@ const renderBody = (width, height, DOMTarget, datasrc) => {
 			.attr('clip-path', 'url(#body-clip-line)');
 	} 
 
+	renderSelectMenu(width, height, datasrc);
 	renderLines(datasrc, tooltip);
 	renderDots(datasrc, tooltip);
-	renderSelectMenu(width, height, datasrc);
 }
+
 // Export a function that uses all of the above to generate final chart
 export const renderChart = (data, width, height, DOMTarget, constitID) => {
 	const chartData = genChartData(data, constitID);

@@ -182,9 +182,9 @@ const renderPie = (width, height, datasrc) => {
             .innerRadius(innerRadius);
     // This arc generator will be used on hover in the render slices function
     const arcMouseover = d3.arc()
-    		.outerRadius(radius + 10)
+    		.outerRadius(radius + 8)
     		.innerRadius(innerRadius)
-    		.padAngle(0.07);
+    		.padAngle(0.02);
 
     if (!pieGroup)
         pieGroup = bodyGroup.append('g')
@@ -247,6 +247,7 @@ const renderLabels = (pie, arc, datasrc) => {
 		  		
 		  		.text((d) => `${d.data.value.toFixed(1)}%`)
 		  		.attr('class', 'pie-label')
+		  		//.attr('pointer-events', 'none')
 		  		.style('opacity', 0)
 		  		.transition()
             	.duration(duration)
