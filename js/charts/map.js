@@ -77,7 +77,7 @@ const defineGradient = (width, height) => {
 			.attr('offset', '0%');
 	gradient.append('stop')
 			.attr('class', 'stop-top')
-			.attr('offset', '20%');
+			.attr('offset', '25%');
 
 	svg.append('rect')
 		.attr('width', width)

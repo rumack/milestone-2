@@ -4,10 +4,8 @@
 
 // Declare global variables
 let svg, pieGroup, bodyGroup, legend; 
+const duration = 1000;
 
-const radius = 100, 
-	  innerRadius = 50, 
-	  duration = 1000;
 
 // Set margins for chart
 const margin = {
@@ -76,7 +74,7 @@ const createSVG = (width, height, DOMTarget) => {
 	}
 } 
 
-const renderLegend = (width, height, data, arc, arcMouseover) => {
+const renderLegend = (width, height, data, arc, outerRadius) => {
 	if (!legend) {
 		legend = svg.append("g")
 						.attr('class', 'legendGroup')
@@ -90,16 +88,18 @@ const renderLegend = (width, height, data, arc, arcMouseover) => {
 						// activated hover on assocaited wedges
 						.on('mouseover', (d, i) => {
 							d3.select(`path.arc-${i}`)
-								.transition()
-								.attr('d', arcMouseover)
+								//.transition()
+								.attr('d', arcTween(outerRadius, 0, arc))
+								
 							})
 			    		.on('mouseout', (d, i) => {
+			    			// Indexing the class name to ease selection from other parts of the code
 			    			d3.select(`path.arc-${i}`)
-			    			.transition()
-			    				.attr('d', arc)
+			    			// Using the same tweening function as the one declared in the renderPie function 
+			    				.attr('d', arcTween(outerRadius - 5, 0, arc))
 			    		})
 						.transition()
-						.attr('x', 0)
+						.attr('x', 30)
 						.attr('y', (d, i) => i * 25)
 						.attr('width', 15)
 						.attr('height', 15)
@@ -115,17 +115,15 @@ const renderLegend = (width, height, data, arc, arcMouseover) => {
 						// activated hover on assocaited wedges
 						.on('mouseover', (d, i) => {
 							d3.select(`path.arc-${i}`)
-								.transition()
-								.attr('d', arcMouseover)
+							.attr('d', arcTween(outerRadius, 0, arc))
 							})
 			    		.on('mouseout', (d, i) => {
 			    			// Indexing the class name to ease selection from other parts of the code
 			    			d3.select(`path.arc-${i}`)
-			    			.transition()
-			    				.attr('d', arc)
+			    			.attr('d', arcTween(outerRadius - 5, 0, arc))
 			    		})
 						.transition()
-						.attr('x', 25)
+						.attr('x', 55)
 						.attr('y', (d, i) => i * 25 + 11)
 						.attr("font-family", "sans-serif")
                 		.attr("font-size", "10px")
@@ -172,9 +170,9 @@ const renderGraphTitle = (width, height, chartData, constitID) => {
 	}
 }
 
-// Tweening function for arc hover effect
+// Tweening function for arc hover effect - adapted from a Mike Bostock block
 
-function arcTween(outerRadius, delay) {
+function arcTween(outerRadius, delay, arc) {
 	return function() {
 		d3.select(this).transition().delay(delay).attrTween('d', function(d) {
 			let i = d3.interpolate(d.outerRadius, outerRadius);
@@ -187,56 +185,44 @@ function arcTween(outerRadius, delay) {
 }
 
 const renderPie = (width, height, datasrc) => {
-    const pie = d3.pie() 
+
+	const outerRadius = height / 3;
+ 	const innerRadius = outerRadius / 3;
+
+    const pie = d3.pie()
+    		.padAngle(.04)
             .sort((d) => d.id)
             .value((d) => d.value);
 
     const arc = d3.arc()
-            .outerRadius(radius)
+            .padRadius(outerRadius)
             .innerRadius(innerRadius);
-            
-    // This arc generator will be used on hover in the render slices function
-    const arcMouseover = d3.arc()
-    		.outerRadius(radius + 5)
-    		.innerRadius(innerRadius);
-    		//.padAngle(0.03);
 
     if (!pieGroup)
         pieGroup = bodyGroup.append('g')
                 .attr('class', 'pie');
 
-    renderSlices(pie, arc, arcMouseover, datasrc);
-    renderLabels(pie, arc, datasrc);
-    renderLegend(width, height, datasrc, arc, arcMouseover);
+    renderSlices(pie, arc, datasrc, outerRadius);
+    renderLabels(pie, arc, datasrc, outerRadius);
+    renderLegend(width, height, datasrc, arc, outerRadius);
 }
 
-const renderSlices = (pie, arc, arcMouseover, datasrc) => {
+
+const renderSlices = (pie, arc, datasrc, outerRadius) => {
+
     const slices = pieGroup.selectAll('path.arc')
             .data(pie(datasrc));
 
     slices.enter()
             .append('path')
         .merge(slices)
+        	.each((d) => d.outerRadius = outerRadius - 5)
             .attr('class', (d, i) => `arc arc-${i}`)
             .attr('fill', (d, i) => colors(i))
-            // A pretty basic hover effect (avoid arrow function here)
-            .on('mouseover', function(d) {
-				d3.select(this)
-					.transition()
-					.attr('d', arcMouseover);
-				})
-    		.on('mouseout', function(d) {
-    			d3.select(this)
-    			.transition()
-    				.attr('d', arc)
-    		})
-        .transition()
-            .duration(duration)
-            // No arrow function here to maintain functionality of 'this'
-            .attr('stroke', 'white')
-            .attr('stroke-width', 3)
-            // Transitioning with the arc generator means a tweening function is necessary to interpolate the various stages
-            .attrTween('d', function (d) {
+            .on('mouseover', arcTween(outerRadius, 0, arc))
+    		.on('mouseout', arcTween(outerRadius - 5, 150, arc))
+            .transition()
+			.attrTween('d', function (d) {
                 let currentArc = this.__current__;
 
                 if (!currentArc)
@@ -252,17 +238,17 @@ const renderSlices = (pie, arc, arcMouseover, datasrc) => {
 }
 
 
-const renderLabels = (pie, arc, datasrc) => {
+const renderLabels = (pie, arc, datasrc, outerRadius) => {
     const labels = pieGroup.selectAll('text.pie-label')
             .data(pie(datasrc));
             
     labels.enter()
         		.append('text')	
 		  .merge(labels)
-		  		
+		  		.each((d) => d.outerRadius = outerRadius - 5)
 		  		.text((d) => `${d.data.value.toFixed(1)}%`)
 		  		.attr('class', 'pie-label')
-		  		//.attr('pointer-events', 'none')
+		  		.attr('pointer-events', 'none')
 		  		.style('opacity', 0)
 		  		.transition()
             	.duration(duration)
