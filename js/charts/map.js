@@ -14,6 +14,7 @@ const createSVG = (width, height, DOMTarget) => {
 	if (!svg) {
 		svg = d3.select(DOMTarget)
 				.append("svg")
+				.attr('id', 'svg-map')
 				.attr("width", width)
 				.attr("height", height);
 	}
@@ -61,12 +62,34 @@ const genDisplayBoxHTML = data => {
 	return html;
 };
 
-// <button class="display-btn">Show all constituencies</button>
+// Setting gradient transparency overlay
+const defineGradient = (width, height) => {
+	const svgDefs = svg.append('defs');
+	const gradient = svgDefs.append('linearGradient')
+							.attr('id', 'gradient')
+							.attr('x1', '0%')
+							.attr('x2', '0%')
+							.attr('y1', '100%')
+							.attr('y2', '0%');
+
+	gradient.append('stop')
+			.attr('class', 'stop-bottom')
+			.attr('offset', '0%');
+	gradient.append('stop')
+			.attr('class', 'stop-top')
+			.attr('offset', '20%');
+
+	svg.append('rect')
+		.attr('width', width)
+		.attr('height', height)
+		.classed('filled', true)
+		.attr('pointer-events', 'none');
+
+}
 
 const renderBody = (mapData, data, DOMTarget) => {
-	console.log(data);
 	// Define mapping projection constant
-	const projection = d3.geoMercator().center([-7.5, 54.8]).scale(14000);
+	const projection = d3.geoMercator().center([-7.9, 54.7]).scale(11000);
 	//Define path generator
 	const path = d3.geoPath()
 					.projection(projection);
@@ -102,6 +125,7 @@ const renderBody = (mapData, data, DOMTarget) => {
 						   .append("path")
 						   .merge(mapLines)
 						   .attr("d", path)
+						   .attr('pointer-events', 'auto')
 						   .attr("class", (d, i) => {
 						   		const constitID = d.properties.PC_ID;
 						   		if (d.properties.JURI === 'NORN') {
@@ -128,7 +152,7 @@ const renderBody = (mapData, data, DOMTarget) => {
 											.style('opacity', 1)
 											.style('left', () => (d3.event.pageX - 40) + 'px')
 											.style('top', () => (d3.event.pageY - 50) + 'px');
-							   		} 
+							   	} 
 						   		
 						   })
 						   .on('mouseout', function(d, i) {
@@ -138,33 +162,37 @@ const renderBody = (mapData, data, DOMTarget) => {
 						   })
 						   // When a constituency is selected, show the 'constituency display box'
 						   .on('click', function(d, i) {
-						   		// Set color opacity of selected constituency
-								// Remove 'hovered' class from selected element
-								this.classList.remove('constit-hovered');
-								// Remove 'selected' class from siblings of selected constituency
-								utils.getAllSiblings(this).forEach(elem => elem.classList.remove('constit-selected'));
-								if (d.properties.JURI === 'NORN') {
-									// Add 'selected' class to selected constituency
-									this.classList.add('constit-selected');
-									// Prepare display box information (constituency name)
-									const title = document.createTextNode(d.properties.PC_NAME);
-									const h4 = document.querySelector('.display-box h4');
-									// Remove any previous constituency names and add current
-									while (h4.firstChild) {
-										h4.firstChild.remove();
+						   		// Target only northern constituencies
+						   		if (d.properties.JURI === 'NORN') {
+							   		// Set color opacity of selected constituency
+									// Remove 'hovered' class from selected element
+									this.classList.remove('constit-hovered');
+									// Remove 'selected' class from siblings of selected constituency
+									utils.getAllSiblings(this).forEach(elem => elem.classList.remove('constit-selected'));
+									if (d.properties.JURI === 'NORN') {
+										// Add 'selected' class to selected constituency
+										this.classList.add('constit-selected');
+										// Prepare display box information (constituency name)
+										const title = document.createTextNode(d.properties.PC_NAME);
+										const h4 = document.querySelector('.display-box h4');
+										// Remove any previous constituency names and add current
+										while (h4.firstChild) {
+											h4.firstChild.remove();
+										}
+										h4.appendChild(title);
+										//Make display box visible
+										displayBox.transition()
+										   			.style('visibility', 'visible')
+													.style('opacity', 1);	
+										displayHeading.transition()
+													.style('visibility', 'visible')
+													.style('opacity', 1)
+										displayBtn.transition()		
+													.style('visibility', 'visible')
+													.style('opacity', 1);				
 									}
-									h4.appendChild(title);
-									//Make display box visible
-									displayBox.transition()
-									   			.style('visibility', 'visible')
-												.style('opacity', 1);	
-									displayHeading.transition()
-												.style('visibility', 'visible')
-												.style('opacity', 1)
-									displayBtn.transition()		
-												.style('visibility', 'visible')
-												.style('opacity', 1);				
-								}
+						   		}
+						   		
 						   });
 	
 	//Actions when the 'all constituencies' button is clicked
@@ -183,6 +211,9 @@ const renderBody = (mapData, data, DOMTarget) => {
 }
 
 export const renderMap = (mapData, data, width, height, DOMTarget) => {
+
 	createSVG(width, height, DOMTarget);
+	
 	renderBody(mapData, data, DOMTarget);
+	defineGradient(width, height);
 }

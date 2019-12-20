@@ -17,7 +17,7 @@ q.await((err, data, mapData) => {
 	}
 
 	// Instantiate map
-	map.renderMap(mapData, data, 1000, 600, '.map-ireland');
+	map.renderMap(mapData, data, 1000, 560, '.map-ireland');
 
 	// Instantiate column chart
 	barChart.renderChart(data, 450, 350, '.bar-chart', '2017');

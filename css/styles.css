@@ -1,3 +1,20 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto:300,400,700&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Baloo+Bhaijaan&display=swap');
+
+ /*// Gradient testing*/
+
+.stop-bottom {
+    stop-color: rgba(255, 255, 255, 1);  /* Indigo */
+}
+
+.stop-top {
+    stop-color: rgba(255, 255, 255, 0);  
+}
+
+.filled {
+    fill: url(#gradient);
+}
+
  /***** CSS reset *****/
 
 *,
@@ -26,15 +43,36 @@ body {
 
 body {
 
-    padding-top: 80px;
+    /*padding-top: 80px;*/
 	display: grid;
 	grid-template-columns: minmax(2rem, .5fr) repeat(9, 1fr) minmax(2rem, .5fr);
-    grid-template-rows: 2fr 1fr;
+    grid-template-rows: max-content 1fr;
     justify-items: center;
+    align-items: start;
+}
+
+.header {
+    grid-row: 1 / span 1;
+    grid-column: 2 / span 5;
+    font-family: 'Roboto', sans-serif;
+    font-size: 20px;
+    line-height: 1;
+    text-align: center;
+    padding-top: 30px;
+}
+
+.header h1 {
+    padding-bottom: 10px;
+}
+
+.header p {
+    font-family: 'Baloo Bhaijaan', cursive;
+    color: #A52A2A;
 }
 
 .map-container {
     width: 100%;
+    height: auto;
     grid-row: 1 / span 1;
     grid-column: 2 / span 9;
 }
@@ -242,14 +280,13 @@ body {
     margin: 0;
     text-decoration: none;
     background: white;
-    cursor: pointer;
     text-align: center;
     transition: background 250ms ease-in-out, 
                 transform 150ms ease;
 }
 
 .display-btn {
-    z-index: 20;
+    cursor: pointer;;
 }
 
 .btn:hover {

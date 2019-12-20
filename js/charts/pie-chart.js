@@ -5,7 +5,7 @@
 // Declare global variables
 let svg, pieGroup, bodyGroup, legend; 
 
-const radius = 110, 
+const radius = 100, 
 	  innerRadius = 50, 
 	  duration = 1000;
 
@@ -168,7 +168,21 @@ const renderGraphTitle = (width, height, chartData, constitID) => {
         text.append('tspan')
 	    	.attr('x', (width / 2))
 	    	.attr('dy', '2em')
-	    	.text(`Constituency: All constituencies`);
+	    	.text(`All constituencies`);
+	}
+}
+
+// Tweening function for arc hover effect
+
+function arcTween(outerRadius, delay) {
+	return function() {
+		d3.select(this).transition().delay(delay).attrTween('d', function(d) {
+			let i = d3.interpolate(d.outerRadius, outerRadius);
+			return function(t) {
+				d.outerRadius = i(t);
+				return arc(d);
+			}
+		})
 	}
 }
 
@@ -180,11 +194,12 @@ const renderPie = (width, height, datasrc) => {
     const arc = d3.arc()
             .outerRadius(radius)
             .innerRadius(innerRadius);
+            
     // This arc generator will be used on hover in the render slices function
     const arcMouseover = d3.arc()
-    		.outerRadius(radius + 8)
-    		.innerRadius(innerRadius)
-    		.padAngle(0.02);
+    		.outerRadius(radius + 5)
+    		.innerRadius(innerRadius);
+    		//.padAngle(0.03);
 
     if (!pieGroup)
         pieGroup = bodyGroup.append('g')
@@ -208,7 +223,7 @@ const renderSlices = (pie, arc, arcMouseover, datasrc) => {
             .on('mouseover', function(d) {
 				d3.select(this)
 					.transition()
-					.attr('d', arcMouseover)
+					.attr('d', arcMouseover);
 				})
     		.on('mouseout', function(d) {
     			d3.select(this)
