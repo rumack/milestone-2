@@ -268,7 +268,7 @@ const renderBars = (DOMTarget, width, height, datasrc) => {
 				// Hide tooltip
 				tooltip.transition().duration(500).style('opacity', 0);
 			})
-			// The transition that renders the data rects must come after mouse events
+			// The transition that renders the data rects must come after mouse events - I think!
 			.transition()
 				.attr('x', (d, i) => xScale(d.party))
 				.attr('y', (d, i) => yScale(d.score) - 5)
@@ -276,6 +276,46 @@ const renderBars = (DOMTarget, width, height, datasrc) => {
 				.attr('width', xScale.bandwidth() - barPadding)
 				.attr('fill', (d, i) => colors(i));
 				//.attr('pointer-events', 'auto');
+}
+
+// Function to render radio buttons
+const renderRadioButtons = (width, height, datasrc) => {
+	const elections = ['2005', '2010', '2015', '2017'];
+	const j = 3;
+	// If menu exists, restore default
+	d3.selectAll('.barchart-form').remove();
+	
+		
+	const form = d3.select('.bar-chart')
+					.append('form')
+					.attr('class', 'barchart-form');
+					
+	const labels = form.selectAll('label')
+				.data(elections)
+				.enter()
+				.append('label')
+				.text((d) => d)
+				.insert('input')
+				.attr({
+					type: 'radio',
+					class: 'radio-year',
+					name: 'year',
+					value: function (d, i) {
+						return i;
+					}
+				})
+				.property('checked', (d, i) => i === j);
+
+	selectMenu.on('change', function() {
+		const selected = d3.select(this).property('value');
+		const tspans = d3.select('.svg-bar').selectAll('tspan');
+		console.log(tspans);
+		// switch(selected) {
+		// 	case '2017':
+		// 	updateBarchart()
+		// }
+		
+	})
 }
 
 // Function to render the chart body 
@@ -288,6 +328,8 @@ const renderBody = (width, height, DOMTarget, datasrc) => {
 			.attr('clip-path', 'url(#body-clip)');
 	} 
 	renderBars(DOMTarget, width, height, datasrc);
+	//renderRadioButtons(width, height, datasrc);
+
 }
 
 // Export a function that uses all of the above to generate final chart
