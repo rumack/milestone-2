@@ -1,0 +1,257 @@
+@import url("https://fonts.googleapis.com/css?family=Roboto:300,400,700&display=swap");
+/***** CSS reset *****/
+@import url("https://fonts.googleapis.com/css?family=Baloo+Bhaijaan&display=swap");
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: inherit; }
+
+html {
+  box-sizing: border-box;
+  /*The browser standard font size is 16px. I want 1rem to equal 10px. 10px is 62.5% of 16px, hence the setting below. The percentage setting means that screen zooming will work coherently on the page. Thanks to Jonas Schmedtmann for this tip. */
+  font-size: 62.5%;
+  scroll-behavior: smooth; }
+
+body {
+  font-family: "Roboto", sans-serif;
+  font-weight: 400;
+  line-height: 1.7; }
+
+/* Control positioning of the radio buttons */
+.bar-chart {
+  display: grid;
+  justify-items: center; }
+
+.barchart-form {
+  margin-bottom: 30px;
+  display: flex;
+  justify-content: center; }
+
+/* Bar chart */
+.bar {
+  transition: .5s filter; }
+
+.bar:hover {
+  filter: brightness(80%); }
+
+.barchart-radio {
+  display: none; }
+
+.barchart-label {
+  font-family: sans-serif;
+  font-size: 12px;
+  font-style: italic;
+  position: relative;
+  /*margin-top: 20px;*/
+  cursor: pointer; }
+
+.barchart-radio-btn {
+  height: 15px;
+  width: 15px;
+  border: 1px solid rgba(0, 0, 0, 0.5);
+  border-radius: 50%;
+  display: inline-block;
+  position: absolute;
+  left: 6px;
+  top: 25px;
+  display: grid;
+  justify-items: center;
+  align-items: center; }
+
+.barchart-radio-btn::after {
+  content: "";
+  display: block;
+  height: 7px;
+  width: 7px;
+  border-radius: 50%;
+  /*position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);*/
+  background-color: rgba(84, 107, 46, 0.5);
+  opacity: 0;
+  transition: opacity .2s; }
+
+.barchart-label:not(:first-of-type) {
+  margin-left: 20px; }
+
+#radio-0:checked ~ label[for='radio-0'] .barchart-radio-btn::after {
+  opacity: 1; }
+
+#radio-1:checked ~ label[for='radio-1'] .barchart-radio-btn::after {
+  opacity: 1; }
+
+#radio-2:checked ~ label[for='radio-2'] .barchart-radio-btn::after {
+  opacity: 1; }
+
+#radio-3:checked ~ label[for='radio-3'] .barchart-radio-btn::after {
+  opacity: 1; }
+
+/* Generic - Lines and dots */
+.line {
+  fill: none;
+  stroke-width: 2;
+  transition: all .5s; }
+
+.line-selected {
+  stroke-width: 4; }
+
+.dot {
+  fill: #fff;
+  /*pointer-events: none;*/ }
+
+/* Generic - Axes, ticks, grid lines, labels, titles */
+.axis .grid-line {
+  stroke: rgba(0, 0, 0, 0.5);
+  shape-rendering: crispEdges;
+  stroke-opacity: .1;
+  fill: none; }
+
+.label.x,
+.label.y {
+  font-family: sans-serif;
+  font-size: 10px;
+  fill: gray;
+  fill-opacity: .9; }
+
+.title {
+  font-family: sans-serif;
+  font-size: 14px;
+  fill: black;
+  fill-opacity: .5;
+  text-anchor: middle; }
+
+/* Generic - Tooltips  */
+.tooltip {
+  position: absolute;
+  max-width: 200px;
+  height: auto;
+  background-color: rgba(255, 255, 255, 0.95);
+  color: rgba(0, 0, 0, 0.7);
+  font-family: sans-serif;
+  text-align: center;
+  line-height: 20px;
+  border: 1px solid rgba(0, 0, 0, 0.4);
+  border-radius: 1px;
+  box-shadow: 0.5px 1px 2px rgba(0, 0, 0, 0.3);
+  pointer-events: none; }
+
+.tooltip h4 {
+  padding: 4px 10px;
+  margin: 0;
+  font-size: 14px; }
+
+.tooltip span {
+  font-size: 12px;
+  font-weight: normal; }
+
+/* Control positioning of the added dropdown menu */
+.line-chart {
+  display: grid;
+  justify-items: center; }
+
+.linechart-select-menu {
+  margin-top: 10px; }
+
+/* SVG map linear gradient */
+.stop-bottom {
+  stop-color: white; }
+
+.stop-top {
+  stop-color: rgba(255, 255, 255, 0); }
+
+.filled {
+  fill: url(#gradient); }
+
+.constit {
+  fill-opacity: 0.5;
+  transition: fill-opacity .5s; }
+
+.constit-rep {
+  fill-opacity: 0.3; }
+
+.constit-selected {
+  fill-opacity: 1; }
+
+.constit-hovered {
+  fill-opacity: 0.7; }
+
+/* Map - Dispay box */
+.display-box {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  font-family: sans-serif;
+  font-size: 14px;
+  color: #ffffff;
+  border: none;
+  padding: 1rem 2rem;
+  margin: 0;
+  text-decoration: none;
+  background: white;
+  text-align: center;
+  transition: background 250ms ease-in-out,  transform 150ms ease; }
+
+.display-btn {
+  cursor: pointer; }
+
+.btn:hover {
+  background: #616161; }
+
+/* PIE CHART */
+.pie-label {
+  fill: white;
+  font-size: 11px;
+  pointer-events: none; }
+
+.legend-text,
+.legend,
+.arc {
+  fill-opacity: 0.8; }
+
+.layout-grid {
+  width: 100%;
+  height: auto;
+  display: grid;
+  grid-template-rows: min-content min-content min-content 200px; }
+
+.footer {
+  grid-row: 4 / span 1;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.8); }
+
+.header {
+  grid-row: 1 / span 1;
+  font-size: 1.8rem;
+  text-align: center;
+  padding-top: 3rem;
+  z-index: 1; }
+  .header__heading {
+    padding-bottom: 1rem;
+    letter-spacing: .2rem; }
+  .header__paragraph {
+    font-family: 'Baloo Bhaijaan', cursive;
+    color: #A52A2A;
+    font-size: 4.4rem; }
+
+.main {
+  grid-row: 2 / span 1;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center; }
+  .main__display {
+    width: 600px;
+    height: 400px;
+    background-color: rgba(0, 0, 0, 0.1);
+    margin-top: 50px;
+    margin-right: -100px;
+    z-index: 1; }
+
+.updateable-charts {
+  grid-row: 3 / span 1;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(25rem, 1fr));
+  margin-top: -100px; }

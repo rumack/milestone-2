@@ -1,0 +1,6 @@
+.layout-grid {
+    width: 100%;
+    height: auto;
+    display: grid;
+    grid-template-rows: min-content min-content min-content 200px;   
+}

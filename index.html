@@ -3,31 +3,42 @@
 <head>
 	<meta charset="UTF-8">
 	<title>norniron General Elections Results Dashboard</title>
-	<link href="./css/styles.css" rel="stylesheet" type="text/css">
+	<link href="./css/style.css" rel="stylesheet" type="text/css">
 	
 </head>
 <body>
 
-	<header class="header">
-		<h1>A General Elections Results Dashboard</h1>
-		<p>(for Norn-Iron)</p>
-	</header>
+	<div class="layout-grid">
+
+		<header class="header">
+			<h1 class="header__heading">A General Elections Results Dashboard</h1>
+			<p class="header__paragraph">(for NI)</p>
+		</header>
+
+		<main class="main">
+
+			<div class="main__display"></div>	
+			
+			<div class="main__map"></div>
+		
+		</main>
+
+		<div class="updateable-charts">
+
+			<div class="bar-chart"></div>
+		
+			<div class="line-chart"></div>
+			
+			<div class="pie-chart"></div>
+		
+		</div>
+
+		
+		<footer class="footer"></footer>
+
+	</div>
+
 	
-	<div class="map-container">
-		<div class="map-ireland"></div>
-	</div>
-
-	<div class="bar-chart-container">
-		<div class="bar-chart"></div>
-	</div>
-
-	<div class="line-chart-container">
-		<div class="line-chart"></div>
-	</div>
-
-	<div class="pie-chart-container">
-		<div class="pie-chart"></div>
-	</div>
 
 	
 	<script src=./js/d3.js></script>

@@ -1,0 +1,57 @@
+/* SVG map linear gradient */
+
+.stop-bottom {
+    stop-color: rgba(255, 255, 255, 1); 
+}
+
+.stop-top {
+    stop-color: rgba(255, 255, 255, 0);  
+}
+
+.filled {
+    fill: url(#gradient);
+}
+
+.constit {
+    fill-opacity: 0.5;
+    transition: fill-opacity .5s;
+}
+
+.constit-rep {
+    fill-opacity: 0.3;
+}
+
+.constit-selected {
+    fill-opacity: 1;
+}
+
+.constit-hovered {
+    fill-opacity: 0.7;
+}
+
+/* Map - Dispay box */
+
+.display-box {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-family: sans-serif;
+    font-size: 14px;
+    color: #ffffff;
+    border: none;
+    padding: 1rem 2rem;
+    margin: 0;
+    text-decoration: none;
+    background: white;
+    text-align: center;
+    transition: background 250ms ease-in-out, 
+                transform 150ms ease;
+}
+
+.display-btn {
+    cursor: pointer;;
+}
+
+.btn:hover {
+    background: #616161;
+}

@@ -17,7 +17,7 @@ q.await((err, data, mapData) => {
 	}
 
 	// Instantiate map
-	map.renderMap(mapData, data, 1000, 560, '.map-ireland');
+	map.renderMap(mapData, data, 800, 600, '.main__map');
 
 	// Instantiate column chart
 	barChart.renderChart(data, 450, 350, '.bar-chart', '2017');
@@ -27,6 +27,7 @@ q.await((err, data, mapData) => {
 
 	// Instantiate pie chart
 	pieChart.renderChart(data, 450, 350, '.pie-chart');
+
 
 	// Collect array of constituency geo areas
 	const constitArray = Array.from(document.querySelectorAll('.constit'));

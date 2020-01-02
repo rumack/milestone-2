@@ -1,0 +1,25 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto:300,400,700&display=swap');
+
+
+/***** CSS reset *****/
+
+*,
+*::before,
+*::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: inherit; 
+}
+
+html {
+    box-sizing: border-box;
+     /*The browser standard font size is 16px. I want 1rem to equal 10px. 10px is 62.5% of 16px, hence the setting below. The percentage setting means that screen zooming will work coherently on the page. Thanks to Jonas Schmedtmann for this tip. */
+    font-size: 62.5%; 
+    scroll-behavior: smooth;
+}
+    
+body {
+    font-family: "Roboto", sans-serif;
+    font-weight: 400;
+    line-height: 1.7; 
+}

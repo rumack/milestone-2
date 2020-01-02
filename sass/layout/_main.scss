@@ -1,0 +1,15 @@
+.main {
+    grid-row: 2 / span 1; 
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+
+    &__display {
+    	width: 600px;
+	    height: 400px;
+	    background-color: rgba(0, 0, 0, 0.1);
+	    margin-top: 50px;
+	    margin-right: -100px;
+	    z-index: 1;
+    }
+}

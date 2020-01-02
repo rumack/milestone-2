@@ -1,0 +1,6 @@
+.updateable-charts {
+    grid-row: 3 / span 1;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(25rem, 1fr));    
+    margin-top: -100px;
+}

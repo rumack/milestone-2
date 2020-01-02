@@ -1,0 +1,13 @@
+/* PIE CHART */
+
+.pie-label {
+    fill: white;
+    font-size: 11px;
+    pointer-events: none;
+}
+
+.legend-text,
+.legend,
+.arc {
+    fill-opacity: 0.8;
+}

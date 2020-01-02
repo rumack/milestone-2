@@ -67,17 +67,18 @@ const defineGradient = (width, height) => {
 	const svgDefs = svg.append('defs');
 	const gradient = svgDefs.append('linearGradient')
 							.attr('id', 'gradient')
-							.attr('x1', '0%')
-							.attr('x2', '0%')
-							.attr('y1', '100%')
-							.attr('y2', '0%');
+							.attr('x1', '100%')
+							.attr('x2', '80%')
+							.attr('y1', '0%')
+							.attr('y2', '100%');
 
 	gradient.append('stop')
-			.attr('class', 'stop-bottom')
-			.attr('offset', '0%');
-	gradient.append('stop')
 			.attr('class', 'stop-top')
-			.attr('offset', '25%');
+			.attr('offset', '50%');
+	gradient.append('stop')
+			.attr('class', 'stop-bottom')
+			.attr('offset', '100%');
+	
 
 	svg.append('rect')
 		.attr('width', width)
@@ -89,7 +90,7 @@ const defineGradient = (width, height) => {
 
 const renderBody = (mapData, data, DOMTarget) => {
 	// Define mapping projection constant
-	const projection = d3.geoMercator().center([-7.9, 54.7]).scale(11000);
+	const projection = d3.geoMercator().center([-7.3, 54.5599]).scale(10000);
 	//Define path generator
 	const path = d3.geoPath()
 					.projection(projection);
@@ -136,9 +137,7 @@ const renderBody = (mapData, data, DOMTarget) => {
 						   })
 						   .style("stroke-width", "3")
 						   .style("stroke", "white")
-						   .style('fill', (d, i) => {
-						   		return 'darkolivegreen';	
-						   })
+						   .style('fill', 'darkolivegreen')
 						   .on('mouseover', function(d, i) {
 						   		if (d.properties.JURI === 'NORN') {
 						   			if (!this.classList.contains('constit-selected')) {
@@ -146,12 +145,13 @@ const renderBody = (mapData, data, DOMTarget) => {
 						   			}
 						   			// Add tooltip on hover
 									tooltip.html(genTooltipHTML(d));
+											
 									tooltip.transition()
 											.duration(500)
 											.style('visibility', 'visible')
 											.style('opacity', 1)
-											.style('left', () => (d3.event.pageX - 40) + 'px')
-											.style('top', () => (d3.event.pageY - 50) + 'px');
+											.style('left', () => (d3.event.pageX - 80) + 'px')
+											.style('top', () => (d3.event.pageY) + 'px');
 							   	} 
 						   		
 						   })

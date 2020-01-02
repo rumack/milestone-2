@@ -5,20 +5,20 @@
 // Set margins for chart
 const margin = {
 	top: 100,
-	left: 80,
-	right: 80,
-	bottom: 60
+	left: 100,
+	right: 60,
+	bottom: 50
 };
 
 // Set colour function
 const colors = (party) => {
 	const colorRange = {
-		DUP: '#c13525', 
-		SF: '#6da06f', 
-		SDLP: '#b6e9d1', 
-		UUP: '#ff8652', 
-		Alliance: '#ffbb43', 
-		Others: '#afcfcf'
+		DUP: '#D32F2F', 
+		SF: '#3a5134', 
+		SDLP: '#4f953b', 
+		UUP: '#FF5722', 
+		Alliance: '#FBC02D', 
+		Others: '#757575'
 	};
 	return colorRange[party];
 }
@@ -52,7 +52,6 @@ const genChartData = (data, constitID) => {
 			})
 		})
 		// Return final chart data (array)
-		console.log(dataset);
 		return dataset;
 	} else {
 		// Otherwise, if national level
@@ -162,11 +161,11 @@ const generateScales = (width, height, chartData) => {
 	
 	xScale = d3.scaleTime()
 				.domain(extentX)
-				.range([0, width - (margin.right + margin.left)]);
+				.rangeRound([0, width - (margin.right + margin.left)]);
 
 	yScale = d3.scaleLinear()
 				.domain([0, extentYvote])
-				.range([height - (margin.top + margin.bottom), 0]);
+				.rangeRound([height - (margin.top + margin.bottom), 0]);
 		
 }
 
@@ -309,8 +308,8 @@ const renderSelectMenu = (width, height, datasrc) => {
 	const options = ['All Parties','DUP', 'SF', 'SDLP', 'UUP', 'Alliance', 'Others'];
 	// If menu exists, restore default
 	d3.selectAll('.linechart-select-menu').remove();
-	d3.selectAll('path.line').style('opacity', 1);
-	d3.selectAll('circle.dot').style('opacity', 1);
+	d3.selectAll('path.line').style('opacity', 1).style('visibility', 'visible');
+	d3.selectAll('circle.dot').style('opacity', 1).style('visibility', 'visible');
 		
 	const selectMenu = d3.select('.line-chart')
 					.append('select')
@@ -329,26 +328,32 @@ const renderSelectMenu = (width, height, datasrc) => {
 		if (selected === 'All Parties') {
 			d3.selectAll('path.line_party')
 				//.transition()
-				.style('opacity', 1);
+				.style('opacity', 1)
+				.style('visibility', 'visible');
 			d3.selectAll('circle.dot')
 				//.transition()
 				.style('opacity', 1)
+				.style('visibility', 'visible')
 				.raise();
 		} else {
 			const partiesToHide = options.filter(el => el !== 'All Parties' && el !== selected);
 			d3.select(`path.line_${selected}`)
 				//.transition()
-				.style('opacity', 1);
+				.style('opacity', 1)
+				.style('visibility', 'visible');
 			d3.selectAll(`circle.dot_${selected}`)
 				//.transition()
-				.style('opacity', 1);
+				.style('opacity', 1)
+				.style('visibility', 'visible');
 			partiesToHide.forEach(el => {
 				d3.select(`path.line_${el}`)
 					//.transition()
-					.style('opacity', 0);
+					.style('opacity', 0)
+					.style('visibility', 'hidden');
 				d3.selectAll(`circle.dot_${el}`)
 					//.transition()
-					.style('opacity', 0);
+					.style('opacity', 0)
+					.style('visibility', 'hidden');
 			})
 		}
 	})

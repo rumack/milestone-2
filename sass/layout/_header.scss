@@ -1,0 +1,20 @@
+@import url('https://fonts.googleapis.com/css?family=Baloo+Bhaijaan&display=swap');
+
+.header {
+    grid-row: 1 / span 1;
+    font-size: 1.8rem;
+    text-align: center;
+    padding-top: 3rem;
+    z-index: 1;
+
+    &__heading {
+    	padding-bottom: 1rem;
+    	letter-spacing: .2rem;
+    }
+
+    &__paragraph {
+    	font-family: 'Baloo Bhaijaan', cursive;
+	    color: #A52A2A;
+	    font-size: 4.4rem;
+    }
+}
