@@ -135,9 +135,9 @@ const renderBody = (mapData, data, DOMTarget) => {
 						   			return 'constit-rep';	
 						   		} 
 						   })
-						   .style("stroke-width", "3")
-						   .style("stroke", "white")
-						   .style('fill', 'darkolivegreen')
+						   .style("stroke-width", "1")
+						   .style("stroke", 'white')
+						   .style('fill', '#c6c6c6')
 						   .on('mouseover', function(d, i) {
 						   		if (d.properties.JURI === 'NORN') {
 						   			if (!this.classList.contains('constit-selected')) {

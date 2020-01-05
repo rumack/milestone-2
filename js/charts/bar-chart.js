@@ -11,7 +11,7 @@ const margin = {
 };
 
 // Declare global variables
-let svg, xScale, yScale, bodyGroup, tooltip, baseData; 
+let svg, xScale, yScale, bodyGroup, tooltip; 
 
 // Set colour function
 const colors = (party) => {
@@ -52,7 +52,7 @@ const genChartData = (data, year, constitID) => {
 		// Return final chart data (array)
 		return dataset;
 	} else {
-		// Prepare data object for paesed data
+		// Prepare data object for passed data
 		let dataset = [];
 		// Target 'totals' array
 		const totalsArray = data[1].totals;
@@ -85,12 +85,10 @@ const createSVG = (width, height, DOMTarget) => {
 	}
 } 
 
-//Function to render chart title
 const renderGraphTitle = (width, height, year, chartData) => {
 	// Prepare for update - if title, remove title
 	svg.selectAll('text.title').remove();
-	// Check if data obj is for a constituency or for national
-	if (!chartData[0].seats) {
+		// Get constituency name
 		const constitName = chartData[0].constit;
 		const text = svg.append('text')
 			.attr('class', 'title')
@@ -105,25 +103,9 @@ const renderGraphTitle = (width, height, year, chartData) => {
 	    text.append('tspan')
 	    	.attr('x', (width / 2))
 	    	.attr('dy', '2em')
-	    	.text(`Constituency: ${constitName}`);
-	// Check if data obj is for a constituency or for national
-	} else if (chartData[0].seats) {
-		const text = svg.append('text')
-			.attr('class', 'title')
-	        .attr('x', (width / 2))             
-	        .attr('y', 0 + 25 )
-	     
-	    text.append('tspan')
-	    	.attr('dy', 0)
-	    	.attr('x', (width / 2))
-	        .text(`Vote share by party - General Election, ${year}`);
-
-	    text.append('tspan')
-	    	.attr('dy', '2em')
-	    	.attr('x', (width / 2))
-	    	.text('All constituencies');
-	}	
+	    	.text(() => chartData[0].seats ? 'All constituencies' : `Constituency: ${constitName}` );
 }
+
 
 // Function to render the axis label on y
 const createAxesLabels = (width, height) => {
@@ -138,7 +120,7 @@ const createAxesLabels = (width, height) => {
 	        .text('Percentage share of vote');
 };
 
-// Function to generate scales
+// // Function to generate scales
 const generateScales = (width, height, chartData) => {
 	// Looping to A) find highest/lowest values for Y axis
 	// 			  B) get array of parties for the x axis domain, excluding those with score of false (no candidate)
@@ -168,11 +150,17 @@ const generateScales = (width, height, chartData) => {
 const renderXAxis = (axesGroup, width, height) => {
 	const xAxis = d3.axisBottom()
 					.scale(xScale);
-		
-			axesGroup.append('g')
+	if (d3.select('g.x.axis--barchart').empty()) {
+		axesGroup.append('g')
 			.attr('class', 'x axis axis--barchart')
 			.attr('transform', () => `translate(${margin.left}, ${height - margin.bottom})`)
 			.call(xAxis);
+	} else {
+		svg.select('g.x.axis--barchart')
+		.transition()
+		.call(xAxis);
+	}
+			
 };
 
 // Function to render the y axis
@@ -181,33 +169,18 @@ const renderYAxis = (axesGroup, width, height) => {
 			.scale(yScale)
 			.ticks(5)
 			.tickFormat(d => d + '%');
-	
+
+	if (d3.select('g.y.axis--barchart').empty()) {
 		axesGroup.append('g')
 		.attr('class', 'y axis axis--barchart')
 		.attr('transform', () => `translate(${margin.left}, ${margin.top})`)
 		.call(yAxis);
-	
-};
-
-// Function to update the x axis
-const updateAxisX = () => {
-	const xAxis = d3.axisBottom()
-					.scale(xScale);
-	svg.select('g.x.axis--barchart')
-		.transition()
-		.call(xAxis);
-}
-
-// Function to update the y axis
-const updateAxisY = () => {
-	const yAxis = d3.axisLeft()
-			.scale(yScale)
-			.ticks(4)
-			.tickFormat(d => d + '%');
-	svg.select('g.y.axis--barchart')
+	} else {
+		svg.select('g.y.axis--barchart')
 		.transition()
 		.call(yAxis);
-}
+	}
+};
 
 // Function to render the axes
 const renderAxes = (width, height) => {
@@ -259,8 +232,9 @@ const renderBars = (DOMTarget, width, height, datasrc) => {
 	// Add rects 					
 	bars.enter()
 			.append('rect')
-		.merge(bars)
 			.attr('class', 'bar')
+		.merge(bars)
+			
 			// Add tooltip on hover
 			.on('mouseover', function(d) {
 
@@ -285,11 +259,10 @@ const renderBars = (DOMTarget, width, height, datasrc) => {
 				.attr('height', d => (height - (margin.bottom + margin.top)) - (yScale(d.score) - 5))
 				.attr('width', xScale.bandwidth())
 				.attr('fill', (d, i) => colors(d.party));
-				//.attr('pointer-events', 'auto');
 }
 
 // Function to render radio buttons
-const renderRadioButtons = (width, height, DOMTarget, year, constitID) => {
+const renderRadioButtons = (baseData, width, height, DOMTarget, year, constitID) => {
 	const elections = ['2005', '2010', '2015', '2017'];
 	// Find current selected year
 	const j = elections.indexOf(year);
@@ -333,7 +306,7 @@ const renderRadioButtons = (width, height, DOMTarget, year, constitID) => {
 }
 
 // Function to render the chart body 
-const renderBody = (width, height, DOMTarget, datasrc, year, constitID) => {
+const renderBody = (baseData, width, height, DOMTarget, datasrc, year, constitID) => {
 
 	if (!bodyGroup) {
 		bodyGroup = svg.append('g')
@@ -342,30 +315,29 @@ const renderBody = (width, height, DOMTarget, datasrc, year, constitID) => {
 			.attr('clip-path', 'url(#body-clip-bars)');
 	} 
 	renderBars(DOMTarget, width, height, datasrc);
-	renderRadioButtons(width, height, DOMTarget, year, constitID);
+	renderRadioButtons(baseData, width, height, DOMTarget, year, constitID);
 }
 
 // Export a function that uses all of the above to generate final chart
 export const renderChart = (data, width, height, DOMTarget, year, constitID) => {
-	baseData = data;
-	const chartData = genChartData(data, year, constitID);
-	console.log(chartData);
+	const baseData = data;
+	const chartData = genChartData(baseData, year, constitID);
 	generateScales(width, height, chartData);
 	createSVG(width, height, DOMTarget);
-	renderBody(width, height, DOMTarget, chartData, year, constitID);
+	renderGraphTitle(width, height, year, chartData);
+	renderBody(baseData, width, height, DOMTarget, chartData, year, constitID);
 	defineBodyClip(width, height);
 	createAxesLabels(width, height);
-	renderGraphTitle(width, height, year, chartData);
 	renderAxes(width, height);
 }	
 
 // Export function to update chart with new data
 export const updateBarchart = (data, width, height, DOMTarget, year, constitID) => {
-	const chartData = genChartData(data, year, constitID);
+	const baseData = data;
+	const chartData = genChartData(baseData, year, constitID);
 	generateScales(width, height, chartData);
 	createSVG(width, height, DOMTarget);
-	renderBody(width, height, DOMTarget, chartData, year, constitID);
 	renderGraphTitle(width, height, year, chartData);
-	updateAxisX();
-	updateAxisY();	
+	renderBody(baseData, width, height, DOMTarget, chartData, year, constitID);
+	renderAxes(width, height);
 }

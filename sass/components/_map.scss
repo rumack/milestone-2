@@ -13,12 +13,13 @@
 }
 
 .constit {
-    fill-opacity: 0.5;
+    fill-opacity: 0.6;
     transition: fill-opacity .5s;
+    cursor: pointer;
 }
 
 .constit-rep {
-    fill-opacity: 0.3;
+    fill-opacity: 0.4;
 }
 
 .constit-selected {
@@ -26,14 +27,14 @@
 }
 
 .constit-hovered {
-    fill-opacity: 0.7;
+    fill-opacity: 0.8;
 }
 
 /* Map - Dispay box */
 
 .display-box {
     position: absolute;
-    top: 10px;
+    top: 130px;
     right: 10px;
     font-family: sans-serif;
     font-size: 14px;

@@ -89,13 +89,10 @@ const createSVG = (width, height, DOMTarget) => {
 	}
 } 
 
-//Function to render chart title
 const renderGraphTitle = (width, height, chartData) => {
 	// Prepare for update - if title, remove title
 	svg.selectAll('text.title').remove();
-	// Check if data obj is for a constituency or for national
-	if (chartData[0][0].constituency) {
-		const constitName = chartData[0][0].constituency;
+		
 		const text = svg.append('text')
 			.attr('class', 'title')
 	        .attr('x', (width / 2))             
@@ -103,30 +100,13 @@ const renderGraphTitle = (width, height, chartData) => {
 
 	    text.append('tspan')
 	    	.attr('dx', 0)
-	    	.attr("dy", 0)
-	        .text(`NI General Election Vote Share`);
-
-	    text.append('tspan')
-	    	.attr('x', (width / 2))
-	    	.attr('dy', '2em')
-	    	.text(`Constituency: ${constitName}`);
-	// Check if data obj is for a constituency or for national
-	} else if (!chartData[0][0].constit) {
-		const text = svg.append("text")
-			.attr('class', 'title')
-	        .attr('x', (width / 2))             
-	        .attr('y', 0 + 25 )
-	     
-	    text.append('tspan')
 	    	.attr('dy', 0)
-	    	.attr('x', (width / 2))
 	        .text(`NI General Election Vote Share`);
 
 	    text.append('tspan')
-	    	.attr('dy', '2em')
 	    	.attr('x', (width / 2))
-	    	.text('All constituencies');
-	}	
+	    	.attr('dy', '2em')
+	    	.text(() => chartData[0][0].seats ? 'All constituencies' : `Constituency: ${chartData[0][0].constituency}` );
 }
 
 // Function to render the axis label on y
@@ -273,9 +253,13 @@ const renderLines = (datasrc, tooltip) => {
 
 	const paths = bodyGroup.selectAll('path.line')
 						.data(datasrc);
+	paths.exit()
+	.transition()
+		.remove();
 
 	paths.enter()
 			.append('path')
+			
 		.merge(paths)
 			.attr('class', (d) => `line line_party line_${d[0].party}`)
 			// Avoiding arrow function to use 'this'
@@ -298,10 +282,8 @@ const renderLines = (datasrc, tooltip) => {
 		})
 		.transition()
 			.style('stroke', (d, i) => colors(d[0].party))
-			.attr('d', (d) => line(d))
-	paths.exit()
-	.transition()
-		.remove();
+			.attr('d', (d) => line(d));
+	
 }
 
 const renderSelectMenu = (width, height, datasrc) => {
@@ -364,6 +346,10 @@ const renderDots = (datasrc, tooltip) => {
 	datasrc.forEach((el, idx) => {
 		const circle = bodyGroup.selectAll(`circle._${idx}`)
 								.data(el);
+
+		circle.exit()
+			.transition()
+			.remove();
 
 		circle.enter()
 				.append('circle')

@@ -1,0 +1,18 @@
+.rect {
+	fill-opacity: .75;
+	transition: .5s fill-opacity;
+	stroke: none;
+}
+
+.rect:hover {
+	fill-opacity: .95;
+	// filter: brightness(80%);
+}
+
+.label--year {
+	fill: black;
+	fill-opacity: .6;
+	font-size: 1.5rem;
+	font-family: sans-serif;
+	text-anchor: middle;
+}

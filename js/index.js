@@ -1,6 +1,7 @@
 import * as barChart from './charts/bar-chart.js';
 import * as lineChart from './charts/line-chart.js';
 import * as pieChart from './charts/pie-chart.js';
+import * as stackedChart from './charts/stacked-chart.js';
 import * as map from './charts/map.js';
 import * as utils from './utilities.js';
 
@@ -15,6 +16,9 @@ q.await((err, data, mapData) => {
 	if (err) {
 		console.log(err);
 	}
+
+	//Instantiate stacked chart
+	stackedChart.renderChart(data, 500, 250, '.main__display');
 
 	// Instantiate map
 	map.renderMap(mapData, data, 800, 600, '.main__map');

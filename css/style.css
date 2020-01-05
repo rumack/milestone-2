@@ -166,22 +166,23 @@ body {
   fill: url(#gradient); }
 
 .constit {
-  fill-opacity: 0.5;
-  transition: fill-opacity .5s; }
+  fill-opacity: 0.6;
+  transition: fill-opacity .5s;
+  cursor: pointer; }
 
 .constit-rep {
-  fill-opacity: 0.3; }
+  fill-opacity: 0.4; }
 
 .constit-selected {
   fill-opacity: 1; }
 
 .constit-hovered {
-  fill-opacity: 0.7; }
+  fill-opacity: 0.8; }
 
 /* Map - Dispay box */
 .display-box {
   position: absolute;
-  top: 10px;
+  top: 130px;
   right: 10px;
   font-family: sans-serif;
   font-size: 14px;
@@ -210,6 +211,21 @@ body {
 .legend,
 .arc {
   fill-opacity: 0.8; }
+
+.rect {
+  fill-opacity: .75;
+  transition: .5s fill-opacity;
+  stroke: none; }
+
+.rect:hover {
+  fill-opacity: .95; }
+
+.label--year {
+  fill: black;
+  fill-opacity: .6;
+  font-size: 1.5rem;
+  font-family: sans-serif;
+  text-anchor: middle; }
 
 .layout-grid {
   width: 100%;
@@ -245,13 +261,17 @@ body {
   .main__display {
     width: 600px;
     height: 400px;
-    background-color: rgba(0, 0, 0, 0.1);
     margin-top: 50px;
     margin-right: -100px;
-    z-index: 1; }
+    z-index: 1;
+    display: grid;
+    justify-items: center;
+    align-items: end;
+    padding-bottom: 3rem; }
 
 .updateable-charts {
   grid-row: 3 / span 1;
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(25rem, 1fr));
-  margin-top: -100px; }
+  grid-template-columns: repeat(auto-fit, minmax(40rem, 1fr));
+  margin-top: -100px;
+  justify-items: center; }
