@@ -1,6 +1,11 @@
-@import url("https://fonts.googleapis.com/css?family=Roboto:300,400,700&display=swap");
-/***** CSS reset *****/
 @import url("https://fonts.googleapis.com/css?family=Baloo+Bhaijaan&display=swap");
+.opacity-full {
+  fill-opacity: .95; }
+
+.opacity-moderate {
+  fill-opacity: .75; }
+
+/***** CSS reset *****/
 *,
 *::before,
 *::after {
@@ -15,7 +20,7 @@ html {
   scroll-behavior: smooth; }
 
 body {
-  font-family: "Roboto", sans-serif;
+  font-family: "Lato", sans-serif;
   font-weight: 400;
   line-height: 1.7; }
 
@@ -25,7 +30,7 @@ body {
   justify-items: center; }
 
 .barchart-form {
-  margin-bottom: 30px;
+  margin-bottom: 3rem;
   display: flex;
   justify-content: center; }
 
@@ -40,22 +45,22 @@ body {
   display: none; }
 
 .barchart-label {
-  font-family: sans-serif;
-  font-size: 12px;
+  font-family: 'Open Sans', sans-serif;
+  font-size: 1.2rem;
   font-style: italic;
   position: relative;
   /*margin-top: 20px;*/
   cursor: pointer; }
 
 .barchart-radio-btn {
-  height: 15px;
-  width: 15px;
+  height: 1.5rem;
+  width: 1.5rem;
   border: 1px solid rgba(0, 0, 0, 0.5);
   border-radius: 50%;
   display: inline-block;
   position: absolute;
-  left: 6px;
-  top: 25px;
+  left: .6rem;
+  top: 2.5rem;
   display: grid;
   justify-items: center;
   align-items: center; }
@@ -63,8 +68,8 @@ body {
 .barchart-radio-btn::after {
   content: "";
   display: block;
-  height: 7px;
-  width: 7px;
+  height: .7rem;
+  width: .7rem;
   border-radius: 50%;
   /*position: absolute;
     top: 50%;
@@ -75,7 +80,7 @@ body {
   transition: opacity .2s; }
 
 .barchart-label:not(:first-of-type) {
-  margin-left: 20px; }
+  margin-left: 2rem; }
 
 #radio-0:checked ~ label[for='radio-0'] .barchart-radio-btn::after {
   opacity: 1; }
@@ -111,40 +116,41 @@ body {
 
 .label.x,
 .label.y {
-  font-family: sans-serif;
-  font-size: 10px;
+  font-family: 'Lato', sans-serif;
+  font-size: 1rem;
   fill: gray;
   fill-opacity: .9; }
 
 .title {
-  font-family: sans-serif;
-  font-size: 14px;
+  font-size: 1.4rem;
   fill: black;
-  fill-opacity: .5;
+  font-weight: 300;
   text-anchor: middle; }
+
+.sub-title {
+  font-style: italic; }
 
 /* Generic - Tooltips  */
 .tooltip {
   position: absolute;
-  max-width: 200px;
+  max-width: 20rem;
   height: auto;
   background-color: rgba(255, 255, 255, 0.95);
   color: rgba(0, 0, 0, 0.7);
-  font-family: sans-serif;
   text-align: center;
-  line-height: 20px;
+  line-height: 2rem;
   border: 1px solid rgba(0, 0, 0, 0.4);
   border-radius: 1px;
   box-shadow: 0.5px 1px 2px rgba(0, 0, 0, 0.3);
   pointer-events: none; }
 
 .tooltip h4 {
-  padding: 4px 10px;
+  padding: .44rem 1rem;
   margin: 0;
-  font-size: 14px; }
+  font-size: 1.4rem; }
 
 .tooltip span {
-  font-size: 12px;
+  font-size: 1.2rem;
   font-weight: normal; }
 
 /* Control positioning of the added dropdown menu */
@@ -153,7 +159,7 @@ body {
   justify-items: center; }
 
 .linechart-select-menu {
-  margin-top: 10px; }
+  margin-top: 1rem; }
 
 /* SVG map linear gradient */
 .stop-bottom {
@@ -179,13 +185,12 @@ body {
 .constit-hovered {
   fill-opacity: 0.8; }
 
-/* Map - Dispay box */
+/* Map - Display box */
 .display-box {
   position: absolute;
-  top: 130px;
-  right: 10px;
-  font-family: sans-serif;
-  font-size: 14px;
+  top: 13rem;
+  right: 1rem;
+  font-size: 1.4rem;
   color: #ffffff;
   border: none;
   padding: 1rem 2rem;
@@ -204,7 +209,7 @@ body {
 /* PIE CHART */
 .pie-label {
   fill: white;
-  font-size: 11px;
+  font-size: 1.1rem;
   pointer-events: none; }
 
 .legend-text,
@@ -213,25 +218,34 @@ body {
   fill-opacity: 0.8; }
 
 .rect {
-  fill-opacity: .75;
-  transition: .5s fill-opacity;
-  stroke: none; }
-
-.rect:hover {
-  fill-opacity: .95; }
+  stroke: white; }
 
 .label--year {
-  fill: black;
   fill-opacity: .6;
-  font-size: 1.5rem;
+  font-size: 1.6rem;
   font-family: sans-serif;
   text-anchor: middle; }
+
+.label--box {
+  stroke: none;
+  fill: black; }
+
+.legend--rect {
+  fill-opacity: .75;
+  transition: .5s fill-opacity; }
+
+.legend--rect:hover {
+  fill-opacity: .95; }
+
+.legend--body .legend--text {
+  font-size: 1.2rem;
+  font-weight: 300; }
 
 .layout-grid {
   width: 100%;
   height: auto;
   display: grid;
-  grid-template-rows: min-content min-content min-content 200px; }
+  grid-template-rows: min-content min-content min-content 20rem; }
 
 .footer {
   grid-row: 4 / span 1;
@@ -246,8 +260,7 @@ body {
   padding-top: 3rem;
   z-index: 1; }
   .header__heading {
-    padding-bottom: 1rem;
-    letter-spacing: .2rem; }
+    letter-spacing: .3rem; }
   .header__paragraph {
     font-family: 'Baloo Bhaijaan', cursive;
     color: #A52A2A;
@@ -257,21 +270,86 @@ body {
   grid-row: 2 / span 1;
   display: flex;
   flex-wrap: wrap;
-  justify-content: center; }
-  .main__display {
-    width: 600px;
-    height: 400px;
-    margin-top: 50px;
-    margin-right: -100px;
+  justify-content: center;
+  padding-bottom: 6rem; }
+  .main__chart {
+    width: 80rem;
+    height: 60rem;
+    margin-top: 2rem;
+    margin-right: -20rem;
     z-index: 1;
     display: grid;
     justify-items: center;
-    align-items: end;
-    padding-bottom: 3rem; }
+    position: relative; }
+  .main__display-chart {
+    position: absolute;
+    top: 6rem;
+    left: 2rem;
+    width: 100%;
+    height: 17rem;
+    display: grid;
+    grid-template-columns: 20rem 20rem 20rem 30rem;
+    visibility: hidden;
+    opacity: 0; }
+    .main__display-chart-block:not(:last-child) {
+      width: 20rem;
+      height: 20rem; }
+    .main__display-chart-block:last-child {
+      width: 30rem;
+      height: 20rem; }
+    .main__display-chart-list {
+      list-style: none;
+      column-count: 2;
+      column-gap: 3rem;
+      margin-top: 1.8rem; }
+    .main__display-chart-list-item {
+      font-size: 1.4rem;
+      font-style: italic;
+      color: rgba(0, 0, 0, 0.6); }
+    .main__display-chart-heading {
+      text-transform: uppercase;
+      font-size: 1.4rem;
+      font-weight: 300; }
+    .main__display-chart-para {
+      font-size: 5rem;
+      font-weight: 300;
+      color: rgba(0, 0, 0, 0.6); }
+  .main__display-home {
+    position: absolute;
+    top: 6rem;
+    left: 2rem;
+    width: 100%;
+    height: 17rem;
+    display: flex; }
+    .main__display-home-block {
+      width: 25rem;
+      height: 20rem; }
+      .main__display-home-block:not(:first-child) {
+        margin-left: 12rem; }
+      .main__display-home-block:nth-child(2) {
+        width: 10rem; }
+      .main__display-home-block:last-child {
+        width: 25rem; }
+    .main__display-home-heading {
+      text-transform: uppercase;
+      font-weight: 300; }
+    .main__display-home-para {
+      font-size: 3rem;
+      font-weight: 300;
+      color: rgba(0, 0, 0, 0.6); }
+  .main__svg {
+    align-self: end;
+    margin-bottom: 5rem; }
+  .main__svg .title-stacked {
+    font-size: 1.4rem; }
+  .main__map {
+    margin-top: 8rem; }
 
 .updateable-charts {
   grid-row: 3 / span 1;
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(40rem, 1fr));
-  margin-top: -100px;
-  justify-items: center; }
+  margin-top: -10rem;
+  justify-items: center;
+  background-color: #f4f4f4;
+  padding: 8rem 0; }

@@ -18,7 +18,7 @@ q.await((err, data, mapData) => {
 	}
 
 	//Instantiate stacked chart
-	stackedChart.renderChart(data, 500, 250, '.main__display');
+	stackedChart.renderChart(data, 600, 300, '.main__chart');
 
 	// Instantiate map
 	map.renderMap(mapData, data, 800, 600, '.main__map');

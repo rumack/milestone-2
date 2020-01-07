@@ -26,31 +26,35 @@
 
 .label.x,
 .label.y {
-    font-family: sans-serif;
-    font-size: 10px;
+    font-family: 'Lato', sans-serif;
+    font-size: 1rem;
     fill: gray;
     fill-opacity: .9;
 }
 
 .title {
-    font-family: sans-serif;
-    font-size: 14px;
+    font-size: 1.4rem;
     fill: black;
-    fill-opacity: .5;
+    font-weight: 300;
     text-anchor: middle;
+    // letter-spacing: 3px;
+}
+
+.sub-title {
+    font-style: italic;
 }
 
 /* Generic - Tooltips  */
 
 .tooltip {
     position: absolute;
-    max-width: 200px;
+    max-width: 20rem;
     height: auto;
     background-color: rgba(255, 255, 255, .95);
     color: rgba(0, 0, 0, .7);
-    font-family: sans-serif;
+    // font-family: Opsans-serif;
     text-align: center;
-    line-height: 20px;
+    line-height: 2rem;
     border: 1px solid rgba(0, 0, 0, .4);
     border-radius: 1px;
     box-shadow: .5px 1px 2px rgba(0, 0, 0, 0.3);
@@ -58,12 +62,12 @@
 }
 
 .tooltip h4 {
-    padding: 4px 10px;
+    padding: .44rem 1rem;
     margin: 0;
-    font-size: 14px;
+    font-size: 1.4rem;
 }
 
 .tooltip span {
-    font-size: 12px;
+    font-size: 1.2rem;
     font-weight: normal;
 }

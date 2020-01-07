@@ -135,7 +135,7 @@ const renderBody = (mapData, data, DOMTarget) => {
 						   			return 'constit-rep';	
 						   		} 
 						   })
-						   .style("stroke-width", "1")
+						   .style("stroke-width", "2")
 						   .style("stroke", 'white')
 						   .style('fill', '#c6c6c6')
 						   .on('mouseover', function(d, i) {

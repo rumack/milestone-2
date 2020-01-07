@@ -3,17 +3,126 @@
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
+    padding-bottom: 6rem;
 
-    &__display {
-    	width: 600px;
-	    height: 400px;
-	    // background-color: rgba(0, 0, 0, 0.1);
-	    margin-top: 50px;
-	    margin-right: -100px;
+    &__chart {
+    	width: 80rem;
+	    height: 60rem;
+	    margin-top: 2rem;
+	    margin-right: -20rem;
 	    z-index: 1;
         display: grid;
         justify-items: center;
-        align-items: end;
-        padding-bottom: 3rem;
+        position: relative;
     }
+
+    &__display-chart {
+        position: absolute;
+        top: 6rem;
+        left: 2rem;
+        width: 100%;
+        height: 17rem;
+        display: grid;
+        grid-template-columns: 20rem 20rem 20rem 30rem;
+        visibility: hidden;
+        opacity: 0;
+
+        &-block:not(:first-child) {
+            //margin-left: 3rem;
+        }
+
+        &-block:not(:last-child) {
+            width: 20rem;
+            height: 20rem;
+        }
+
+        &-block:last-child {
+            width: 30rem;
+            height: 20rem;
+        }
+
+        &-block--constits {
+           
+        }
+
+        &-list {
+            list-style: none;
+            column-count: 2;
+            column-gap: 3rem;
+            margin-top: 1.8rem;
+        }
+
+        &-list-item {
+            font-size: 1.4rem;
+            font-style: italic;
+            color: rgba(0, 0, 0, 0.6);
+        }
+
+        &-heading {
+            text-transform: uppercase;
+            font-size: 1.4rem;
+            font-weight: 300;
+        }
+
+        &-para {
+            font-size: 5rem;
+            font-weight: 300;
+            color: rgba(0, 0, 0, 0.6);
+        }
+
+    }
+
+    &__display-home {
+        position: absolute;
+        top: 6rem;
+        left: 2rem;
+        width: 100%;
+        height: 17rem;
+       
+        display: flex;
+
+        &-block {
+
+            width: 25rem;
+            height: 20rem;
+
+            &:not(:first-child) {
+                margin-left: 12rem;
+            }
+
+            &:nth-child(2) {
+                width: 10rem;
+            }
+
+            &:last-child {
+                width: 25rem;
+            }
+        }
+
+        &-heading {
+            text-transform: uppercase;
+            font-weight: 300;
+        }
+
+        &-para {
+            font-size: 3rem;
+            font-weight: 300;
+            color: rgba(0, 0, 0, 0.6);
+        }
+    }
+
+    &__svg {
+        align-self: end;
+        margin-bottom: 5rem;
+    }
+
+    &__svg .title-stacked {
+        font-size: 1.4rem;
+    }
+
+    &__map {
+        margin-top: 8rem;
+    }
+
+    
 }

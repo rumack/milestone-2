@@ -1,10 +1,12 @@
 // Set margins for chart
 const margin = {
-	top: 25,
-	left: 50,
+	top: 80,
+	left: 100,
 	right: 50,
-	bottom: 25
+	bottom: 40
 };
+
+let svg;
 
 
 // Function to parse data needed for chart 
@@ -42,6 +44,30 @@ const genChartData = (data) => {
 		return dataArr.reverse();
 }
 
+// Get constituency name from constituency ID
+const getConstitFullName = (id) => {
+	const constits = {
+						'BE': 'Belfast East',
+						'BN': 'Belfast North',
+						'BS': 'Belfast South',
+						'BW': 'Belfast South',
+						'EA': 'East Antrim',
+						'EL': 'East Londonderry',
+						'FAST': 'Fermanagh and South Tyrone',
+						'F': 'Foyle',
+						'LV': 'Lagan Valley',
+						'MU': 'Mid Ulster',
+						'NAA': 'Newry and Armagh',
+						'NA': 'North Antrim',
+						'ND': 'North Down',
+						'SA': 'South Antrim',
+						'SD': 'South Down',
+						'S': 'Strangford',
+						'UB': 'Upper Bann',
+						'WT': 'West Tyrone'
+					};
+	return constits[id];
+}
 	
 // Set colour function (by index)
 const colors = (i) => {
@@ -69,137 +95,395 @@ const setColor = (party) => {
 	return colorRange[party];
 }
 
-export const renderChart = (data, width, height, DOMTarget) => {
-	const chartData = genChartData(data);
+const generateScales = (chartData, width, height, scale) => {
+	//Set up scales
+	const scales = {
+		x: d3.scaleBand()
+					.domain(d3.range(chartData.length))
+					.range([0, width - margin.right - margin.left])
+					.paddingInner(0.05),
+
+		y: d3.scaleLinear()
+					.domain([0,				
+						d3.max(chartData, function(d) {
+							return d.Alliance + d.DUP + d.Others + d.SDLP + d.SF + d.UUP;
+						})
+					])
+					.range([height - margin.top - margin.bottom, 0])
+	}
+	return scales[scale];
+	
+}
+
+const createSvg = (width, height, DOMTarget) => {
+	//Create SVG element
+	svg = d3.select(DOMTarget)
+				.append('svg')
+				.attr('class', 'main__svg')
+				.attr("width", width)
+				.attr("height", height);
+}
+
+const renderBody = (chartData, width, height) => {
+
+	//Set up stack method
+	const stack = d3.stack()
+					.keys([  'DUP', 'SF', 'SDLP', 'UUP', 'Alliance', 'Others' ]);
+	//Data, stacked
+	const series = stack(chartData);
+			
+	const bodyGroup = svg.append('g')
+						.attr('class', 'body')
+						.attr('width', width - margin.left - margin.right)
+						.attr('height', height - margin.top - margin.bottom)
+						.attr('transform', `translate(${margin.left}, ${margin.top})`);
+	
+	// Add a group for each row of data
+	const groups = bodyGroup.selectAll("g")
+		.data(series)
+		.enter()
+		.append("g")
+		.attr('class', (d, i) => `group-${d.key}`)
+		.style("fill", function(d, i) {
+			return colors(i);
+		});
+
+	return groups;
+}
+
+const renderGraphTitle = (width, height) => {
+	// Prepare for update - if title, remove title
+	svg.selectAll('text.title').remove();
+		// Get constituency name
+		const text = svg.append('text')
+			.attr('class', 'title title-stacked')
+	        .attr('x', (width / 2))             
+	        .attr('y', (0 + 20));
+
+	    text.append('tspan')
+	    	.attr('dx', 0)
+	    	.attr('dy', 0)
+	        .text(`Tally of seats by year and by party`);
+
+	    text.append('tspan')
+	    .attr('class', 'title title-stacked sub-title')
+	    	.attr('x', (width / 2))
+	    	.attr('dy', '2em')
+	    	.text(() => '(Hover over chart to see data on the map)');
+}
+
+const renderLegend = (width, height) => {
+	const parties = ['DUP', 'SF', 'SDLP', 'UUP', 'Alliance', 'Others'];
+	const legend = d3.select('.main__svg').append('g').attr('class', 'legend--body');
+	legend.selectAll('text')
+			.data(parties.reverse())
+			.enter()
+			.append('text')
+			.attr('class', 'legend--text')
+			.attr('x', 40)
+			.attr('y', (d, i) => (height / 2 - 35) + i * 25)
+			.text((d,i) => d)
+			.on('mouseover', (d, i) => {
+				const className = d;
+				d3.select(`.group-${d}`).selectAll('rect.rect').transition().style('fill-opacity', .95);
+			})
+			.on('mouseout', (d, i) => {
+				const className = `.group-${d}`;
+				d3.select(`.group-${d}`).selectAll('rect.rect').transition().style('fill-opacity', .75);
+			});;
+
+	legend.selectAll('rect')
+			.data(parties)
+			.enter()
+			.append('rect')
+			.attr('class', (d, i) => `legend--rect legend-rect-${d}`)
+			.attr('x', 5)
+			.attr('y', (d, i) => (height / 2 - 49) + i * 25)
+			.attr('width', 25)
+			.attr('height', 20)
+			.style('fill', (d, i) => setColor(d))
+			.on('mouseover', (d, i) => {
+				const className = d;
+				d3.select(`.group-${d}`).selectAll('rect.rect').transition().style('fill-opacity', .95);
+			})
+			.on('mouseout', (d, i) => {
+				const className = `.group-${d}`;
+				d3.select(`.group-${d}`).selectAll('rect.rect').transition().style('fill-opacity', .75);
+			});
+
+}
+
+const generateStaticHTML = () => {
+	const html = `
+		<div class='main__display-block'>
+			<h4 class='main__display-home-heading'>Region:</h4>
+			<p class='main__display-home-para'>North of Ireland</p>
+		</div>
+		<div class='main__display-block'>
+			<h4 class='main__display-home-heading'>Constituencies:</h4>
+			<p class='main__display-home-para'>18</p>
+		</div>
+		<div class='main__display-block'>
+			<h4 class='main__display-home-heading'>Dataset:</h4>
+			<p class='main__display-home-para'>General Elections (2001 - 2019)</p>
+		</div>
+	`
+	return html;
+}
+
+
+const generateDynamicHTML = (year, party, targetConstits) => {
+	const seatsTotal = targetConstits.length;
+	// Get full name for each constituency from id, wrap in <p> tags and save to constant
+	const constitsList = targetConstits.map(el => `<li class='main__display-chart-list-item'>${getConstitFullName(el[0])}</li>`).join('');
+	
+	const html = `
+		<div class='main__display-chart-block'>
+			<h4 class='main__display-chart-heading'>Election Year:</h4>
+			<p class='main__display-chart-para'>${year}</p>
+		</div>
+		<div class='main__display-block'>
+			<h4 class='main__display-chart-heading'>Party:</h4>
+			<p class='main__display-chart-para'>${party}</p>
+		</div>
+		<div class='main__display-block'>
+			<h4 class='main__display-chart-heading'>Total seats:</h4>
+			<p class='main__display-chart-para'>${seatsTotal}</p>
+		</div>
+		<div class='main__display-block main__display-block--constits'>
+			<h4 class='main__display-chart-heading'>Constituencies Won:</h4>
+			<ul class='main__display-chart-list'>${constitsList}</ul>
+		</div>
+	`
+	return html;
+}
+
+const renderRects = (chartData, groups, width, height) => {
+	d3.select('.main__display').html(generateStaticHTML());
 	console.log(chartData);
+	const xScale = generateScales(chartData, width, height, 'x'); 
+	const yScale = generateScales(chartData, width, height, 'y'); 
+	// Add a rect for each data value
+	const rects = groups.selectAll("rect")
+		.data(function(d) {
+			d = d.map((el) => {
+				// Adding party name data to the join - will need it later
+				const partyName = d.key;
+				el.party = partyName;
+				return el;
+			});
+			return d; 
+		})
+		.enter()
+		.append("rect")
+		.attr('id', (d, i) => {
+			// get year
+			const year = d.data.year;
+			const party = d.party;
+			return `${party}-${year}`;
+		})
+		.attr('class', 'rect')
+		.style('fill-opacity', .75)
+		.attr("x", function(d, i) {
+			//console.log(i);
+			return xScale(i);
+		})
+		.attr("y", function(d) {
+			return yScale(d[1]); 
+		})
+		.attr("height", function(d) {
+			return yScale(d[0]) - yScale(d[1]);  
+		})
+		.attr("width", xScale.bandwidth())
+		.on('mouseover', function(d, i) {
 
+			// Get party, year and list of associated constituencies
+			const party = d.party;
+			const year = d.data.year;
+			const targetConstits = d.data.constits.filter(el => {
+				// Arrange discrepacncy between 'Others' in the DOM and 'IND' in target data
+				if (party === 'Others') {
+					return el[1] === 'IND';
+				} else {
+					return el[1] === party;
+				}
+			});
+			targetConstits.forEach(el => {
+				d3.select(`.constit.${el[0]}`)
+					.transition()
+					.duration(500)
+					.style('fill', setColor(d.party) );
+			})
 
-			//Set up stack method
-			const stack = d3.stack()
-							.keys([  'DUP', 'SF', 'SDLP', 'UUP', 'Alliance', 'Others' ]);
-			//Data, stacked
-			const series = stack(chartData);
-			console.log(series);
+			// Add opacity hover effects
+			d3.select(this).transition().style('fill-opacity', .95);
+			d3.select(`.legend-rect-${party}`).transition().style('fill-opacity', .95);
 
+			// Update dynamic display
+			d3.select('.main__display-home')
+				.transition()
+				.duration(500)
+				.style('opacity', 0)
+				.style('visibility', 'hidden');
 
+			d3.select('.main__display-chart')
+				.style('opacity', 0)
+				.html(generateDynamicHTML(year, party, targetConstits))
+				.transition().duration(500).style('opacity', 1)
+				.style('visibility', 'visible');
 
-			//Set up scales
-			const xScale = d3.scaleBand()
-				.domain(d3.range(chartData.length))
-				.range([0, width - margin.right - margin.left])
-				.paddingInner(0.05);
-		
-			const yScale = d3.scaleLinear()
-				.domain([0,				
-					d3.max(chartData, function(d) {
-						return d.Alliance + d.DUP + d.Others + d.SDLP + d.SF + d.UUP;
-					})
-				])
-				.range([height - margin.top - margin.bottom, 0]);  // <-- Flipped vertical scale
-		
-			//Create SVG element
-			const svg = d3.select(DOMTarget)
-						.append("svg")
-						.attr('class', 'main__svg')
-						.attr("width", width)
-						.attr("height", height);
+			// d3.select('.main__display').transition()
+			// 		.on('start', function(d, i) {
+			// 			d3.select(this).style('opacity', 0)
+			// 		})
+			// 		.on('end', function() {
+			// 			d3.select(this)
+			// 				.html(generateDynamicHTML(year, party, targetConstits))
+			// 				//.transition()
+			// 				.style('opacity', 1);
+			// 		})
 
-			const bodyGroup = svg.append('g')
-									.attr('class', 'body')
-									.attr('width', width - margin.left - margin.right)
-									.attr('height', height - margin.top - margin.bottom)
-									.attr('transform', `translate(${margin.left}, ${margin.top})`);
-	
-			// Add a group for each row of data
-			const groups = bodyGroup.selectAll("g")
-				.data(series)
-				.enter()
-				.append("g")
-				.attr('class', (d, i) => `group-${d.key}`)
-				.style("fill", function(d, i) {
-					return colors(i);
-				});
-	
-			// Add a rect for each data value
-			const rects = groups.selectAll("rect")
-				.data(function(d) {
-					d = d.map((el) => {
-						const partyName = d.key;
-						el.party = partyName;
-						return el;
-					});
-					return d; 
+		})
+		.on('mouseout', function(d, i) {
+			
+			const party = d.party;
+			const year = d.data.year;
+			const targetConstits = d.data.constits.filter(el => {
+				// Arrange discrepacncy between 'Others' in the DOM and 'IND' in target data
+				if (party === 'Others') {
+					return el[1] === 'IND';
+				} else {
+					return el[1] === party;
+				}
+			});
+			targetConstits.forEach(el => {
+				d3.select(`.constit.${el[0]}`)
+					.transition()
+					.duration(500)
+					.style('fill', '#c6c6c6' );
+			})
+
+			// remove opacity hover effects
+			d3.select(this).transition().style('fill-opacity', .75);
+			d3.select(`.legend-rect-${party}`).transition().style('fill-opacity', .75);
+
+			
+			d3.select('.main__display-chart')
+				.transition().duration(500)
+				.style('opacity', 0)
+				.style('visibility', 'hidden');
+
+			d3.select('.main__display-home')
+				.transition().duration(500)
+				.style('opacity', 1)
+				.style('visibility', 'visible');
+
+			// d3.select('.main__display').transition()
+			// 	.style('opacity', 1)
+			// 	.on('end', function() {
+			// 		d3.select(this)
+			// 			.html(generateStaticHTML())
+			// 			.transition()
+			// 			.style('visibility', 'hidden')
+			// 			.style('opacity', 0);
+			// 	})
+		});
+}
+
+const renderLabels = (chartData, width, height) => {
+
+	const xScale = generateScales(chartData, width, height, 'x'); 
+	const yScale = generateScales(chartData, width, height, 'y'); 
+
+	const years = ['2005', '2010', '2015', '2017'];
+	const labels = svg.selectAll('text')
+						.data(years);
+
+	labels.enter()
+			.append('text')
+			.attr('x', (d, i) => {
+				return xScale(i) + margin.left + margin.right;
+			})
+			.attr('y', height - 10)
+			.text((d, i) => d)
+			.attr('class', 'label--year' )
+
+			.on('mouseover', function(d, i) {
+				// Prepare selection to add border (adding svg rect element)
+				const selection = d3.select(this);
+				// Get boundary box coords of text label
+				const rect = this.getBBox();
+				// Define offsets (padding)
+				const offsetX = 8;
+				const offsetY = 4;
+				// Define path for rect
+				const pathCoords = [
+							        {x: rect.x-offsetX, y: rect.y-offsetY }, 
+							        {x: rect.x+offsetX + rect.width, y: rect.y-offsetY}, 
+							        {x: rect.x+offsetX + rect.width, y: rect.y+offsetY + rect.height }, 
+							        {x: rect.x-offsetX, y: rect.y+offsetY + rect.height},
+							        {x: rect.x-offsetX, y: rect.y-offsetY },
+							    ];
+			    // Specify the function for generating path data
+			    var line = d3.line()
+			        .x(function(d){return d.x;})
+			        .y(function(d){return d.y;});
+			    // Draw the line
+			    svg.append("svg:path")
+			    	.attr('class', 'label--box')
+			    	.attr('fill-opacity', 0)
+			    	.lower()
+			    	.transition()
+			    	.duration(500)
+			        .attr("d", line(pathCoords))
+			        // Control transition to correct opacity
+			        .styleTween('fill-opacity', () => d3.interpolateNumber(0, .6));
+			    // Select the label and style for mouseover
+			    selection.transition().duration(500).style('fill', 'white').style('fill-opacity', .9);
+
+			    // Update dynamic display
+
+			    
+			    // Target relevant constituencies in map to highlight
+				const targetYear = chartData.filter(el => el.year === d);
+				targetYear[0].constits.forEach(el => {
+					d3.select(`.constit.${el[0]}`)
+					.transition()
+					.duration(500)
+					.style('fill', setColor(el[1]));
 				})
-				.enter()
-				.append("rect")
-				.attr('id', (d, i) => {
-					// get year
-					const year = d.data.year;
-					const party = d.party;
-					return `${party}-${year}`;
-				})
-				.attr('class', 'rect')
-				.attr("x", function(d, i) {
-					//console.log(i);
-					return xScale(i);
-				})
-				.attr("y", function(d) {
-					return yScale(d[1]); 
-				})
-				.attr("height", function(d) {
-					return yScale(d[0]) - yScale(d[1]);  
-				})
-				.attr("width", xScale.bandwidth())
-				.on('mouseover', (d, i) => {
-					const party = d.party;
-					const year = d.data.year;
-					const targetConstits = d.data.constits.filter(el => {
-						// Arrange discrepacncy between 'Others' in the DOM and 'IND' in target data
-						if (party === 'Others') {
-							return el[1] === 'IND';
-						} else {
-							return el[1] === party;
-						}
-					});
-					targetConstits.forEach(el => {
-						d3.select(`.constit.${el[0]}`)
-							.transition()
-							.duration(500)
-							.style('fill', setColor(d.party) );
-					})
-					
+			})
 
+			.on('mouseout', function(d, i) {
+				d3.selectAll('path.label--box')
+					.transition()
+					.duration(500)
+					.styleTween('fill-opacity', () => d3.interpolateNumber(.6, 0))
+					.remove();
+
+				// Select the label and style for mouseover
+				const selection = d3.select(this);
+			    selection.transition().duration(500).style('fill', 'black').style('fill-opacity', .6);
+
+
+				const targetYear = chartData.filter(el => el.year === d);
+				targetYear[0].constits.forEach(el => {
+					d3.select(`.constit.${el[0]}`)
+					.transition()
+					.duration(500)
+					.style('fill', '#c6c6c6');
 				})
-				.on('mouseout', (d, i) => {
-					const party = d.party;
-					const year = d.data.year;
-					const targetConstits = d.data.constits.filter(el => {
-						// Arrange discrepacncy between 'Others' in the DOM and 'IND' in target data
-						if (party === 'Others') {
-							return el[1] === 'IND';
-						} else {
-							return el[1] === party;
-						}
-					});
-					targetConstits.forEach(el => {
-						d3.select(`.constit.${el[0]}`)
-							.transition()
-							.duration(500)
-							.style('fill', '#c6c6c6' );
-					})
-				});
+			});	
+}
 
-			const years = ['2005', '2010', '2015', '2017'];
-			const labels = svg.selectAll('text')
-								.data(years);
 
-			labels.enter()
-					.append('text')
-					.attr('x', (d, i) => {
-						return xScale(i) + margin.left + margin.right + 28;
-					})
-					.attr('y', height)
-					.text((d, i) => d)
-					.attr('class', 'label--year' );	
-	
+export const renderChart = (data, width, height, DOMTarget) => {
+	const chartData = genChartData(data);		
+	createSvg(width, height, DOMTarget);	
+	const groups = renderBody(chartData, width, height);
+
+	renderRects(chartData, groups, width, height);
+	renderLabels(chartData, width, height);
+	renderGraphTitle(width, height);
+	renderLegend(width, height);
 }

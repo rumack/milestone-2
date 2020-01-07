@@ -7,7 +7,7 @@
 }
 
 .barchart-form {
-    margin-bottom: 30px;
+    margin-bottom: 3rem;
     display: flex;
     justify-content: center;
 }
@@ -28,8 +28,8 @@
 }
 
 .barchart-label {
-    font-family: sans-serif;
-    font-size: 12px;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 1.2rem;
     font-style: italic;
     position: relative;
     /*margin-top: 20px;*/
@@ -37,14 +37,14 @@
 }
 
 .barchart-radio-btn {
-    height: 15px;
-    width: 15px;
+    height: 1.5rem;
+    width: 1.5rem;
     border: 1px solid rgba(0, 0, 0, 0.5);
     border-radius: 50%;
     display: inline-block;
     position: absolute;
-    left: 6px;
-    top: 25px;
+    left: .6rem;
+    top: 2.5rem;
 
     display: grid;
     justify-items: center;
@@ -54,8 +54,8 @@
 .barchart-radio-btn::after {
     content: "";
     display: block;
-    height: 7px;
-    width: 7px;
+    height: .7rem;
+    width: .7rem;
     border-radius: 50%;
     /*position: absolute;
     top: 50%;
@@ -67,7 +67,7 @@
 }
 
 .barchart-label:not(:first-of-type) {
-    margin-left: 20px;
+    margin-left: 2rem;
 }
 
 

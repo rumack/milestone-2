@@ -126,7 +126,7 @@ const renderLegend = (width, height, data, arc, outerRadius) => {
 						.attr('x', 55)
 						.attr('y', (d, i) => i * 25 + 11)
 						.attr("font-family", "sans-serif")
-                		.attr("font-size", "10px")
+                		.attr("font-size", "1rem")
 						.attr('fill', (d, i) => colors(i))
 						.text(d => d.id.toUpperCase());  
 }

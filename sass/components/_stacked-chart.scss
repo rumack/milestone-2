@@ -1,18 +1,34 @@
 .rect {
-	fill-opacity: .75;
-	transition: .5s fill-opacity;
-	stroke: none;
-}
-
-.rect:hover {
-	fill-opacity: .95;
-	// filter: brightness(80%);
+	stroke: white;
 }
 
 .label--year {
-	fill: black;
+	//fill: black;
 	fill-opacity: .6;
-	font-size: 1.5rem;
+	font-size: 1.6rem;
 	font-family: sans-serif;
 	text-anchor: middle;
+
 }
+
+.label--box {
+    stroke: none;
+    fill: black;
+}
+
+.legend--rect {
+	fill-opacity: .75;
+	transition: .5s fill-opacity;
+}
+
+.legend--rect:hover {
+	fill-opacity: .95;
+}
+
+.legend--body {
+
+        .legend--text {
+            font-size: 1.2rem;
+            font-weight: 300;
+        }
+    }
