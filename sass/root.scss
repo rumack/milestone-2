@@ -1,8 +1,10 @@
+@import "abstracts/mixins";
 @import "abstracts/utilities";
 @import "abstracts/variables";
 
 @import "base/base";
 
+@import "components/animations";
 @import "components/bar-chart";
 @import "components/generic";
 @import "components/line-chart";
@@ -15,4 +17,5 @@
 @import "layout/footer";
 @import "layout/header";
 @import "layout/main";
+@import "layout/profile";
 @import "layout/updateable-charts";

@@ -69,8 +69,9 @@ const createSVG = (width, height, DOMTarget) => {
 	if (!svg) {
 		svg = d3.select(DOMTarget)
 			.append('svg')
-			.attr('height', height)
-			.attr('width', width);
+			.attr('viewBox', `0 0 ${width} ${height}`);
+			// .attr('height', height)
+			// .attr('width', width);
 	}
 } 
 
@@ -99,8 +100,8 @@ const renderLegend = (width, height, data, arc, outerRadius) => {
 			    				.attr('d', arcTween(outerRadius - 5, 0, arc))
 			    		})
 						.transition()
-						.attr('x', 30)
-						.attr('y', (d, i) => i * 25)
+						.attr('x', 10)
+						.attr('y', (d, i) => i * 25 + 20)
 						.attr('width', 15)
 						.attr('height', 15)
 						.style('fill', (d, i) => {
@@ -123,8 +124,8 @@ const renderLegend = (width, height, data, arc, outerRadius) => {
 			    			.attr('d', arcTween(outerRadius - 5, 0, arc))
 			    		})
 						.transition()
-						.attr('x', 55)
-						.attr('y', (d, i) => i * 25 + 11)
+						.attr('x', 35)
+						.attr('y', (d, i) => i * 25 + 31)
 						.attr("font-family", "sans-serif")
                 		.attr("font-size", "1rem")
 						.attr('fill', (d, i) => colors(i))

@@ -33,15 +33,17 @@
 }
 
 .title {
-    font-size: 1.4rem;
+    font-size: 1.6rem;
     fill: black;
-    font-weight: 300;
+    font-weight: 400;
     text-anchor: middle;
     // letter-spacing: 3px;
 }
 
-.sub-title {
+tspan.title.sub-title {
     font-style: italic;
+    font-weight: 300;
+    font-size: 1.2rem;
 }
 
 /* Generic - Tooltips  */

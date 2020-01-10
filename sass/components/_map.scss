@@ -9,7 +9,7 @@
 }
 
 .filled {
-    fill: url(#gradient);
+    fill: url(#map--gradient);
 }
 
 .constit {
@@ -32,7 +32,7 @@
 
 /* Map - Display box */
 
-.display-box {
+.main__map--display-box {
     position: absolute;
     top: 13rem;
     right: 1rem;
@@ -48,7 +48,7 @@
                 transform 150ms ease;
 }
 
-.display-btn {
+.main__map--display-btn {
     cursor: pointer;;
 }
 

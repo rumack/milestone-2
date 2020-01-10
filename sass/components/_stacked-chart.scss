@@ -1,34 +1,23 @@
-.rect {
+.main__svg--rect {
 	stroke: white;
 }
 
-.label--year {
-	//fill: black;
+.main__svg-label--year {
 	fill-opacity: .6;
-	font-size: 1.6rem;
+	font-size: 1.4rem;
 	font-family: sans-serif;
-	text-anchor: middle;
 
 }
 
-.label--box {
+.main__svg-label--box {
     stroke: none;
     fill: black;
 }
 
-.legend--rect {
-	fill-opacity: .75;
-	transition: .5s fill-opacity;
+
+
+.main__svg-legend--text {
+    font-size: 1.2rem;
+    font-weight: 300;
 }
-
-.legend--rect:hover {
-	fill-opacity: .95;
-}
-
-.legend--body {
-
-        .legend--text {
-            font-size: 1.2rem;
-            font-weight: 300;
-        }
-    }
+    

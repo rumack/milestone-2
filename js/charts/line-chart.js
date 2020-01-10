@@ -7,7 +7,7 @@ const margin = {
 	top: 100,
 	left: 100,
 	right: 60,
-	bottom: 50
+	bottom: 40
 };
 
 // Set colour function
@@ -84,8 +84,9 @@ const createSVG = (width, height, DOMTarget) => {
 	if (!svg) {
 		svg = d3.select(DOMTarget)
 			.append('svg')
-			.attr('height', height)
-			.attr('width', width);
+			.attr('viewBox', `0 0 ${width} ${height}`);
+			// .attr('height', height)
+			// .attr('width', width);
 	}
 } 
 

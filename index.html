@@ -2,50 +2,30 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
-	<title>norniron General Elections Results Dashboard</title>
-	<link href="https://fonts.googleapis.com/css?family=Lato:300,400,700&display=swap" rel="stylesheet"> 
+	<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1"/>
+	<title>General Elections NI - a visualisation</title>
+	<link href="https://fonts.googleapis.com/css?family=Lato:300,400,700|Montserrat:700&display=swap" rel="stylesheet">
 	<link href="./css/style.css" rel="stylesheet" type="text/css">
-	
 </head>
 <body>
 
 	<div class="layout-grid">
 
 		<header class="header">
-			<h1 class="header__heading">A General Elections Results Dashboard</h1>
-			<p class="header__paragraph">(for NI)</p>
+			<h1 class="header__heading">General Elections <span>NI</span></h1>
+			<p class="header__paragraph">A <span>visual</span>isation</p>
 		</header>
 
 		<main class="main">
 
-			<div class="main__chart">
+			<div class="main__chart"></div>
+			<div class="main__map"></div>	
+			<div class="main__dynamic"></div>
 
-				<div class="main__display-home">
-
-					<div class='main__display-home-block'>
-						<h4 class='main__display-home-heading'>Region:</h4>
-						<p class='main__display-home-para'>North of Ireland</p>
-					</div>
-
-					<div class='main__display-home-block'>
-						<h4 class='main__display-home-heading'>Constituencies:</h4>
-						<p class='main__display-home-para'>18</p>
-					</div>
-
-					<div class='main__display-home-block'>
-						<h4 class='main__display-home-heading'>Dataset:</h4>
-						<p class='main__display-home-para'>General Elections (2001 - 2019)</p>
-					</div>
-
-				</div>
-
-				<div class="main__display-chart"></div>
-				<div class="main__display-constit"></div>
-			</div>	
-			
-			<div class="main__map"></div>
 		
 		</main>
+
+		<section class="profile"></section>
 
 		<section class="updateable-charts">
 
@@ -58,13 +38,10 @@
 		</section>
 
 		
-		<footer class="footer"></footer>
+		<footer class="footer"><p>Built by <a href="https://github.com/rumack/milestone-2" target="_blank">RoRo</a></p></footer>
 
 	</div>
 
-	
-
-	
 	<script src=./js/d3.js></script>
 	<script type=module src=./js/index.js></script>	
 </body>

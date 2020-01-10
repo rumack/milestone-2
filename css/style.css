@@ -1,4 +1,17 @@
-@import url("https://fonts.googleapis.com/css?family=Baloo+Bhaijaan&display=swap");
+/*
+0 - 400px:      Phone (where our normal styles apply)
+600 - 900px:    Tablet portrait
+900 - 1200px:   Tablet landscape
+[1200 - 1800] is where our normal styles apply
+1800px + :      Big desktop
+$breakpoint arguement choices:
+- phone
+- tab-port
+- tab-land
+- big-desktop
+ORDER: Base + typography > general layout + grid > page layout > components
+1em = 16px
+*/
 .opacity-full {
   fill-opacity: .95; }
 
@@ -16,7 +29,7 @@
 html {
   box-sizing: border-box;
   /*The browser standard font size is 16px. I want 1rem to equal 10px. 10px is 62.5% of 16px, hence the setting below. The percentage setting means that screen zooming will work coherently on the page. Thanks to Jonas Schmedtmann for this tip. */
-  font-size: 62.5%;
+  font-size: 56.25%;
   scroll-behavior: smooth; }
 
 body {
@@ -24,13 +37,29 @@ body {
   font-weight: 400;
   line-height: 1.7; }
 
+@keyframes fade-in {
+  0% {
+    opacity: 0; }
+  100% {
+    opacity: 1; } }
+
+@keyframes fade-out {
+  0% {
+    opacity: 1; }
+  100% {
+    opacity: 0; } }
+
 /* Control positioning of the radio buttons */
 .bar-chart {
-  display: grid;
-  justify-items: center; }
+  grid-column: 2 / span 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 10rem;
+  width: 100%;
+  height: 100%; }
 
 .barchart-form {
-  margin-bottom: 3rem;
   display: flex;
   justify-content: center; }
 
@@ -49,27 +78,26 @@ body {
   font-size: 1.2rem;
   font-style: italic;
   position: relative;
-  /*margin-top: 20px;*/
-  cursor: pointer; }
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  align-items: center; }
 
 .barchart-radio-btn {
   height: 1.5rem;
   width: 1.5rem;
   border: 1px solid rgba(0, 0, 0, 0.5);
   border-radius: 50%;
-  display: inline-block;
-  position: absolute;
-  left: .6rem;
-  top: 2.5rem;
-  display: grid;
-  justify-items: center;
-  align-items: center; }
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center; }
 
 .barchart-radio-btn::after {
   content: "";
   display: block;
-  height: .7rem;
-  width: .7rem;
+  height: .5rem;
+  width: .5rem;
   border-radius: 50%;
   /*position: absolute;
     top: 50%;
@@ -80,7 +108,7 @@ body {
   transition: opacity .2s; }
 
 .barchart-label:not(:first-of-type) {
-  margin-left: 2rem; }
+  margin-left: 2.5rem; }
 
 #radio-0:checked ~ label[for='radio-0'] .barchart-radio-btn::after {
   opacity: 1; }
@@ -122,13 +150,15 @@ body {
   fill-opacity: .9; }
 
 .title {
-  font-size: 1.4rem;
+  font-size: 1.6rem;
   fill: black;
-  font-weight: 300;
+  font-weight: 400;
   text-anchor: middle; }
 
-.sub-title {
-  font-style: italic; }
+tspan.title.sub-title {
+  font-style: italic;
+  font-weight: 300;
+  font-size: 1.2rem; }
 
 /* Generic - Tooltips  */
 .tooltip {
@@ -155,11 +185,18 @@ body {
 
 /* Control positioning of the added dropdown menu */
 .line-chart {
-  display: grid;
-  justify-items: center; }
+  grid-column: 3 / span 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 10rem;
+  width: 100%;
+  height: 100%; }
 
-.linechart-select-menu {
-  margin-top: 1rem; }
+select.linechart-select-menu {
+  display: block;
+  margin: 0 auto;
+  font-size: 1.2rem; }
 
 /* SVG map linear gradient */
 .stop-bottom {
@@ -169,7 +206,7 @@ body {
   stop-color: rgba(255, 255, 255, 0); }
 
 .filled {
-  fill: url(#gradient); }
+  fill: url(#map--gradient); }
 
 .constit {
   fill-opacity: 0.6;
@@ -186,7 +223,7 @@ body {
   fill-opacity: 0.8; }
 
 /* Map - Display box */
-.display-box {
+.main__map--display-box {
   position: absolute;
   top: 13rem;
   right: 1rem;
@@ -200,13 +237,19 @@ body {
   text-align: center;
   transition: background 250ms ease-in-out,  transform 150ms ease; }
 
-.display-btn {
+.main__map--display-btn {
   cursor: pointer; }
 
 .btn:hover {
   background: #616161; }
 
 /* PIE CHART */
+.pie-chart {
+  grid-column: 4 / span 1;
+  margin-bottom: 10rem;
+  width: 100%;
+  height: 100%; }
+
 .pie-label {
   fill: white;
   font-size: 1.1rem;
@@ -217,139 +260,148 @@ body {
 .arc {
   fill-opacity: 0.8; }
 
-.rect {
+.main__svg--rect {
   stroke: white; }
 
-.label--year {
+.main__svg-label--year {
   fill-opacity: .6;
-  font-size: 1.6rem;
-  font-family: sans-serif;
-  text-anchor: middle; }
+  font-size: 1.4rem;
+  font-family: sans-serif; }
 
-.label--box {
+.main__svg-label--box {
   stroke: none;
   fill: black; }
 
-.legend--rect {
-  fill-opacity: .75;
-  transition: .5s fill-opacity; }
-
-.legend--rect:hover {
-  fill-opacity: .95; }
-
-.legend--body .legend--text {
+.main__svg-legend--text {
   font-size: 1.2rem;
   font-weight: 300; }
 
 .layout-grid {
   width: 100%;
-  height: auto;
+  height: 100%;
   display: grid;
-  grid-template-rows: min-content min-content min-content 20rem; }
+  grid-template-rows: repeat(5, min-content); }
 
 .footer {
-  grid-row: 4 / span 1;
+  grid-row: 5 / span 1;
   width: 100%;
   height: 100%;
-  background-color: rgba(0, 0, 0, 0.8); }
+  font-size: 2rem;
+  color: white;
+  letter-spacing: 2px;
+  padding: 20rem 8rem 4rem;
+  background-color: rgba(0, 0, 0, 0.8);
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-end; }
+  .footer a:link,
+  .footer a:visited {
+    text-decoration: none;
+    color: white;
+    transition: all .5s; }
+    .footer a:link:hover,
+    .footer a:visited:hover {
+      color: rgba(211, 47, 47, 0.75); }
 
 .header {
   grid-row: 1 / span 1;
-  font-size: 1.8rem;
+  width: 100%;
+  height: 100%;
+  background-color: #2a2c39;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 2rem;
+  line-height: 2;
+  letter-spacing: .3rem;
+  color: white;
   text-align: center;
-  padding-top: 3rem;
+  padding: 10rem 2rem;
+  margin-bottom: 10rem;
   z-index: 1; }
-  .header__heading {
-    letter-spacing: .3rem; }
+  .header span {
+    color: rgba(211, 47, 47, 0.75); }
   .header__paragraph {
-    font-family: 'Baloo Bhaijaan', cursive;
-    color: #A52A2A;
-    font-size: 4.4rem; }
+    font-size: 2.5rem; }
+  @media only screen and (min-width: 56.25em) {
+    .header {
+      margin-bottom: 3rem; } }
 
 .main {
   grid-row: 2 / span 1;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  padding-bottom: 6rem; }
-  .main__chart {
-    width: 80rem;
-    height: 60rem;
-    margin-top: 2rem;
-    margin-right: -20rem;
-    z-index: 1;
+  width: 100%;
+  height: 100%;
+  display: grid;
+  grid-template-columns: minmax(4rem, 0.25fr) 50% 2fr minmax(4rem, 0.25fr);
+  grid-template-rows: 20rem 1fr;
+  justify-items: center;
+  align-items: center;
+  padding: 10rem 0; }
+  .main__dynamic {
+    grid-row: 1 / span 1;
+    grid-column: 2 / span 2;
+    width: 100rem;
+    height: 100%;
+    margin-top: 10rem;
     display: grid;
-    justify-items: center;
-    position: relative; }
-  .main__display-chart {
-    position: absolute;
-    top: 6rem;
-    left: 2rem;
-    width: 100%;
-    height: 17rem;
-    display: grid;
-    grid-template-columns: 20rem 20rem 20rem 30rem;
-    visibility: hidden;
-    opacity: 0; }
-    .main__display-chart-block:not(:last-child) {
-      width: 20rem;
-      height: 20rem; }
-    .main__display-chart-block:last-child {
-      width: 30rem;
-      height: 20rem; }
-    .main__display-chart-list {
+    grid-template-columns: repeat(3, repeat(3, 1fr));
+    grid-template-rows: 1fr 2fr;
+    grid-row-gap: 2.5rem;
+    justify-items: center; }
+    .main__dynamic--block {
+      display: flex;
+      flex-direction: column; }
+    .main__dynamic--block:nth-child(1), .main__dynamic--block:nth-child(2), .main__dynamic--block:nth-child(3) {
+      grid-row: 1 / span 1; }
+    .main__dynamic--block-constits {
+      grid-row: 2 / span 1;
+      grid-column: 1 / span 3;
+      justify-self: end; }
+    .main__dynamic--list {
       list-style: none;
       column-count: 2;
       column-gap: 3rem;
-      margin-top: 1.8rem; }
-    .main__display-chart-list-item {
-      font-size: 1.4rem;
+      margin-top: 1.5rem; }
+    .main__dynamic--list-item {
+      font-size: 1.6rem;
       font-style: italic;
       color: rgba(0, 0, 0, 0.6); }
-    .main__display-chart-heading {
+    .main__dynamic--heading {
       text-transform: uppercase;
-      font-size: 1.4rem;
-      font-weight: 300; }
-    .main__display-chart-para {
-      font-size: 5rem;
+      font-size: 1.2rem;
+      font-weight: 400; }
+    .main__dynamic--para {
+      font-size: 4rem;
       font-weight: 300;
       color: rgba(0, 0, 0, 0.6); }
-  .main__display-home {
-    position: absolute;
-    top: 6rem;
-    left: 2rem;
+  .main__svg--title {
+    font-size: 1.3rem; }
+  .main__constit {
+    display: none; }
+  .main__chart {
     width: 100%;
-    height: 17rem;
-    display: flex; }
-    .main__display-home-block {
-      width: 25rem;
-      height: 20rem; }
-      .main__display-home-block:not(:first-child) {
-        margin-left: 12rem; }
-      .main__display-home-block:nth-child(2) {
-        width: 10rem; }
-      .main__display-home-block:last-child {
-        width: 25rem; }
-    .main__display-home-heading {
-      text-transform: uppercase;
-      font-weight: 300; }
-    .main__display-home-para {
-      font-size: 3rem;
-      font-weight: 300;
-      color: rgba(0, 0, 0, 0.6); }
-  .main__svg {
-    align-self: end;
-    margin-bottom: 5rem; }
-  .main__svg .title-stacked {
-    font-size: 1.4rem; }
+    height: auto;
+    grid-row: 2 / span 1;
+    grid-column: 2 / span 1; }
   .main__map {
+    width: 100%;
+    height: auto;
+    grid-row: 2 / span 1;
+    grid-column: 3 / span 1;
     margin-top: 8rem; }
 
-.updateable-charts {
+.profile {
   grid-row: 3 / span 1;
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(40rem, 1fr));
-  margin-top: -10rem;
-  justify-items: center;
+  width: 100%;
+  height: 30rem;
+  overflow: hidden;
+  background-image: linear-gradient(rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0.5), url(../img/map-belfast.jpg));
+  background-image: url(../img/map-belfast.jpg); }
+
+.updateable-charts {
+  width: 100%;
+  height: 100%;
+  grid-row: 4 / span 1;
+  padding-top: 10rem;
   background-color: #f4f4f4;
-  padding: 8rem 0; }
+  display: grid;
+  grid-template-columns: minmax(2rem, 0.25fr) repeat(3, 1fr) minmax(2rem, 0.25fr);
+  grid-column-gap: 2rem; }

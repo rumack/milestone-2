@@ -13,8 +13,12 @@
 html {
     box-sizing: border-box;
      /*The browser standard font size is 16px. I want 1rem to equal 10px. 10px is 62.5% of 16px, hence the setting below. The percentage setting means that screen zooming will work coherently on the page. Thanks to Jonas Schmedtmann for this tip. */
-    font-size: 62.5%; 
+    font-size: 56.25%; 
     scroll-behavior: smooth;
+
+    // @include respond(tab-port) {
+    //     font-size:    62.5%
+    // }
 }
     
 body {

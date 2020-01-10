@@ -1,8 +1,8 @@
 // Set margins for chart
 const margin = {
 	top: 80,
-	left: 100,
-	right: 50,
+	left: 50,
+	right: 100,
 	bottom: 40
 };
 
@@ -120,8 +120,9 @@ const createSvg = (width, height, DOMTarget) => {
 	svg = d3.select(DOMTarget)
 				.append('svg')
 				.attr('class', 'main__svg')
-				.attr("width", width)
-				.attr("height", height);
+				.attr('viewBox', `0 0 ${width} ${height}`);
+				// .attr("width", width)
+				// .attr("height", height);
 }
 
 const renderBody = (chartData, width, height) => {
@@ -133,7 +134,7 @@ const renderBody = (chartData, width, height) => {
 	const series = stack(chartData);
 			
 	const bodyGroup = svg.append('g')
-						.attr('class', 'body')
+						.attr('class', 'main__svg--body')
 						.attr('width', width - margin.left - margin.right)
 						.attr('height', height - margin.top - margin.bottom)
 						.attr('transform', `translate(${margin.left}, ${margin.top})`);
@@ -156,9 +157,9 @@ const renderGraphTitle = (width, height) => {
 	svg.selectAll('text.title').remove();
 		// Get constituency name
 		const text = svg.append('text')
-			.attr('class', 'title title-stacked')
-	        .attr('x', (width / 2))             
-	        .attr('y', (0 + 20));
+			.attr('class', 'main__svg--title title')
+	        .attr('x', (width - margin.left) / 2 )             
+	        .attr('y', (0 + 30));
 
 	    text.append('tspan')
 	    	.attr('dx', 0)
@@ -166,66 +167,71 @@ const renderGraphTitle = (width, height) => {
 	        .text(`Tally of seats by year and by party`);
 
 	    text.append('tspan')
-	    .attr('class', 'title title-stacked sub-title')
-	    	.attr('x', (width / 2))
+	    .attr('class', 'main__svg--title title sub-title')
+	    	.attr('x', (width - margin.left) / 2 )
 	    	.attr('dy', '2em')
 	    	.text(() => '(Hover over chart to see data on the map)');
 }
 
 const renderLegend = (width, height) => {
 	const parties = ['DUP', 'SF', 'SDLP', 'UUP', 'Alliance', 'Others'];
-	const legend = d3.select('.main__svg').append('g').attr('class', 'legend--body');
+	const legend = d3.select('.main__svg').append('g').attr('class', 'main__svg-legend--group');
 	legend.selectAll('text')
 			.data(parties.reverse())
 			.enter()
 			.append('text')
-			.attr('class', 'legend--text')
-			.attr('x', 40)
+			.attr('class', 'main__svg-legend--text')
+			.attr('x', width - 80)
 			.attr('y', (d, i) => (height / 2 - 35) + i * 25)
 			.text((d,i) => d)
 			.on('mouseover', (d, i) => {
+				d3.select(`.legend-rect-${d}`).transition().style('fill-opacity', .95);
 				const className = d;
-				d3.select(`.group-${d}`).selectAll('rect.rect').transition().style('fill-opacity', .95);
+				d3.select(`.group-${d}`).selectAll('rect.main__svg--rect').transition().style('fill-opacity', .95);
 			})
 			.on('mouseout', (d, i) => {
+				d3.select(`.legend-rect-${d}`).transition().style('fill-opacity', .75);
 				const className = `.group-${d}`;
-				d3.select(`.group-${d}`).selectAll('rect.rect').transition().style('fill-opacity', .75);
+				d3.select(`.group-${d}`).selectAll('rect.main__svg--rect').transition().style('fill-opacity', .75);
 			});;
 
 	legend.selectAll('rect')
 			.data(parties)
 			.enter()
 			.append('rect')
-			.attr('class', (d, i) => `legend--rect legend-rect-${d}`)
-			.attr('x', 5)
+			.attr('class', (d, i) => `main__svg-legend--rect legend-rect-${d}`)
+			.attr('x', width - 35)
 			.attr('y', (d, i) => (height / 2 - 49) + i * 25)
-			.attr('width', 25)
-			.attr('height', 20)
+			.attr('width', width / 23)
+			.attr('height', height / 15)
 			.style('fill', (d, i) => setColor(d))
+			.style('fill-opacity', .75)
 			.on('mouseover', (d, i) => {
+				d3.select(`.legend-rect-${d}`).transition().style('fill-opacity', .95);
 				const className = d;
-				d3.select(`.group-${d}`).selectAll('rect.rect').transition().style('fill-opacity', .95);
+				d3.select(`.group-${d}`).selectAll('rect.main__svg--rect').transition().style('fill-opacity', .95);
 			})
 			.on('mouseout', (d, i) => {
+				d3.select(`.legend-rect-${d}`).transition().style('fill-opacity', .75);
 				const className = `.group-${d}`;
-				d3.select(`.group-${d}`).selectAll('rect.rect').transition().style('fill-opacity', .75);
+				d3.select(`.group-${d}`).selectAll('rect.main__svg--rect').transition().style('fill-opacity', .75);
 			});
 
 }
 
 const generateStaticHTML = () => {
 	const html = `
-		<div class='main__display-block'>
-			<h4 class='main__display-home-heading'>Region:</h4>
-			<p class='main__display-home-para'>North of Ireland</p>
+		<div class='main__dynamic--block'>
+			<h4 class='main__dynamic--heading'>Region:</h4>
+			<p class='main__dynamic--para'>North of Ireland</p>
 		</div>
-		<div class='main__display-block'>
-			<h4 class='main__display-home-heading'>Constituencies:</h4>
-			<p class='main__display-home-para'>18</p>
+		<div class='main__dynamic--block'>
+			<h4 class='main__dynamic--heading'>Constituencies:</h4>
+			<p class='main__dynamic--para'>18</p>
 		</div>
-		<div class='main__display-block'>
-			<h4 class='main__display-home-heading'>Dataset:</h4>
-			<p class='main__display-home-para'>General Elections (2001 - 2019)</p>
+		<div class='main__dynamic--block'>
+			<h4 class='main__dynamic--heading'>Dataset:</h4>
+			<p class='main__dynamic--para'>General Elections (2001 - 2019)</p>
 		</div>
 	`
 	return html;
@@ -235,31 +241,36 @@ const generateStaticHTML = () => {
 const generateDynamicHTML = (year, party, targetConstits) => {
 	const seatsTotal = targetConstits.length;
 	// Get full name for each constituency from id, wrap in <p> tags and save to constant
-	const constitsList = targetConstits.map(el => `<li class='main__display-chart-list-item'>${getConstitFullName(el[0])}</li>`).join('');
+	const constitsList = targetConstits.map(el => `<li class='main__dynamic--list-item'>${getConstitFullName(el[0])}</li>`).join('');
 	
 	const html = `
-		<div class='main__display-chart-block'>
-			<h4 class='main__display-chart-heading'>Election Year:</h4>
-			<p class='main__display-chart-para'>${year}</p>
+		<div class='main__dynamic--block'>
+			<h4 class='main__dynamic--heading'>Election Year:</h4>
+			<p class='main__dynamic--para'>${year}</p>
 		</div>
-		<div class='main__display-block'>
-			<h4 class='main__display-chart-heading'>Party:</h4>
-			<p class='main__display-chart-para'>${party}</p>
+		<div class='main__dynamic--block'>
+			<h4 class='main__dynamic--heading'>Party:</h4>
+			<p class='main__dynamic--para'>${party}</p>
 		</div>
-		<div class='main__display-block'>
-			<h4 class='main__display-chart-heading'>Total seats:</h4>
-			<p class='main__display-chart-para'>${seatsTotal}</p>
+		<div class='main__dynamic--block'>
+			<h4 class='main__dynamic--heading'>Total seats:</h4>
+			<p class='main__dynamic--para'>${seatsTotal}</p>
 		</div>
-		<div class='main__display-block main__display-block--constits'>
-			<h4 class='main__display-chart-heading'>Constituencies Won:</h4>
-			<ul class='main__display-chart-list'>${constitsList}</ul>
+		<div class='main__dynamic--block-constits'>
+			<h4 class='main__dynamic--heading'>Constituencies:</h4>
+			<ul class='main__dynamic--list'>${constitsList}</ul>
 		</div>
 	`
 	return html;
 }
 
 const renderRects = (chartData, groups, width, height) => {
-	d3.select('.main__display').html(generateStaticHTML());
+	d3.select('.main__dynamic')
+				.style('opacity', 0)
+				.html(generateStaticHTML())
+				.transition().duration(500).style('opacity', 1)
+				.style('visibility', 'visible');
+	// d3.select('.main__dynamic').html(generateStaticHTML());
 	console.log(chartData);
 	const xScale = generateScales(chartData, width, height, 'x'); 
 	const yScale = generateScales(chartData, width, height, 'y'); 
@@ -282,7 +293,7 @@ const renderRects = (chartData, groups, width, height) => {
 			const party = d.party;
 			return `${party}-${year}`;
 		})
-		.attr('class', 'rect')
+		.attr('class', 'main__svg--rect')
 		.style('fill-opacity', .75)
 		.attr("x", function(d, i) {
 			//console.log(i);
@@ -319,14 +330,8 @@ const renderRects = (chartData, groups, width, height) => {
 			d3.select(this).transition().style('fill-opacity', .95);
 			d3.select(`.legend-rect-${party}`).transition().style('fill-opacity', .95);
 
-			// Update dynamic display
-			d3.select('.main__display-home')
-				.transition()
-				.duration(500)
-				.style('opacity', 0)
-				.style('visibility', 'hidden');
 
-			d3.select('.main__display-chart')
+			d3.select('.main__dynamic')
 				.style('opacity', 0)
 				.html(generateDynamicHTML(year, party, targetConstits))
 				.transition().duration(500).style('opacity', 1)
@@ -367,16 +372,21 @@ const renderRects = (chartData, groups, width, height) => {
 			d3.select(this).transition().style('fill-opacity', .75);
 			d3.select(`.legend-rect-${party}`).transition().style('fill-opacity', .75);
 
-			
-			d3.select('.main__display-chart')
-				.transition().duration(500)
+			d3.select('.main__dynamic')
 				.style('opacity', 0)
-				.style('visibility', 'hidden');
-
-			d3.select('.main__display-home')
-				.transition().duration(500)
-				.style('opacity', 1)
+				.html(generateStaticHTML())
+				.transition().duration(500).style('opacity', 1)
 				.style('visibility', 'visible');
+			
+			// d3.select('.main__dynamic')
+			// 	.transition().duration(500)
+			// 	.style('opacity', 0)
+			// 	.style('visibility', 'hidden');
+
+			// d3.select('.main__home')
+			// 	.transition().duration(500)
+			// 	.style('opacity', 1)
+			// 	.style('visibility', 'visible');
 
 			// d3.select('.main__display').transition()
 			// 	.style('opacity', 1)
@@ -392,23 +402,35 @@ const renderRects = (chartData, groups, width, height) => {
 
 const renderLabels = (chartData, width, height) => {
 
-	const xScale = generateScales(chartData, width, height, 'x'); 
-	const yScale = generateScales(chartData, width, height, 'y'); 
-
 	const years = ['2005', '2010', '2015', '2017'];
-	const labels = svg.selectAll('text')
+
+	const xScale = generateScales(years, width, height, 'x'); 
+	//const yScale = generateScales(chartData, width, height, 'y'); 
+
+	
+
+	const labelGroup = svg.append('g')
+					.attr('class', 'main__svg-label')
+					// .attr('width', width - margin.left - margin.right)
+					// .attr('height', height - margin.top - margin.bottom)
+					//.attr('width', width - margin.left - margin.right)
+					.attr('transform', `translate(${margin.left}, ${height - 10})`);
+
+	const labels = labelGroup.selectAll('text')
 						.data(years);
 
 	labels.enter()
 			.append('text')
-			.attr('x', (d, i) => {
-				return xScale(i) + margin.left + margin.right;
-			})
-			.attr('y', height - 10)
+			.attr('class', 'main__svg-label--year' )
 			.text((d, i) => d)
-			.attr('class', 'label--year' )
-
+			.attr('x', (d, i) => {
+				const textWidth = d3.select('.main__svg-label--year').node().getBBox().width;
+				const indent = (xScale.bandwidth() - textWidth) / 2;
+				return xScale(i) + indent;
+			})
+			.attr('y', 0)
 			.on('mouseover', function(d, i) {
+				
 				// Prepare selection to add border (adding svg rect element)
 				const selection = d3.select(this);
 				// Get boundary box coords of text label
@@ -429,8 +451,8 @@ const renderLabels = (chartData, width, height) => {
 			        .x(function(d){return d.x;})
 			        .y(function(d){return d.y;});
 			    // Draw the line
-			    svg.append("svg:path")
-			    	.attr('class', 'label--box')
+			    labelGroup.append("path")
+			    	.attr('class', 'main__svg-label--box')
 			    	.attr('fill-opacity', 0)
 			    	.lower()
 			    	.transition()
@@ -455,7 +477,7 @@ const renderLabels = (chartData, width, height) => {
 			})
 
 			.on('mouseout', function(d, i) {
-				d3.selectAll('path.label--box')
+				d3.selectAll('path.main__svg-label--box')
 					.transition()
 					.duration(500)
 					.styleTween('fill-opacity', () => d3.interpolateNumber(.6, 0))
@@ -481,9 +503,9 @@ export const renderChart = (data, width, height, DOMTarget) => {
 	const chartData = genChartData(data);		
 	createSvg(width, height, DOMTarget);	
 	const groups = renderBody(chartData, width, height);
-
+	renderGraphTitle(width, height);
 	renderRects(chartData, groups, width, height);
 	renderLabels(chartData, width, height);
-	renderGraphTitle(width, height);
+	
 	renderLegend(width, height);
 }

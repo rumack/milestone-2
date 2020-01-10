@@ -1,0 +1,12 @@
+.profile {
+	grid-row: 3 / span 1;
+	width: 100%;
+	height: 30rem;
+	overflow: hidden;
+
+	background-image: linear-gradient(rgba(white, .5), rgba(white, .5), url(../img/map-belfast.jpg));
+	//background-size: cover;
+	background-image: url(../img/map-belfast.jpg);
+	//background-color: red;
+	//background-image: fixed;
+}

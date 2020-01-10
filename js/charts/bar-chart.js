@@ -7,7 +7,7 @@ const margin = {
 	top: 100,
 	left: 100,
 	right: 60,
-	bottom: 50
+	bottom: 40
 };
 
 // Declare global variables
@@ -80,8 +80,9 @@ const createSVG = (width, height, DOMTarget) => {
 		svg = d3.select(DOMTarget)
 			.append('svg')
 			.attr('class', 'svg--bar')
-			.attr('height', height)
-			.attr('width', width);
+			.attr('viewBox', `0 0 ${width} ${height}`);
+			// .attr('height', height)
+			// .attr('width', width);
 	}
 } 
 

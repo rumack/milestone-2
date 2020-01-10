@@ -7,7 +7,7 @@ import * as utils from '../utilities.js';
 
 // Exported functions at bottom of file
 
-let svg, tooltip, btn, displayBox, displayBtn, displayHeading;
+let svg, tooltip, btn, displayBox, displayHeading, displayBtn;
 
 //Create SVG element
 const createSVG = (width, height, DOMTarget) => {
@@ -15,8 +15,10 @@ const createSVG = (width, height, DOMTarget) => {
 		svg = d3.select(DOMTarget)
 				.append("svg")
 				.attr('id', 'svg-map')
-				.attr("width", width)
-				.attr("height", height);
+				.attr('class', 'main__map-svg')
+				.attr('viewBox', `0 0 ${width} ${height}`);
+				// .attr("width", width)
+				// .attr("height", height);
 	}
 }
 
@@ -66,7 +68,7 @@ const genDisplayBoxHTML = data => {
 const defineGradient = (width, height) => {
 	const svgDefs = svg.append('defs');
 	const gradient = svgDefs.append('linearGradient')
-							.attr('id', 'gradient')
+							.attr('id', 'map--gradient')
 							.attr('x1', '100%')
 							.attr('x2', '80%')
 							.attr('y1', '0%')
@@ -74,7 +76,7 @@ const defineGradient = (width, height) => {
 
 	gradient.append('stop')
 			.attr('class', 'stop-top')
-			.attr('offset', '50%');
+			.attr('offset', '75%');
 	gradient.append('stop')
 			.attr('class', 'stop-bottom')
 			.attr('offset', '100%');
@@ -90,7 +92,7 @@ const defineGradient = (width, height) => {
 
 const renderBody = (mapData, data, DOMTarget) => {
 	// Define mapping projection constant
-	const projection = d3.geoMercator().center([-7.3, 54.5599]).scale(10000);
+	const projection = d3.geoMercator().center([-4.1, 54.0599]).scale(5500);
 	//Define path generator
 	const path = d3.geoPath()
 					.projection(projection);
@@ -98,7 +100,7 @@ const renderBody = (mapData, data, DOMTarget) => {
 	if (!tooltip) {
 		tooltip = d3.select(DOMTarget)
 					  .append('div')
-					  .attr('class', 'tooltip map-tooltip')
+					  .attr('class', 'tooltip main__map--tooltip')
 					  .style('visibility', 'hidden')
 					  .style('opacity', 0);
 	}
@@ -106,14 +108,14 @@ const renderBody = (mapData, data, DOMTarget) => {
 	if (!displayBox) {
 		displayBox = d3.select(DOMTarget)
 				.append('div')
-				.attr('class', 'display-box')
+				.attr('class', 'main__map--display-box')
 				.style('visibility', 'hidden')
 				.style('opacity', 0);
 
-		displayHeading = displayBox.append('h4')
+		displayHeading = displayBox.append('h4');
 
 		displayBtn = displayBox.append('button')
-								.attr('class', 'display-btn')
+								.attr('class', 'main__map--display-btn')
 								.text('Show overall result');
 
 				
@@ -174,7 +176,7 @@ const renderBody = (mapData, data, DOMTarget) => {
 										this.classList.add('constit-selected');
 										// Prepare display box information (constituency name)
 										const title = document.createTextNode(d.properties.PC_NAME);
-										const h4 = document.querySelector('.display-box h4');
+										const h4 = document.querySelector('.main__map--display-box h4');
 										// Remove any previous constituency names and add current
 										while (h4.firstChild) {
 											h4.firstChild.remove();
@@ -183,20 +185,14 @@ const renderBody = (mapData, data, DOMTarget) => {
 										//Make display box visible
 										displayBox.transition()
 										   			.style('visibility', 'visible')
-													.style('opacity', 1);	
-										displayHeading.transition()
-													.style('visibility', 'visible')
-													.style('opacity', 1)
-										displayBtn.transition()		
-													.style('visibility', 'visible')
-													.style('opacity', 1);				
+													.style('opacity', 1);					
 									}
 						   		}
 						   		
 						   });
 	
 	//Actions when the 'all constituencies' button is clicked
-	d3.select('.display-btn').on('click', function(d, i) {
+	d3.select('.main__map--display-btn').on('click', function(d, i) {
 		// Hide the display box
 		displayBox.transition().style('visibility', 'hidden').style('opacity', 0);
 		// Remove selection effect from all constituencies

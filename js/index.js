@@ -18,19 +18,19 @@ q.await((err, data, mapData) => {
 	}
 
 	//Instantiate stacked chart
-	stackedChart.renderChart(data, 600, 300, '.main__chart');
+	stackedChart.renderChart(data, 400, 300, '.main__chart');
 
 	// Instantiate map
-	map.renderMap(mapData, data, 800, 600, '.main__map');
+	map.renderMap(mapData, data, 350, 325, '.main__map');
 
 	// Instantiate column chart
-	barChart.renderChart(data, 450, 350, '.bar-chart', '2017');
+	barChart.renderChart(data, 450, 375, '.bar-chart', '2017');
 	
 	// Instantiate line chart
-	lineChart.renderChart(data, 450, 350, '.line-chart');
+	lineChart.renderChart(data, 450, 375, '.line-chart');
 
 	// Instantiate pie chart
-	pieChart.renderChart(data, 450, 350, '.pie-chart');
+	pieChart.renderChart(data, 450, 375, '.pie-chart');
 
 
 	// Collect array of constituency geo areas
@@ -43,9 +43,9 @@ q.await((err, data, mapData) => {
 		const constitID = el.classList[1];
 		el.addEventListener('click', () => {
 			// Use class name to update charts
-			barChart.updateBarchart(data, 450, 350, '.bar-chart', '2017', `${constitID}`);
-			lineChart.updateLineChart(data, 450, 350, '.line-chart', `${constitID}`);
-			pieChart.updatePieChart(data, 450, 350, '.pie-chart', `${constitID}`);
+			barChart.updateBarchart(data, 450, 375, '.bar-chart', '2017', `${constitID}`);
+			lineChart.updateLineChart(data, 450, 375, '.line-chart', `${constitID}`);
+			pieChart.updatePieChart(data, 450, 375, '.pie-chart', `${constitID}`);
 		});
 		
 	});
