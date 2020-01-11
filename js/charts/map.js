@@ -64,6 +64,45 @@ const genDisplayBoxHTML = data => {
 	return html;
 };
 
+const genProfileHTML = (d, data) => {
+	const constitName = d.properties.PC_NAME.toLowerCase();
+	const constitNameFormatted = constitName.split(' ').map(el => {
+		if (el === "and") {
+			return el.toLowerCase();
+		} else {
+			return el.substring(0, 1).toUpperCase()+el.substring(1);
+		}
+	}).join(' ');
+	console.log(data);
+	const constitsObj = data[0].constituencies.filter(el => el.id === d.properties.PC_ID)[0];
+	console.log(constitsObj);
+	const electorate = constitsObj['2017'].Electorate;
+	const turnout = constitsObj['2017'].Turnout;
+	const mp = constitsObj['2017'].Winner.Candidate;
+	const party = constitsObj['2017'].Winner.Party;
+	const html = `
+					
+					<div class="profile__block">
+						<h3 class="profile__heading">Constituency:</h3>
+						<p class="profile__para">${constitNameFormatted}</p>
+					</div>
+					<div class="profile__block">
+						<h3 class="profile__heading">Current MP:</h3>
+						<p class="profile__para">${mp}, ${party}</p>
+					</div>	
+					<div class="profile__block">
+						<h3 class="profile__heading">Electorate (2019):</h3>
+						<p class="profile__para">${electorate}</p>
+					</div>
+					<div class="profile__block">
+						<h3 class="profile__heading">Turnout (2019):</h3>
+						<p class="profile__para">${turnout}%</p>
+					</div>
+				
+			`;
+	return html;
+}
+
 // Setting gradient transparency overlay
 const defineGradient = (width, height) => {
 	const svgDefs = svg.append('defs');
@@ -116,9 +155,7 @@ const renderBody = (mapData, data, DOMTarget) => {
 
 		displayBtn = displayBox.append('button')
 								.attr('class', 'main__map--display-btn')
-								.text('Show overall result');
-
-				
+								.text('Show overall result');		
 	}
 
 	const mapLines = svg.selectAll("path.constit")
@@ -164,6 +201,12 @@ const renderBody = (mapData, data, DOMTarget) => {
 						   })
 						   // When a constituency is selected, show the 'constituency display box'
 						   .on('click', function(d, i) {
+						   		
+						   		d3.select('.profile__details')
+						   			.style('opacity', 0)
+						   			.html(genProfileHTML(d, data))
+						   			.transition().duration(500)
+						   			.style('opacity', 1);
 						   		// Target only northern constituencies
 						   		if (d.properties.JURI === 'NORN') {
 							   		// Set color opacity of selected constituency

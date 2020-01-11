@@ -102,7 +102,6 @@ const renderGraphTitle = (width, height, chartData) => {
 	    text.append('tspan')
 	    	.attr('dx', 0)
 	    	.attr('dy', 0)
-	    	.style('letter-spacing', '6')
 	        .text(`NI General Election Vote Share`);
 
 	    text.append('tspan')

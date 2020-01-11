@@ -2,12 +2,9 @@
 	width: 100%;
 	height: 100%;
     grid-row: 4 / span 1;
-   	padding-top: 10rem;
+   	padding: 10rem;
    	background-color: #f4f4f4;
 
 	display: grid;
-	grid-template-columns: minmax(2rem, .25fr) repeat(3, 1fr) minmax(2rem, .25fr);
-	grid-column-gap: 2rem;
-
-    
+	grid-template-columns: repeat(auto-fit, minmax(35rem, 1fr));
 }

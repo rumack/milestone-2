@@ -221,18 +221,20 @@ const renderLegend = (width, height) => {
 
 const generateStaticHTML = () => {
 	const html = `
-		<div class='main__dynamic--block'>
-			<h4 class='main__dynamic--heading'>Region:</h4>
-			<p class='main__dynamic--para'>North of Ireland</p>
-		</div>
-		<div class='main__dynamic--block'>
-			<h4 class='main__dynamic--heading'>Constituencies:</h4>
-			<p class='main__dynamic--para'>18</p>
-		</div>
-		<div class='main__dynamic--block'>
-			<h4 class='main__dynamic--heading'>Dataset:</h4>
-			<p class='main__dynamic--para'>General Elections (2001 - 2019)</p>
-		</div>
+	
+			<div class='main__static--block'>
+				<h4 class='main__static--heading-static'>Region:</h4>
+				<p class='main__static--para-static'>North of Ireland</p>
+			</div>
+			<div class='main__static--block'>
+				<h4 class='main__static--heading-static'>Constituencies:</h4>
+				<p class='main__static--para-static'>18</p>
+			</div>
+			<div class='main__static--block'>
+				<h4 class='main__static--heading-static'>Dataset:</h4>
+				<p class='main__static--para-static'>General Elections (2001 - 2019)</p>
+			</div>
+	
 	`
 	return html;
 }
@@ -244,6 +246,7 @@ const generateDynamicHTML = (year, party, targetConstits) => {
 	const constitsList = targetConstits.map(el => `<li class='main__dynamic--list-item'>${getConstitFullName(el[0])}</li>`).join('');
 	
 	const html = `
+	
 		<div class='main__dynamic--block'>
 			<h4 class='main__dynamic--heading'>Election Year:</h4>
 			<p class='main__dynamic--para'>${year}</p>
@@ -260,17 +263,28 @@ const generateDynamicHTML = (year, party, targetConstits) => {
 			<h4 class='main__dynamic--heading'>Constituencies:</h4>
 			<ul class='main__dynamic--list'>${constitsList}</ul>
 		</div>
+	
 	`
 	return html;
 }
 
 const renderRects = (chartData, groups, width, height) => {
-	d3.select('.main__dynamic')
-				.style('opacity', 0)
-				.html(generateStaticHTML())
-				.transition().duration(500).style('opacity', 1)
-				.style('visibility', 'visible');
+	// d3.select('.main__dynamic')
+	// 			.style('opacity', 0)
+	// 			.html(generateStaticHTML())
+	// 			.transition().duration(500).style('opacity', 1)
+	// 			.style('visibility', 'visible');
 	// d3.select('.main__dynamic').html(generateStaticHTML());
+
+	d3.select('.main__dynamic').transition().remove();
+	d3.select('.main__static').transition().remove();
+	d3.select('.main').append('div').attr('class', 'main__static');
+	d3.select('.main__static')
+		.style('opacity', 0)
+		.html(generateStaticHTML())
+		.transition().duration(500).style('opacity', 1)
+		.style('visibility', 'visible');
+
 	console.log(chartData);
 	const xScale = generateScales(chartData, width, height, 'x'); 
 	const yScale = generateScales(chartData, width, height, 'y'); 
@@ -330,23 +344,15 @@ const renderRects = (chartData, groups, width, height) => {
 			d3.select(this).transition().style('fill-opacity', .95);
 			d3.select(`.legend-rect-${party}`).transition().style('fill-opacity', .95);
 
-
+			
+			d3.select('.main__dynamic').transition().remove();
+			d3.select('.main__static').transition().remove();
+			d3.select('.main').append('div').attr('class', 'main__dynamic');
 			d3.select('.main__dynamic')
 				.style('opacity', 0)
 				.html(generateDynamicHTML(year, party, targetConstits))
 				.transition().duration(500).style('opacity', 1)
 				.style('visibility', 'visible');
-
-			// d3.select('.main__display').transition()
-			// 		.on('start', function(d, i) {
-			// 			d3.select(this).style('opacity', 0)
-			// 		})
-			// 		.on('end', function() {
-			// 			d3.select(this)
-			// 				.html(generateDynamicHTML(year, party, targetConstits))
-			// 				//.transition()
-			// 				.style('opacity', 1);
-			// 		})
 
 		})
 		.on('mouseout', function(d, i) {
@@ -372,31 +378,15 @@ const renderRects = (chartData, groups, width, height) => {
 			d3.select(this).transition().style('fill-opacity', .75);
 			d3.select(`.legend-rect-${party}`).transition().style('fill-opacity', .75);
 
-			d3.select('.main__dynamic')
+			d3.select('.main__dynamic').transition().remove();
+			d3.select('.main__static').transition().remove();
+			d3.select('.main').append('div').attr('class', 'main__static');
+			d3.select('.main__static')
 				.style('opacity', 0)
 				.html(generateStaticHTML())
 				.transition().duration(500).style('opacity', 1)
 				.style('visibility', 'visible');
-			
-			// d3.select('.main__dynamic')
-			// 	.transition().duration(500)
-			// 	.style('opacity', 0)
-			// 	.style('visibility', 'hidden');
 
-			// d3.select('.main__home')
-			// 	.transition().duration(500)
-			// 	.style('opacity', 1)
-			// 	.style('visibility', 'visible');
-
-			// d3.select('.main__display').transition()
-			// 	.style('opacity', 1)
-			// 	.on('end', function() {
-			// 		d3.select(this)
-			// 			.html(generateStaticHTML())
-			// 			.transition()
-			// 			.style('visibility', 'hidden')
-			// 			.style('opacity', 0);
-			// 	})
 		});
 }
 
@@ -411,9 +401,6 @@ const renderLabels = (chartData, width, height) => {
 
 	const labelGroup = svg.append('g')
 					.attr('class', 'main__svg-label')
-					// .attr('width', width - margin.left - margin.right)
-					// .attr('height', height - margin.top - margin.bottom)
-					//.attr('width', width - margin.left - margin.right)
 					.attr('transform', `translate(${margin.left}, ${height - 10})`);
 
 	const labels = labelGroup.selectAll('text')
