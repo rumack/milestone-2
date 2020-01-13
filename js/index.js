@@ -32,23 +32,5 @@ q.await((err, data, mapData) => {
 	// Instantiate pie chart
 	pieChart.renderChart(data, 450, 375, '.pie-chart');
 
-
-	// Collect array of constituency geo areas
-	const constitArray = Array.from(document.querySelectorAll('.constit'));
-
-	// Iterate over array of constituencies to set event listeners to update charts when selected
-	constitArray.forEach(el => {
-		
-		// Extract class name (constituency code)
-		const constitID = el.classList[1];
-		el.addEventListener('click', () => {
-			// Use class name to update charts
-			barChart.updateBarchart(data, 450, 375, '.bar-chart', '2017', `${constitID}`);
-			lineChart.updateLineChart(data, 450, 375, '.line-chart', `${constitID}`);
-			pieChart.updatePieChart(data, 450, 375, '.pie-chart', `${constitID}`);
-		});
-		
-	});
-
 });
 

@@ -11,6 +11,28 @@
 	align-items: center;
 	background-attachment: fixed;
 
+	@media only screen and (max-width: 37.5em) {
+        height: 20rem;
+    }
+
+    &__container {
+    	width: 100%;
+    	height: auto;
+    	display: flex;
+		justify-content: center;
+		align-items: center;
+    }
+
+    &__home {
+		font-size: 2rem;
+		color: rgba(255, 255, 255, .7); 
+		padding: 5rem;
+
+		@media only screen and (max-width: 37.5em) {
+	        font-size: 1.6rem;
+	    }
+    }
+
 	&__details {
 		width: 80%;
 		height: 60%;
@@ -42,5 +64,17 @@
 		@media only screen and (max-width: 56.25em) {
 	    	font-size: 2rem;
         }
+
+        @media only screen and (max-width: 37.5em) {
+            font-size: 1.4rem;
+        }
+	}
+
+	&__profile__block {
+
+	}
+
+	&__heading--home {
+
 	}
 }

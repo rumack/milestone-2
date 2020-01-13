@@ -7,7 +7,7 @@ import * as utils from '../utilities.js';
 
 // Exported functions at bottom of file
 
-let svg, tooltip, btn, displayBox, displayHeading, displayBtn;
+let svg, tooltip, btn;
 
 //Create SVG element
 const createSVG = (width, height, DOMTarget) => {
@@ -64,7 +64,18 @@ const genDisplayBoxHTML = data => {
 	return html;
 };
 
+const genProfileHomeHTML = () => {
+	const html = `
+					<div class="profile__home">
+						<h3 class="profile__home--heading">Click the map above to see constituency profile and to update the charts below</h3>
+					</div>
+
+				`
+	return html;
+}
+
 const genProfileHTML = (d, data) => {
+	
 	const constitName = d.properties.PC_NAME.toLowerCase();
 	const constitNameFormatted = constitName.split(' ').map(el => {
 		if (el === "and") {
@@ -81,7 +92,7 @@ const genProfileHTML = (d, data) => {
 	const mp = constitsObj['2017'].Winner.Candidate;
 	const party = constitsObj['2017'].Winner.Party;
 	const html = `
-					
+				<div class="profile__details">	
 					<div class="profile__block">
 						<h3 class="profile__heading">Constituency:</h3>
 						<p class="profile__para">${constitNameFormatted}</p>
@@ -98,9 +109,12 @@ const genProfileHTML = (d, data) => {
 						<h3 class="profile__heading">Turnout (2019):</h3>
 						<p class="profile__para">${turnout}%</p>
 					</div>
-				
+					
+				</div>
 			`;
 	return html;
+	
+	
 }
 
 // Setting gradient transparency overlay
@@ -135,6 +149,12 @@ const renderBody = (mapData, data, DOMTarget) => {
 	//Define path generator
 	const path = d3.geoPath()
 					.projection(projection);
+	// Insert profile home html
+	d3.select('.profile__container')
+			   			.style('opacity', 0)
+			   			.html(genProfileHomeHTML())
+			   			.transition().duration(500)
+			   			.style('opacity', 1);
 	// Create tooltip and hide it 
 	if (!tooltip) {
 		tooltip = d3.select(DOMTarget)
@@ -142,20 +162,6 @@ const renderBody = (mapData, data, DOMTarget) => {
 					  .attr('class', 'tooltip main__map--tooltip')
 					  .style('visibility', 'hidden')
 					  .style('opacity', 0);
-	}
-	// Create 'all constituencies' button and hide it
-	if (!displayBox) {
-		displayBox = d3.select(DOMTarget)
-				.append('div')
-				.attr('class', 'main__map--display-box')
-				.style('visibility', 'hidden')
-				.style('opacity', 0);
-
-		displayHeading = displayBox.append('h4');
-
-		displayBtn = displayBox.append('button')
-								.attr('class', 'main__map--display-btn')
-								.text('Show overall result');		
 	}
 
 	const mapLines = svg.selectAll("path.constit")
@@ -199,54 +205,42 @@ const renderBody = (mapData, data, DOMTarget) => {
 						   		// Hide tooltip
 								tooltip.transition().duration(500).style('opacity', 0).style('visibility', 'hidden');
 						   })
-						   // When a constituency is selected, show the 'constituency display box'
+						   // When a constituency is selected... '
 						   .on('click', function(d, i) {
-						   		
-						   		d3.select('.profile__details')
-						   			.style('opacity', 0)
-						   			.html(genProfileHTML(d, data))
-						   			.transition().duration(500)
-						   			.style('opacity', 1);
-						   		// Target only northern constituencies
-						   		if (d.properties.JURI === 'NORN') {
-							   		// Set color opacity of selected constituency
-									// Remove 'hovered' class from selected element
-									this.classList.remove('constit-hovered');
-									// Remove 'selected' class from siblings of selected constituency
-									utils.getAllSiblings(this).forEach(elem => elem.classList.remove('constit-selected'));
-									if (d.properties.JURI === 'NORN') {
-										// Add 'selected' class to selected constituency
-										this.classList.add('constit-selected');
-										// Prepare display box information (constituency name)
-										const title = document.createTextNode(d.properties.PC_NAME);
-										const h4 = document.querySelector('.main__map--display-box h4');
-										// Remove any previous constituency names and add current
-										while (h4.firstChild) {
-											h4.firstChild.remove();
-										}
-										h4.appendChild(title);
-										//Make display box visible
-										displayBox.transition()
-										   			.style('visibility', 'visible')
-													.style('opacity', 1);					
-									}
-						   		}
-						   		
+						   		console.log(d);
+						   		const constitID = d.properties.PC_ID;
+						   		barChart.updateBarchart(data, 450, 375, '.bar-chart', '2017', `${constitID}`);
+								lineChart.updateLineChart(data, 450, 375, '.line-chart', `${constitID}`);
+								pieChart.updatePieChart(data, 450, 375, '.pie-chart', `${constitID}`);
+						   	
+								// Remove 'hovered' class from selected element
+								this.classList.remove('constit-hovered');
+								// Remove 'selected' class from siblings of selected constituency
+								utils.getAllSiblings(this).forEach(elem => elem.classList.remove('constit-selected'));
+								// Add 'selected' class to selected constituency, if not already selected
+								if (this.classList.contains('constit-selected')) {
+						   			this.classList.remove('constit-selected');
+						   			d3.select('.profile__container')
+							   			.style('opacity', 0)
+							   			.html(genProfileHomeHTML())
+							   			.transition().duration(500)
+							   			.style('opacity', 1);
+									// Update charts
+									lineChart.updateLineChart(data, 450, 375, '.line-chart');
+									barChart.updateBarchart(data, 450, 375, '.bar-chart', '2017');
+									pieChart.updatePieChart(data, 450, 375, '.pie-chart');
+											
+								} else {
+						   			this.classList.add('constit-selected');
+						   			d3.select('.profile__container')
+							   			.style('opacity', 0)
+							   			.html(genProfileHTML(d, data))
+							   			.transition().duration(500)
+							   			.style('opacity', 1);
+								}	
 						   });
 	
-	//Actions when the 'all constituencies' button is clicked
-	d3.select('.main__map--display-btn').on('click', function(d, i) {
-		// Hide the display box
-		displayBox.transition().style('visibility', 'hidden').style('opacity', 0);
-		// Remove selection effect from all constituencies
-		Array.from(document.querySelectorAll('.constit')).forEach(el => el.classList.remove('constit-selected'));	
-		// Then update charts
-		lineChart.updateLineChart(data, 450, 350, '.line-chart');
-		barChart.updateBarchart(data, 450, 350, '.bar-chart', '2017');
-		
-		pieChart.updatePieChart(data, 450, 350, '.pie-chart');
-				
-	});
+	
 }
 
 export const renderMap = (mapData, data, width, height, DOMTarget) => {

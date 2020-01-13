@@ -181,7 +181,7 @@ const renderLegend = (width, height) => {
 			.enter()
 			.append('text')
 			.attr('class', 'main__svg-legend--text')
-			.attr('x', width - 80)
+			.attr('x', width - 85)
 			.attr('y', (d, i) => (height / 2 - 35) + i * 25)
 			.text((d,i) => d)
 			.on('mouseover', (d, i) => {
@@ -248,7 +248,7 @@ const generateDynamicHTML = (year, party, targetConstits) => {
 	const html = `
 	
 		<div class='main__dynamic--block'>
-			<h4 class='main__dynamic--heading'>Election Year:</h4>
+			<h4 class='main__dynamic--heading'>Year:</h4>
 			<p class='main__dynamic--para'>${year}</p>
 		</div>
 		<div class='main__dynamic--block'>
@@ -256,7 +256,7 @@ const generateDynamicHTML = (year, party, targetConstits) => {
 			<p class='main__dynamic--para'>${party}</p>
 		</div>
 		<div class='main__dynamic--block'>
-			<h4 class='main__dynamic--heading'>Total seats:</h4>
+			<h4 class='main__dynamic--heading'>Seats:</h4>
 			<p class='main__dynamic--para'>${seatsTotal}</p>
 		</div>
 		<div class='main__dynamic--block-constits'>
@@ -276,8 +276,8 @@ const renderRects = (chartData, groups, width, height) => {
 	// 			.style('visibility', 'visible');
 	// d3.select('.main__dynamic').html(generateStaticHTML());
 
-	d3.select('.main__dynamic').transition().remove();
-	d3.select('.main__static').transition().remove();
+	d3.selectAll('.main__dynamic').transition().remove();
+	d3.selectAll('.main__static').transition().remove();
 	d3.select('.main').append('div').attr('class', 'main__static');
 	d3.select('.main__static')
 		.style('opacity', 0)
@@ -345,8 +345,8 @@ const renderRects = (chartData, groups, width, height) => {
 			d3.select(`.legend-rect-${party}`).transition().style('fill-opacity', .95);
 
 			
-			d3.select('.main__dynamic').transition().remove();
-			d3.select('.main__static').transition().remove();
+			d3.selectAll('.main__dynamic').transition().remove();
+			d3.selectAll('.main__static').transition().remove();
 			d3.select('.main').append('div').attr('class', 'main__dynamic');
 			d3.select('.main__dynamic')
 				.style('opacity', 0)
@@ -378,8 +378,8 @@ const renderRects = (chartData, groups, width, height) => {
 			d3.select(this).transition().style('fill-opacity', .75);
 			d3.select(`.legend-rect-${party}`).transition().style('fill-opacity', .75);
 
-			d3.select('.main__dynamic').transition().remove();
-			d3.select('.main__static').transition().remove();
+			d3.selectAll('.main__dynamic').transition().remove();
+			d3.selectAll('.main__static').transition().remove();
 			d3.select('.main').append('div').attr('class', 'main__static');
 			d3.select('.main__static')
 				.style('opacity', 0)
@@ -392,7 +392,7 @@ const renderRects = (chartData, groups, width, height) => {
 
 const renderLabels = (chartData, width, height) => {
 
-	const years = ['2005', '2010', '2015', '2017'];
+	const years = ['2001', '2005', '2010', '2015', '2017'];
 
 	const xScale = generateScales(years, width, height, 'x'); 
 	//const yScale = generateScales(chartData, width, height, 'y'); 
@@ -411,7 +411,7 @@ const renderLabels = (chartData, width, height) => {
 			.attr('class', 'main__svg-label--year' )
 			.text((d, i) => d)
 			.attr('x', (d, i) => {
-				const textWidth = d3.select('.main__svg-label--year').node().getBBox().width;
+				const textWidth = d3.select('text.main__svg-label--year').node().getBBox().width;
 				const indent = (xScale.bandwidth() - textWidth) / 2;
 				return xScale(i) + indent;
 			})

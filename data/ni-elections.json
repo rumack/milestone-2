@@ -88,6 +88,27 @@
                         "Party": "DUP"
                     }
                 },
+                "2001": {
+                    "Electorate": 58455,
+                    "Scores": {
+                        "DUP": 43,
+                        "SF": 3,
+                        "SDLP": 2,
+                        "UUP": 23,
+                        "Alliance": 16,
+                        "Others": 13
+                    },
+                    "AffiliationScore": {
+                        "uni": 78,
+                        "nat": 6,
+                        "oth": 16
+                    },
+                    "Turnout": 63.3,
+                    "Winner": {
+                        "Candidate": "Peter Robinson",
+                        "Party": "DUP"
+                    }
+                },
                 "Brex": {
                     "Remain": 48.6,
                     "Leave": 51.4,
@@ -176,6 +197,27 @@
                         "oth": 11
                     },
                     "Turnout": 59,
+                    "Winner": {
+                        "Candidate": "Nigel Dodds",
+                        "Party": "DUP"
+                    }
+                },
+                "2001": {
+                    "Electorate": 60941,
+                    "Scores": {
+                        "DUP": 41,
+                        "SF": 25,
+                        "SDLP": 21,
+                        "UUP": 12,
+                        "Alliance": null,
+                        "Others": 1
+                    },
+                    "AffiliationScore": {
+                        "uni": 53,
+                        "nat": 46,
+                        "oth": 1
+                    },
+                    "Turnout": 67.7,
                     "Winner": {
                         "Candidate": "Nigel Dodds",
                         "Party": "DUP"
@@ -274,6 +316,27 @@
                         "Party": "SDLP"
                     }
                 },
+                "2001": {
+                    "Electorate": 59436,
+                    "Scores": {
+                        "DUP": null,
+                        "SF": 8,
+                        "SDLP": 31,
+                        "UUP": 45,
+                        "Alliance": 5,
+                        "Others": 11
+                    },
+                    "AffiliationScore": {
+                        "uni": 48,
+                        "nat": 39,
+                        "oth": 13
+                    },
+                    "Turnout": 64.2,
+                    "Winner": {
+                        "Candidate": "Martin Smyth",
+                        "Party": "UUP"
+                    }
+                },
                 "Brex": {
                     "Remain": 69.5,
                     "Leave": 30.5,
@@ -363,6 +426,27 @@
                         "oth": 2
                     },
                     "Turnout": 65,
+                    "Winner": {
+                        "Candidate": "Gerry Adams",
+                        "Party": "SF"
+                    }
+                },
+                "2001": {
+                    "Electorate": 59617,
+                    "Scores": {
+                        "DUP": 6,
+                        "SF": 66,
+                        "SDLP": 19,
+                        "UUP": 6,
+                        "Alliance": null,
+                        "Others": 3
+                    },
+                    "AffiliationScore": {
+                        "uni": 12,
+                        "nat": 86,
+                        "oth": 2
+                    },
+                    "Turnout": 69.9,
                     "Winner": {
                         "Candidate": "Gerry Adams",
                         "Party": "SF"
@@ -461,6 +545,27 @@
                         "Party": "DUP"
                     }
                 },
+                "2001": {
+                    "Electorate": 60897,
+                    "Scores": {
+                        "DUP": 36,
+                        "SF": 3,
+                        "SDLP": 7,
+                        "UUP": 36,
+                        "Alliance": 13,
+                        "Others": 5
+                    },
+                    "AffiliationScore": {
+                        "uni": 77,
+                        "nat": 10,
+                        "oth": 13
+                    },
+                    "Turnout": 59.6,
+                    "Winner": {
+                        "Candidate": "Roy Beggs Sr",
+                        "Party": "UUP"
+                    }
+                },
                 "Brex": {
                     "Remain": 44.8,
                     "Leave": 55.2,
@@ -549,6 +654,27 @@
                         "oth": 3
                     },
                     "Turnout": 61,
+                    "Winner": {
+                        "Candidate": "Gregory Campbell",
+                        "Party": "DUP"
+                    }
+                },
+                "2001": {
+                    "Electorate": 60215,
+                    "Scores": {
+                        "DUP": 32,
+                        "SF": 16,
+                        "SDLP": 21,
+                        "UUP": 27,
+                        "Alliance": 4,
+                        "Others": null
+                    },
+                    "AffiliationScore": {
+                        "uni": 59,
+                        "nat": 37,
+                        "oth": 4
+                    },
+                    "Turnout": 66.8,
                     "Winner": {
                         "Candidate": "Gregory Campbell",
                         "Party": "DUP"
@@ -647,6 +773,27 @@
                         "Party": "SF"
                     }
                 },
+                "2001": {
+                    "Electorate": 66640,
+                    "Scores": {
+                        "DUP": null,
+                        "SF": 34,
+                        "SDLP": 19,
+                        "UUP": 34,
+                        "Alliance": null,
+                        "Others": 13
+                    },
+                    "AffiliationScore": {
+                        "uni": 47,
+                        "nat": 53,
+                        "oth": 0
+                    },
+                    "Turnout": 79,
+                    "Winner": {
+                        "Candidate": "Michelle Gildernew",
+                        "Party": "SF"
+                    }
+                },
                 "Brex": {
                     "Remain": 58.6,
                     "Leave": 41.4,
@@ -737,6 +884,27 @@
                     "Turnout": 67,
                     "Winner": {
                         "Candidate": "Mark Durkan",
+                        "Party": "SDLP"
+                    }
+                },
+                "2001": {
+                    "Electorate": 70943,
+                    "Scores": {
+                        "DUP": 15,
+                        "SF": 27,
+                        "SDLP": 50,
+                        "UUP": 7,
+                        "Alliance": 1,
+                        "Others": null
+                    },
+                    "AffiliationScore": {
+                        "uni": 22,
+                        "nat": 77,
+                        "oth": 1
+                    },
+                    "Turnout": 69.6,
+                    "Winner": {
+                        "Candidate": "John Hume",
                         "Party": "SDLP"
                     }
                 },
@@ -833,6 +1001,27 @@
                         "Party": "DUP"
                     }
                 },
+                "2001": {
+                    "Electorate": 72671,
+                    "Scores": {
+                        "DUP": 13,
+                        "SF": 6,
+                        "SDLP": 8,
+                        "UUP": 57,
+                        "Alliance": 17,
+                        "Others": null
+                    },
+                    "AffiliationScore": {
+                        "uni": 70,
+                        "nat": 14,
+                        "oth": 0
+                    },
+                    "Turnout": 63.6,
+                    "Winner": {
+                        "Candidate": "Jeffrey Donaldson",
+                        "Party": "UUP"
+                    }
+                },
                 "Brex": {
                     "Remain": 46.9,
                     "Leave": 53.1,
@@ -921,6 +1110,27 @@
                         "oth": 0
                     },
                     "Turnout": 56,
+                    "Winner": {
+                        "Candidate": "Martin McGuinness",
+                        "Party": "SF"
+                    }
+                },
+                "2001": {
+                    "Electorate": 61390,
+                    "Scores": {
+                        "DUP": 31,
+                        "SF": 51,
+                        "SDLP": 16,
+                        "UUP": null,
+                        "Alliance": null,
+                        "Others": 1
+                    },
+                    "AffiliationScore": {
+                        "uni": 31,
+                        "nat": 67,
+                        "oth": 2
+                    },
+                    "Turnout": 82,
                     "Winner": {
                         "Candidate": "Martin McGuinness",
                         "Party": "SF"
@@ -1019,6 +1229,27 @@
                         "Party": "SF"
                     }
                 },
+                "2001": {
+                    "Electorate": 72466,
+                    "Scores": {
+                        "DUP": 19,
+                        "SF": 31,
+                        "SDLP": 37,
+                        "UUP": 12,
+                        "Alliance": null,
+                        "Others": null
+                    },
+                    "AffiliationScore": {
+                        "uni": 31,
+                        "nat": 68,
+                        "oth": 1
+                    },
+                    "Turnout": 77.5,
+                    "Winner": {
+                        "Candidate": "Seamus Mallon",
+                        "Party": "SDLP"
+                    }
+                },
                 "Brex": {
                     "Remain": 62.9,
                     "Leave": 37.1,
@@ -1107,6 +1338,27 @@
                         "oth": 3
                     },
                     "Turnout": 63,
+                    "Winner": {
+                        "Candidate": "Ian Paisley",
+                        "Party": "DUP"
+                    }
+                },
+                "2001": {
+                    "Electorate": 74451,
+                    "Scores": {
+                        "DUP": 50,
+                        "SF": 10,
+                        "SDLP": 17,
+                        "UUP": 21,
+                        "Alliance": 3,
+                        "Others": null
+                    },
+                    "AffiliationScore": {
+                        "uni": 71,
+                        "nat": 27,
+                        "oth": 2
+                    },
+                    "Turnout": 66.5,
                     "Winner": {
                         "Candidate": "Ian Paisley",
                         "Party": "DUP"
@@ -1205,6 +1457,27 @@
                         "Party": "UUP"
                     }
                 },
+                "2001": {
+                    "Electorate": 63212,
+                    "Scores": {
+                        "DUP": null,
+                        "SF": 1,
+                        "SDLP": 3,
+                        "UUP": 56,
+                        "Alliance": null,
+                        "Others": 40
+                    },
+                    "AffiliationScore": {
+                        "uni": 94,
+                        "nat": 4,
+                        "oth": 2
+                    },
+                    "Turnout": 59,
+                    "Winner": {
+                        "Candidate": "Sylvia Hermon",
+                        "Party": "UUP"
+                    }
+                },
                 "Brex": {
                     "Remain": 52.4,
                     "Leave": 47.6,
@@ -1298,6 +1571,27 @@
                         "Party": "DUP"
                     }
                 },
+                "2001": {
+                    "Electorate": 70651,
+                    "Scores": {
+                        "DUP": 35,
+                        "SF": 9,
+                        "SDLP": 12,
+                        "UUP": 37,
+                        "Alliance": 5,
+                        "Others": 2
+                    },
+                    "AffiliationScore": {
+                        "uni": 74,
+                        "nat": 21,
+                        "oth": 5
+                    },
+                    "Turnout": 62.7,
+                    "Winner": {
+                        "Candidate": "David Burnside",
+                        "Party": "UUP"
+                    }
+                },
                 "Brex": {
                     "Remain": 49.4,
                     "Leave": 50.6,
@@ -1386,6 +1680,27 @@
                         "oth": 1
                     },
                     "Turnout": 67,
+                    "Winner": {
+                        "Candidate": "Eddie McGrady",
+                        "Party": "SDLP"
+                    }
+                },
+                "2001": {
+                    "Electorate": 73519,
+                    "Scores": {
+                        "DUP": 15,
+                        "SF": 20,
+                        "SDLP": 46,
+                        "UUP": 18,
+                        "Alliance": 1,
+                        "Others": null
+                    },
+                    "AffiliationScore": {
+                        "uni": 33,
+                        "nat": 66,
+                        "oth": 1
+                    },
+                    "Turnout": 71.6,
                     "Winner": {
                         "Candidate": "Eddie McGrady",
                         "Party": "SDLP"
@@ -1485,6 +1800,27 @@
                         "Party": "DUP"
                     }
                 },
+                "2001": {
+                    "Electorate": 72192,
+                    "Scores": {
+                        "DUP": 43,
+                        "SF": 2,
+                        "SDLP": 6,
+                        "UUP": 40,
+                        "Alliance": 7,
+                        "Others": 2
+                    },
+                    "AffiliationScore": {
+                        "uni": 85,
+                        "nat": 8,
+                        "oth": 7
+                    },
+                    "Turnout": 60.2,
+                    "Winner": {
+                        "Candidate": "Iris Robinson",
+                        "Party": "DUP"
+                    }
+                },
                 "Brex": {
                     "Remain": 44.5,
                     "Leave": 55.5,
@@ -1578,6 +1914,27 @@
                         "Party": "DUP"
                     }
                 },
+                "2001": {
+                    "Electorate": 72574,
+                    "Scores": {
+                        "DUP": 30,
+                        "SF": 21,
+                        "SDLP": 15,
+                        "UUP": 34,
+                        "Alliance": null,
+                        "Others": 1
+                    },
+                    "AffiliationScore": {
+                        "uni": 64,
+                        "nat": 36,
+                        "oth": 0
+                    },
+                    "Turnout": 70.7,
+                    "Winner": {
+                        "Candidate": "David Trimble",
+                        "Party": "UUP"
+                    }
+                },
                 "Brex": {
                     "Remain": 47.4,
                     "Leave": 52.6,
@@ -1666,6 +2023,27 @@
                         "oth": 27
                     },
                     "Turnout": 74,
+                    "Winner": {
+                        "Candidate": "Pat Doherty",
+                        "Party": "SF"
+                    }
+                },
+                "2001": {
+                    "Electorate": 60739,
+                    "Scores": {
+                        "DUP": null,
+                        "SF": 41,
+                        "SDLP": 29,
+                        "UUP": 30,
+                        "Alliance": null,
+                        "Others": null
+                    },
+                    "AffiliationScore": {
+                        "uni": 30,
+                        "nat": 70,
+                        "oth": 0
+                    },
+                    "Turnout": 80.6,
                     "Winner": {
                         "Candidate": "Pat Doherty",
                         "Party": "SF"
@@ -1797,6 +2175,36 @@
                     },
                     "Others": {
                         "total": 2,
+                        "seats": 0
+                    }
+                }
+            },
+            {
+                "year": "2001",
+                "Turnout": 63,
+                "Results": {
+                    "DUP": {
+                        "total": 23,
+                        "seats": 5
+                    },
+                    "SF": {
+                        "total": 22,
+                        "seats": 4
+                    },
+                    "SDLP": {
+                        "total": 21,
+                        "seats": 3
+                    },                
+                    "UUP": {
+                        "total": 27,
+                        "seats": 6
+                    },
+                    "Alliance": {
+                        "total": 4,
+                        "seats": 0
+                    },
+                    "Others": {
+                        "total": 3,
                         "seats": 0
                     }
                 }

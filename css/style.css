@@ -130,6 +130,9 @@ body {
 #radio-3:checked ~ label[for='radio-3'] .barchart-radio-btn::after {
   opacity: 1; }
 
+#radio-4:checked ~ label[for='radio-4'] .barchart-radio-btn::after {
+  opacity: 1; }
+
 /* Generic - Lines and dots */
 .line {
   fill: none;
@@ -221,7 +224,8 @@ select.linechart-select-menu {
   cursor: pointer; }
 
 .constit-rep {
-  fill-opacity: 0.4; }
+  fill-opacity: 0.4;
+  pointer-events: none; }
 
 .constit-selected {
   fill-opacity: 1; }
@@ -271,7 +275,7 @@ select.linechart-select-menu {
 
 .main__svg-label--year {
   fill-opacity: .6;
-  font-size: 1.4rem;
+  font-size: 1.2rem;
   font-family: sans-serif; }
 
 .main__svg-label--box {
@@ -292,7 +296,7 @@ select.linechart-select-menu {
   grid-row: 5 / span 1;
   width: 100%;
   height: 100%;
-  font-size: 2rem;
+  font-size: 1.6rem;
   color: white;
   letter-spacing: 2px;
   padding: 15rem 8rem 4rem;
@@ -323,13 +327,14 @@ select.linechart-select-menu {
   padding: 10rem 2rem;
   margin-bottom: 10rem;
   z-index: 1; }
+  @media only screen and (max-width: 37.5em) {
+    .header {
+      font-size: 1.6rem;
+      margin-bottom: 0rem; } }
   .header span {
     color: rgba(211, 47, 47, 0.75); }
   .header__paragraph {
     font-size: 2.5rem; }
-  @media only screen and (min-width: 56.25em) {
-    .header {
-      margin-bottom: 3rem; } }
 
 .main {
   grid-row: 2 / span 1;
@@ -343,76 +348,95 @@ select.linechart-select-menu {
   padding: 10rem 0; }
   @media only screen and (max-width: 56.25em) {
     .main {
-      grid-template-columns: minmax(4rem, 0.25fr) 1fr minmax(4rem, 0.25fr);
+      grid-template-columns: minmax(1rem, 0.25fr) 1fr minmax(1rem, 0.25fr);
       grid-template-rows: 20rem min-content min-content; } }
+  @media only screen and (max-width: 37.5em) {
+    .main {
+      padding: 1rem;
+      padding-top: 5rem; } }
   .main__dynamic {
     grid-row: 1 / span 1;
     grid-column: 2 / span 2;
     width: 80%;
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    grid-row-gap: 2.5rem; }
+    height: 100%;
+    display: flex;
+    align-items: flex-start; }
     @media only screen and (max-width: 56.25em) {
       .main__dynamic {
         grid-column: 2 / span 1;
-        justify-items: start; } }
-    .main__dynamic--block {
-      display: flex;
-      flex-direction: column; }
-    @media only screen and (max-width: 56.25em) {
-      .main__dynamic--block-constits {
-        justify-self: start; } }
+        flex-wrap: wrap;
+        width: 100%; } }
+    .main__dynamic--block:nth-child(1) {
+      flex: 1; }
+    .main__dynamic--block:nth-child(2) {
+      flex: 1; }
+    .main__dynamic--block:nth-child(3) {
+      flex: 1; }
+    .main__dynamic--block-constits {
+      flex: 4; }
+      @media only screen and (max-width: 56.25em) {
+        .main__dynamic--block-constits {
+          justify-self: start; } }
     .main__dynamic--list {
       list-style: none;
       column-count: 2;
       column-gap: 3rem;
-      margin-top: 1.5rem; }
+      margin-top: 1.5rem;
+      column-rule: 1px solid rgba(0, 0, 0, 0.4); }
+      @media only screen and (max-width: 56.25em) {
+        .main__dynamic--list {
+          column-count: 3; } }
     .main__dynamic--list-item {
       font-size: 1.6rem;
       font-style: italic;
       color: rgba(0, 0, 0, 0.6); }
-    .main__dynamic--heading, .main__dynamic--heading-static {
+      @media only screen and (max-width: 37.5em) {
+        .main__dynamic--list-item {
+          font-size: 1.4rem; } }
+    .main__dynamic--heading {
       text-transform: uppercase;
       font-size: 1.2rem;
       font-weight: 400; }
-      @media only screen and (max-width: 56.25em) {
-        .main__dynamic--heading, .main__dynamic--heading-static {
-          font-size: 1.2rem; } }
-    .main__dynamic--para, .main__dynamic--para-static {
+    .main__dynamic--para {
       font-size: 3.5rem;
       font-weight: 300;
       color: rgba(0, 0, 0, 0.6); }
       @media only screen and (max-width: 56.25em) {
-        .main__dynamic--para, .main__dynamic--para-static {
+        .main__dynamic--para {
           font-size: 2rem; } }
+      @media only screen and (max-width: 37.5em) {
+        .main__dynamic--para {
+          font-size: 1.4rem; } }
   .main__static {
     grid-row: 1 / span 1;
     grid-column: 2 / span 2;
     width: 80%;
-    height: auto;
-    display: grid;
-    grid-template-columns: repeat(3, 1fr); }
+    height: 100%;
+    align-self: start;
+    display: flex;
+    align-items: flex-start; }
     @media only screen and (max-width: 56.25em) {
       .main__static {
         grid-column: 2 / span 1;
-        justify-items: start; } }
-    .main__static--block {
-      display: flex;
-      flex-direction: column; }
-    .main__static--heading, .main__static--heading-static {
+        flex-wrap: wrap;
+        width: 100%; } }
+    .main__static--block:nth-child(1) {
+      flex-basis: 30%; }
+    .main__static--block:nth-child(2) {
+      flex-basis: 20%; }
+    .main__static--block:nth-child(3) {
+      flex-basis: 50%; }
+    .main__static--heading-static {
       text-transform: uppercase;
       font-size: 1.2rem;
       font-weight: 400; }
-      @media only screen and (max-width: 56.25em) {
-        .main__static--heading, .main__static--heading-static {
-          font-size: 1.2rem; } }
-    .main__static--para, .main__static--para-static {
-      font-size: 3.5rem;
+    .main__static--para-static {
+      font-size: 2.5rem;
       font-weight: 300;
       color: rgba(0, 0, 0, 0.6); }
       @media only screen and (max-width: 56.25em) {
-        .main__static--para, .main__static--para-static {
-          font-size: 2rem; } }
+        .main__static--para-static {
+          font-size: 1.6rem; } }
   .main__svg--title {
     font-size: 1.3rem; }
   .main__svg {
@@ -427,7 +451,10 @@ select.linechart-select-menu {
     grid-column: 2 / span 1; }
     @media only screen and (max-width: 56.25em) {
       .main__chart {
-        margin-top: 9rem; } }
+        grid-column: 2 / span 1; } }
+    @media only screen and (max-width: 37.5em) {
+      .main__chart {
+        margin-top: 2rem; } }
   .main__map {
     width: 80%;
     height: auto;
@@ -442,7 +469,10 @@ select.linechart-select-menu {
         margin-right: 5rem; } }
     @media only screen and (max-width: 37.5em) {
       .main__map {
-        margin-top: -2rem; } }
+        margin-top: -2rem;
+        margin-top: 2rem;
+        margin-right: 0;
+        width: 100%; } }
 
 .profile {
   grid-row: 3 / span 1;
@@ -455,6 +485,22 @@ select.linechart-select-menu {
   justify-content: center;
   align-items: center;
   background-attachment: fixed; }
+  @media only screen and (max-width: 37.5em) {
+    .profile {
+      height: 20rem; } }
+  .profile__container {
+    width: 100%;
+    height: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center; }
+  .profile__home {
+    font-size: 2rem;
+    color: rgba(255, 255, 255, 0.7);
+    padding: 5rem; }
+    @media only screen and (max-width: 37.5em) {
+      .profile__home {
+        font-size: 1.6rem; } }
   .profile__details {
     width: 80%;
     height: 60%;
@@ -478,6 +524,9 @@ select.linechart-select-menu {
     @media only screen and (max-width: 56.25em) {
       .profile__para {
         font-size: 2rem; } }
+    @media only screen and (max-width: 37.5em) {
+      .profile__para {
+        font-size: 1.4rem; } }
 
 .updateable-charts {
   width: 100%;
@@ -486,4 +535,7 @@ select.linechart-select-menu {
   padding: 10rem;
   background-color: #f4f4f4;
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(35rem, 1fr)); }
+  grid-template-columns: repeat(auto-fit, minmax(32rem, 1fr)); }
+  @media only screen and (max-width: 37.5em) {
+    .updateable-charts {
+      padding: 2rem; } }
