@@ -68,8 +68,7 @@ body {
   height: 100%; }
 
 .barchart-form {
-  display: flex;
-  justify-content: center; }
+  display: flex; }
 
 /* Bar chart */
 .bar {
@@ -131,6 +130,9 @@ body {
   opacity: 1; }
 
 #radio-4:checked ~ label[for='radio-4'] .barchart-radio-btn::after {
+  opacity: 1; }
+
+#radio-5:checked ~ label[for='radio-5'] .barchart-radio-btn::after {
   opacity: 1; }
 
 /* Generic - Lines and dots */
@@ -275,7 +277,7 @@ select.linechart-select-menu {
 
 .main__svg-label--year {
   fill-opacity: .6;
-  font-size: 1.2rem;
+  font-size: 1rem;
   font-family: sans-serif; }
 
 .main__svg-label--box {

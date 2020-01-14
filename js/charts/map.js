@@ -84,13 +84,12 @@ const genProfileHTML = (d, data) => {
 			return el.substring(0, 1).toUpperCase()+el.substring(1);
 		}
 	}).join(' ');
-	console.log(data);
+	
 	const constitsObj = data[0].constituencies.filter(el => el.id === d.properties.PC_ID)[0];
-	console.log(constitsObj);
-	const electorate = constitsObj['2017'].Electorate;
-	const turnout = constitsObj['2017'].Turnout;
-	const mp = constitsObj['2017'].Winner.Candidate;
-	const party = constitsObj['2017'].Winner.Party;
+	const electorate = constitsObj['2019'].Electorate;
+	const turnout = constitsObj['2019'].Turnout;
+	const mp = constitsObj['2019'].Winner.Candidate;
+	const party = constitsObj['2019'].Winner.Party;
 	const html = `
 				<div class="profile__details">	
 					<div class="profile__block">
@@ -207,9 +206,8 @@ const renderBody = (mapData, data, DOMTarget) => {
 						   })
 						   // When a constituency is selected... '
 						   .on('click', function(d, i) {
-						   		console.log(d);
 						   		const constitID = d.properties.PC_ID;
-						   		barChart.updateBarchart(data, 450, 375, '.bar-chart', '2017', `${constitID}`);
+						   		barChart.updateBarchart(data, 450, 375, '.bar-chart', '2019', `${constitID}`);
 								lineChart.updateLineChart(data, 450, 375, '.line-chart', `${constitID}`);
 								pieChart.updatePieChart(data, 450, 375, '.pie-chart', `${constitID}`);
 						   	
@@ -227,7 +225,7 @@ const renderBody = (mapData, data, DOMTarget) => {
 							   			.style('opacity', 1);
 									// Update charts
 									lineChart.updateLineChart(data, 450, 375, '.line-chart');
-									barChart.updateBarchart(data, 450, 375, '.bar-chart', '2017');
+									barChart.updateBarchart(data, 450, 375, '.bar-chart', '2019');
 									pieChart.updatePieChart(data, 450, 375, '.pie-chart');
 											
 								} else {

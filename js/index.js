@@ -24,7 +24,7 @@ q.await((err, data, mapData) => {
 	map.renderMap(mapData, data, 350, 325, '.main__map');
 
 	// Instantiate column chart
-	barChart.renderChart(data, 450, 375, '.bar-chart', '2017');
+	barChart.renderChart(data, 450, 375, '.bar-chart', '2019');
 	
 	// Instantiate line chart
 	lineChart.renderChart(data, 450, 375, '.line-chart');

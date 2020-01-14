@@ -8,8 +8,7 @@
     align-items: center;
     margin-bottom: 10rem;
     width: 100%;
-    height: 100%;
-    
+    height: 100%;    
 }
 
 
@@ -17,7 +16,8 @@
 .barchart-form {
     // margin-bottom: 3rem;
     display: flex;
-    justify-content: center;
+    //justify-content: center;
+    // transform: translateX(6rem);
 }
 
 /* Bar chart */
@@ -106,5 +106,9 @@
 }
 
 #radio-4:checked ~ label[for='radio-4'] .barchart-radio-btn::after {
+    opacity: 1;
+}
+
+#radio-5:checked ~ label[for='radio-5'] .barchart-radio-btn::after {
     opacity: 1;
 }

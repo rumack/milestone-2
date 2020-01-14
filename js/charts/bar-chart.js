@@ -264,7 +264,7 @@ const renderBars = (DOMTarget, width, height, datasrc) => {
 
 // Function to render radio buttons
 const renderRadioButtons = (baseData, width, height, DOMTarget, year, constitID) => {
-	const elections = ['2001', '2005', '2010', '2015', '2017'];
+	const elections = ['2001', '2005', '2010', '2015', '2017', '2019'];
 	// Find current selected year
 	const j = elections.indexOf(year);
 	// Remove previous radio button form if present

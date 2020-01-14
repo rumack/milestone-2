@@ -4,6 +4,27 @@
             {
                 "id": "BE",
                 "Constituency": "BELFAST EAST",
+                "2019": {
+                    "Electorate": 63495,
+                    "Scores": {
+                        "DUP": 49,
+                        "SF": null,
+                        "SDLP": null,
+                        "UUP": 6,
+                        "Alliance": 45,
+                        "Others": null
+                    },
+                    "AffiliationScore": {
+                        "uni": 55,
+                        "nat": 0,
+                        "oth": 45
+                    },
+                    "Turnout": 64.1,
+                    "Winner": {
+                        "Candidate": "Gavin Robinson",
+                        "Party": "DUP"
+                    }
+                },
                 "2017": {
                     "Electorate": 63495,
                     "Scores": {
@@ -118,6 +139,27 @@
             {
                 "id": "BN",
                 "Constituency": "BELFAST NORTH",
+                "2019": {
+                    "Electorate": 72225,
+                    "Scores": {
+                        "DUP": 43,
+                        "SF": 47,
+                        "SDLP": null,
+                        "UUP": null,
+                        "Alliance": 10,
+                        "Others": null
+                    },
+                    "AffiliationScore": {
+                        "uni": 43,
+                        "nat": 47,
+                        "oth": 10
+                    },
+                    "Turnout": 67.9,
+                    "Winner": {
+                        "Candidate": "John Finucane",
+                        "Party": "SF"
+                    }
+                },
                 "2017": {
                     "Electorate": 68249,
                     "Scores": {
@@ -232,6 +274,27 @@
             {
                 "id": "BS",
                 "Constituency": "BELFAST SOUTH",
+                "2019": {
+                    "Electorate": 69984,
+                    "Scores": {
+                        "DUP": 25,
+                        "SF": null,
+                        "SDLP": 57,
+                        "UUP": 3,
+                        "Alliance": 14,
+                        "Others": 1
+                    },
+                    "AffiliationScore": {
+                        "uni": 28,
+                        "nat": 58,
+                        "oth": 14
+                    },
+                    "Turnout": 67.7,
+                    "Winner": {
+                        "Candidate": "Claire Hanna",
+                        "Party": "SDLP"
+                    }
+                },
                 "2017": {
                     "Electorate": 66105,
                     "Scores": {
@@ -346,6 +409,27 @@
             {
                 "id": "BW",
                 "Constituency": "BELFAST WEST",
+                "2019": {
+                    "Electorate": 65644,
+                    "Scores": {
+                        "DUP": 14,
+                        "SF": 54,
+                        "SDLP": 8,
+                        "UUP": null,
+                        "Alliance": 5,
+                        "Others": 19
+                    },
+                    "AffiliationScore": {
+                        "uni": 14,
+                        "nat": 73,
+                        "oth": 5
+                    },
+                    "Turnout": 59.1,
+                    "Winner": {
+                        "Candidate": "Paul Maskey",
+                        "Party": "SF"
+                    }
+                },
                 "2017": {
                     "Electorate": 62423,
                     "Scores": {
@@ -461,6 +545,27 @@
             {
                 "id": "EA",
                 "Constituency": "EAST ANTRIM",
+                "2019": {
+                    "Electorate": 64830,
+                    "Scores": {
+                        "DUP": 45,
+                        "SF": 6,
+                        "SDLP": 2,
+                        "UUP": 15,
+                        "Alliance": 27,
+                        "Others": 5
+                    },
+                    "AffiliationScore": {
+                        "uni": 63,
+                        "nat": 8,
+                        "oth": 29
+                    },
+                    "Turnout": 57.5,
+                    "Winner": {
+                        "Candidate": "Sammy Wilson",
+                        "Party": "DUP"
+                    }
+                },
                 "2017": {
                     "Electorate": 62908,
                     "Scores": {
@@ -575,6 +680,27 @@
             {
                 "id": "EL",
                 "Constituency": "EAST LONDONDERRY",
+                "2019": {
+                    "Electorate": 69246,
+                    "Scores": {
+                        "DUP": 40,
+                        "SF": 16,
+                        "SDLP": 16,
+                        "UUP": 9,
+                        "Alliance": 15,
+                        "Others": 4
+                    },
+                    "AffiliationScore": {
+                        "uni": 49,
+                        "nat": 36,
+                        "oth": 15
+                    },
+                    "Turnout": 56.8,
+                    "Winner": {
+                        "Candidate": "Gregory Campbell",
+                        "Party": "DUP"
+                    }
+                },
                 "2017": {
                     "Electorate": 67038,
                     "Scores": {
@@ -689,6 +815,27 @@
             {
                 "id": "FAST",
                 "Constituency": "FERMANAGH AND SOUTH TYRONE",
+                "2019": {
+                    "Electorate": 72848,
+                    "Scores": {
+                        "DUP": null,
+                        "SF": 43,
+                        "SDLP": 7,
+                        "UUP": 43,
+                        "Alliance": 5,
+                        "Others": 2
+                    },
+                    "AffiliationScore": {
+                        "uni": 43,
+                        "nat": 50,
+                        "oth": 7
+                    },
+                    "Turnout": 69.7,
+                    "Winner": {
+                        "Candidate": "Michelle Gildernew",
+                        "Party": "SF"
+                    }
+                },
                 "2017": {
                     "Electorate": 70601,
                     "Scores": {
@@ -803,6 +950,27 @@
             {
                 "id": "F",
                 "Constituency": "FOYLE",
+                "2019": {
+                    "Electorate": 74346,
+                    "Scores": {
+                        "DUP": 10,
+                        "SF": 21,
+                        "SDLP": 57,
+                        "UUP": 2,
+                        "Alliance": 3,
+                        "Others": 7
+                    },
+                    "AffiliationScore": {
+                        "uni": 12,
+                        "nat": 85,
+                        "oth": 3
+                    },
+                    "Turnout": 63.4,
+                    "Winner": {
+                        "Candidate": "Colum Eastwood",
+                        "Party": "SDLP"
+                    }
+                },
                 "2017": {
                     "Electorate": 70324,
                     "Scores": {
@@ -917,6 +1085,27 @@
             {
                 "id": "LV",
                 "Constituency": "LAGAN VALLEY",
+                "2019": {
+                    "Electorate": 75735,
+                    "Scores": {
+                        "DUP": 43,
+                        "SF": 2,
+                        "SDLP": 4,
+                        "UUP": 19,
+                        "Alliance": 29,
+                        "Others": 3
+                    },
+                    "AffiliationScore": {
+                        "uni": 65,
+                        "nat": 6,
+                        "oth": 29
+                    },
+                    "Turnout": 60,
+                    "Winner": {
+                        "Candidate": "Jeffrey Donaldson",
+                        "Party": "DUP"
+                    }
+                },
                 "2017": {
                     "Electorate": 72380,
                     "Scores": {
@@ -1031,6 +1220,27 @@
             {
                 "id": "MU",
                 "Constituency": "MID ULSTER",
+                "2019": {
+                    "Electorate": 70449,
+                    "Scores": {
+                        "DUP": 25,
+                        "SF": 46,
+                        "SDLP": 14,
+                        "UUP": 6,
+                        "Alliance": 8,
+                        "Others": 2
+                    },
+                    "AffiliationScore": {
+                        "uni": 31,
+                        "nat": 62,
+                        "oth": 8
+                    },
+                    "Turnout": 63.3,
+                    "Winner": {
+                        "Candidate": "Francie Molloy",
+                        "Party": "SF"
+                    }
+                },
                 "2017": {
                     "Electorate": 68485,
                     "Scores": {
@@ -1145,6 +1355,27 @@
             {
                 "id": "NAA",
                 "Constituency": "NEWRY AND ARMAGH",
+                "2019": {
+                    "Electorate": 81226,
+                    "Scores": {
+                        "DUP": 22,
+                        "SF": 40,
+                        "SDLP": 19,
+                        "UUP": 8,
+                        "Alliance": 8,
+                        "Others": 3
+                    },
+                    "AffiliationScore": {
+                        "uni": 30,
+                        "nat": 62,
+                        "oth": 8
+                    },
+                    "Turnout": 62.5,
+                    "Winner": {
+                        "Candidate": "Mickey Brady",
+                        "Party": "SF"
+                    }
+                },
                 "2017": {
                     "Electorate": 78266,
                     "Scores": {
@@ -1259,6 +1490,27 @@
             {
                 "id": "NA",
                 "Constituency": "NORTH ANTRIM",
+                "2019": {
+                    "Electorate": 77134,
+                    "Scores": {
+                        "DUP": 47,
+                        "SF": 13,
+                        "SDLP": 7,
+                        "UUP": 19,
+                        "Alliance": 14,
+                        "Others": 0
+                    },
+                    "AffiliationScore": {
+                        "uni": 66,
+                        "nat": 20,
+                        "oth": 14
+                    },
+                    "Turnout": 57.1,
+                    "Winner": {
+                        "Candidate": "Ian Paisley",
+                        "Party": "DUP"
+                    }
+                },
                 "2017": {
                     "Electorate": 75657,
                     "Scores": {
@@ -1373,6 +1625,27 @@
             {
                 "id": "ND",
                 "Constituency": "NORTH DOWN",
+                "2019": {
+                    "Electorate": 67099,
+                    "Scores": {
+                        "DUP": 38,
+                        "SF": null,
+                        "SDLP": null,
+                        "UUP": 12,
+                        "Alliance": 45,
+                        "Others": 5
+                    },
+                    "AffiliationScore": {
+                        "uni": 55,
+                        "nat": 0,
+                        "oth": 45
+                    },
+                    "Turnout": 60.6,
+                    "Winner": {
+                        "Candidate": "Stephen Farry",
+                        "Party": "Alliance"
+                    }
+                },
                 "2017": {
                     "Electorate": 64334,
                     "Scores": {
@@ -1487,6 +1760,27 @@
             {
                 "id": "SA",
                 "Constituency": "SOUTH ANTRIM",
+                "2019": {
+                    "Electorate": 71711,
+                    "Scores": {
+                        "DUP": 35,
+                        "SF": 12,
+                        "SDLP": 5,
+                        "UUP": 29,
+                        "Alliance": 19,
+                        "Others": null
+                    },
+                    "AffiliationScore": {
+                        "uni": 64,
+                        "nat": 17,
+                        "oth": 19
+                    },
+                    "Turnout": 59.9,
+                    "Winner": {
+                        "Candidate": "Paul Girvan",
+                        "Party": "DUP"
+                    }
+                },
                 "2017": {
                     "Electorate": 68244,
                     "Scores": {
@@ -1601,6 +1895,27 @@
             {
                 "id": "SD",
                 "Constituency": "SOUTH DOWN",
+                "2019": {
+                    "Electorate": 79175,
+                    "Scores": {
+                        "DUP": 15,
+                        "SF": 32,
+                        "SDLP": 29,
+                        "UUP": 7,
+                        "Alliance": 14,
+                        "Others": 3
+                    },
+                    "AffiliationScore": {
+                        "uni": 22,
+                        "nat": 64,
+                        "oth": 14
+                    },
+                    "Turnout": 62.9,
+                    "Winner": {
+                        "Candidate": "Chris Hazzard",
+                        "Party": "SF"
+                    }
+                },
                 "2017": {
                     "Electorate": 75685,
                     "Scores": {
@@ -1715,6 +2030,27 @@
             {
                 "id": "S",
                 "Constituency": "STRANGFORD",
+                "2019": {
+                    "Electorate": 66928,
+                    "Scores": {
+                        "DUP": 47,
+                        "SF": 2,
+                        "SDLP": 5,
+                        "UUP": 11,
+                        "Alliance": 28,
+                        "Others": 7
+                    },
+                    "AffiliationScore": {
+                        "uni": 63,
+                        "nat": 7,
+                        "oth": 30
+                    },
+                    "Turnout": 56,
+                    "Winner": {
+                        "Candidate": "Jim Shannon",
+                        "Party": "DUP"
+                    }
+                },
                 "2017": {
                     "Electorate": 64327,
                     "Scores": {
@@ -1830,6 +2166,27 @@
             {
                 "id": "UB",
                 "Constituency": "UPPER BANN",
+                "2019": {
+                    "Electorate": 82887,
+                    "Scores": {
+                        "DUP": 41,
+                        "SF": 25,
+                        "SDLP": 9,
+                        "UUP": 12,
+                        "Alliance": 13,
+                        "Others": null
+                    },
+                    "AffiliationScore": {
+                        "uni": 53,
+                        "nat": 34,
+                        "oth": 13
+                    },
+                    "Turnout": 60.4,
+                    "Winner": {
+                        "Candidate": "Carla Lockhart",
+                        "Party": "DUP"
+                    }
+                },
                 "2017": {
                     "Electorate": 80168,
                     "Scores": {
@@ -1944,6 +2301,27 @@
             {
                 "id": "WT",
                 "Constituency": "WEST TYRONE",
+                "2019": {
+                    "Electorate": 66259,
+                    "Scores": {
+                        "DUP": 22,
+                        "SF": 40,
+                        "SDLP": 18,
+                        "UUP": 7,
+                        "Alliance": 10,
+                        "Others": 3
+                    },
+                    "AffiliationScore": {
+                        "uni": 29,
+                        "nat": 60,
+                        "oth": 11
+                    },
+                    "Turnout": 62.2,
+                    "Winner": {
+                        "Candidate": "Órfhlaith Begley",
+                        "Party": "SF"
+                    }
+                },
                 "2017": {
                     "Electorate": 64009,
                     "Scores": {
@@ -2059,6 +2437,36 @@
     },
     {
         "totals": [
+            {
+                "year": "2019",
+                "Turnout": 61.8,
+                "Results": {
+                    "DUP": {
+                        "total": 31,
+                        "seats": 8
+                    },
+                    "SF": {
+                        "total": 23,
+                        "seats": 7
+                    },
+                    "SDLP": {
+                        "total": 15,
+                        "seats": 2
+                    },                
+                    "UUP": {
+                        "total": 12,
+                        "seats": 0
+                    },
+                    "Alliance": {
+                        "total": 17,
+                        "seats": 1
+                    },
+                    "Others": {
+                        "total": 2,
+                        "seats": 0
+                    }
+                }
+            },
             {
                 "year": "2017",
                 "Turnout": 65.6,
@@ -2181,7 +2589,7 @@
             },
             {
                 "year": "2001",
-                "Turnout": 63,
+                "Turnout": 68.6,
                 "Results": {
                     "DUP": {
                         "total": 23,

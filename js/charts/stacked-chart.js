@@ -269,12 +269,7 @@ const generateDynamicHTML = (year, party, targetConstits) => {
 }
 
 const renderRects = (chartData, groups, width, height) => {
-	// d3.select('.main__dynamic')
-	// 			.style('opacity', 0)
-	// 			.html(generateStaticHTML())
-	// 			.transition().duration(500).style('opacity', 1)
-	// 			.style('visibility', 'visible');
-	// d3.select('.main__dynamic').html(generateStaticHTML());
+	
 
 	d3.selectAll('.main__dynamic').transition().remove();
 	d3.selectAll('.main__static').transition().remove();
@@ -285,7 +280,6 @@ const renderRects = (chartData, groups, width, height) => {
 		.transition().duration(500).style('opacity', 1)
 		.style('visibility', 'visible');
 
-	console.log(chartData);
 	const xScale = generateScales(chartData, width, height, 'x'); 
 	const yScale = generateScales(chartData, width, height, 'y'); 
 	// Add a rect for each data value
@@ -392,12 +386,9 @@ const renderRects = (chartData, groups, width, height) => {
 
 const renderLabels = (chartData, width, height) => {
 
-	const years = ['2001', '2005', '2010', '2015', '2017'];
+	const years = ['2001', '2005', '2010', '2015', '2017', '2019'];
 
 	const xScale = generateScales(years, width, height, 'x'); 
-	//const yScale = generateScales(chartData, width, height, 'y'); 
-
-	
 
 	const labelGroup = svg.append('g')
 					.attr('class', 'main__svg-label')

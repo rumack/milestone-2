@@ -47,7 +47,7 @@ const genChartData = (data, constitID) => {
 		return dataset;
 	} else {
 		// Target Brexit data in 'totals' array
-		const brexitObj = data[1].totals[5];
+		const brexitObj = data[1].totals[6];
 		// Prepare final data array
 		let dataset = [];
 		// Prepare data objects
