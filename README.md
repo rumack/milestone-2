@@ -5,7 +5,7 @@
 \
 \
 \
-![](/img/gif_dashboard-min.gif)\
+![](/img/gif_dashboard-min.gif)
 \
 \
 \
