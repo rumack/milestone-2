@@ -81,8 +81,6 @@ const createSVG = (width, height, DOMTarget) => {
 			.append('svg')
 			.attr('class', 'svg--bar')
 			.attr('viewBox', `0 0 ${width} ${height}`);
-			// .attr('height', height)
-			// .attr('width', width);
 	}
 } 
 
@@ -160,8 +158,7 @@ const renderXAxis = (axesGroup, width, height) => {
 		svg.select('g.x.axis--barchart')
 		.transition()
 		.call(xAxis);
-	}
-			
+	}			
 };
 
 // Function to render the y axis
@@ -183,7 +180,7 @@ const renderYAxis = (axesGroup, width, height) => {
 	}
 };
 
-// Function to render the axes
+// Function to render both the axes
 const renderAxes = (width, height) => {
 
 	const axesGroup = svg.append('g')

@@ -121,8 +121,6 @@ const createSvg = (width, height, DOMTarget) => {
 				.append('svg')
 				.attr('class', 'main__svg')
 				.attr('viewBox', `0 0 ${width} ${height}`);
-				// .attr("width", width)
-				// .attr("height", height);
 }
 
 const renderBody = (chartData, width, height) => {
@@ -140,12 +138,12 @@ const renderBody = (chartData, width, height) => {
 						.attr('transform', `translate(${margin.left}, ${margin.top})`);
 	
 	// Add a group for each row of data
-	const groups = bodyGroup.selectAll("g")
+	const groups = bodyGroup.selectAll('g')
 		.data(series)
 		.enter()
-		.append("g")
+		.append('g')
 		.attr('class', (d, i) => `group-${d.key}`)
-		.style("fill", function(d, i) {
+		.style('fill', function(d, i) {
 			return colors(i);
 		});
 
@@ -283,7 +281,7 @@ const renderRects = (chartData, groups, width, height) => {
 	const xScale = generateScales(chartData, width, height, 'x'); 
 	const yScale = generateScales(chartData, width, height, 'y'); 
 	// Add a rect for each data value
-	const rects = groups.selectAll("rect")
+	const rects = groups.selectAll('rect')
 		.data(function(d) {
 			d = d.map((el) => {
 				// Adding party name data to the join - will need it later
@@ -294,7 +292,7 @@ const renderRects = (chartData, groups, width, height) => {
 			return d; 
 		})
 		.enter()
-		.append("rect")
+		.append('rect')
 		.attr('id', (d, i) => {
 			// get year
 			const year = d.data.year;
@@ -303,17 +301,17 @@ const renderRects = (chartData, groups, width, height) => {
 		})
 		.attr('class', 'main__svg--rect')
 		.style('fill-opacity', .75)
-		.attr("x", function(d, i) {
+		.attr('x', function(d, i) {
 			//console.log(i);
 			return xScale(i);
 		})
-		.attr("y", function(d) {
+		.attr('y', function(d) {
 			return yScale(d[1]); 
 		})
-		.attr("height", function(d) {
+		.attr('height', function(d) {
 			return yScale(d[0]) - yScale(d[1]);  
 		})
-		.attr("width", xScale.bandwidth())
+		.attr('width', xScale.bandwidth())
 		.on('mouseover', function(d, i) {
 
 			// Get party, year and list of associated constituencies
@@ -429,13 +427,13 @@ const renderLabels = (chartData, width, height) => {
 			        .x(function(d){return d.x;})
 			        .y(function(d){return d.y;});
 			    // Draw the line
-			    labelGroup.append("path")
+			    labelGroup.append('path')
 			    	.attr('class', 'main__svg-label--box')
 			    	.attr('fill-opacity', 0)
 			    	.lower()
 			    	.transition()
 			    	.duration(500)
-			        .attr("d", line(pathCoords))
+			        .attr('d', line(pathCoords))
 			        // Control transition to correct opacity
 			        .styleTween('fill-opacity', () => d3.interpolateNumber(0, .6));
 			    // Select the label and style for mouseover
@@ -443,7 +441,6 @@ const renderLabels = (chartData, width, height) => {
 
 			    // Update dynamic display
 
-			    
 			    // Target relevant constituencies in map to highlight
 				const targetYear = chartData.filter(el => el.year === d);
 				targetYear[0].constits.forEach(el => {
@@ -464,7 +461,6 @@ const renderLabels = (chartData, width, height) => {
 				// Select the label and style for mouseover
 				const selection = d3.select(this);
 			    selection.transition().duration(500).style('fill', 'black').style('fill-opacity', .6);
-
 
 				const targetYear = chartData.filter(el => el.year === d);
 				targetYear[0].constits.forEach(el => {

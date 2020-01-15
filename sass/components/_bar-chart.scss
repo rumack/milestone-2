@@ -1,8 +1,6 @@
 /* Control positioning of the radio buttons */
 
 .bar-chart {
-    //grid-column: 2 / span 1;
-
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -14,10 +12,7 @@
 
 
 .barchart-form {
-    // margin-bottom: 3rem;
     display: flex;
-    //justify-content: center;
-    // transform: translateX(6rem);
 }
 
 /* Bar chart */
@@ -29,8 +24,6 @@
     filter: brightness(80%);
 }
 
-
-
 .barchart-radio {
     display: none;
 }
@@ -41,7 +34,6 @@
     font-style: italic;
     position: relative;
     cursor: pointer;
-    //padding-bottom: 2rem;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -52,16 +44,6 @@
     width: 1.5rem;
     border: 1px solid rgba(0, 0, 0, 0.5);
     border-radius: 50%;
-    // display: inline-block;
-    // position: absolute;
-    // left: 0;
-    // top: 3rem;
-
-
-    // display: grid;
-    // justify-items: center;
-    // align-items: center;
-
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -69,15 +51,11 @@
 }
 
 .barchart-radio-btn::after {
-    content: "";
+    content: '';
     display: block;
     height: .5rem;
     width: .5rem;
     border-radius: 50%;
-    /*position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);*/
     background-color: rgba(33%, 42%, 18%, .5);
     opacity: 0;
     transition: opacity .2s;
@@ -86,8 +64,6 @@
 .barchart-label:not(:first-of-type) {
     margin-left: 2.5rem;
 }
-
-
 
 #radio-0:checked ~ label[for='radio-0'] .barchart-radio-btn::after {
     opacity: 1;

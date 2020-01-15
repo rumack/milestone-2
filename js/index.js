@@ -5,7 +5,7 @@ import * as stackedChart from './charts/stacked-chart.js';
 import * as map from './charts/map.js';
 import * as utils from './utilities.js';
 
-// Queuing calls for data sources (election data and map data)
+// Queuing d3 calls for data sources (election data and map data)
 const q = d3.queue();
 q.defer(d3.json, 'data/ni-elections.json');
 q.defer(d3.json, 'data/ireland_norn.json');

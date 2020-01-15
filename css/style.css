@@ -42,7 +42,7 @@ html {
       font-size: 42%; } }
 
 body {
-  font-family: "Lato", sans-serif;
+  font-family: 'Lato', sans-serif;
   font-weight: 400;
   line-height: 1.7; }
 
@@ -101,15 +101,11 @@ body {
   justify-content: center; }
 
 .barchart-radio-btn::after {
-  content: "";
+  content: '';
   display: block;
   height: .5rem;
   width: .5rem;
   border-radius: 50%;
-  /*position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);*/
   background-color: rgba(84, 107, 46, 0.5);
   opacity: 0;
   transition: opacity .2s; }
@@ -145,8 +141,7 @@ body {
   stroke-width: 4; }
 
 .dot {
-  fill: #fff;
-  /*pointer-events: none;*/ }
+  fill: #fff; }
 
 /* Generic - Axes, ticks, grid lines, labels, titles */
 .axis .grid-line {

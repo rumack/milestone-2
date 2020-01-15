@@ -12,7 +12,6 @@
 
 .dot {
   fill: #fff;
-  /*pointer-events: none;*/
 }
 
 /* Generic - Axes, ticks, grid lines, labels, titles */
@@ -54,7 +53,6 @@ tspan.title.sub-title {
     height: auto;
     background-color: rgba(255, 255, 255, .95);
     color: rgba(0, 0, 0, .7);
-    // font-family: Opsans-serif;
     text-align: center;
     line-height: 2rem;
     border: 1px solid rgba(0, 0, 0, .4);

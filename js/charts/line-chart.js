@@ -85,8 +85,6 @@ const createSVG = (width, height, DOMTarget) => {
 		svg = d3.select(DOMTarget)
 			.append('svg')
 			.attr('viewBox', `0 0 ${width} ${height}`);
-			// .attr('height', height)
-			// .attr('width', width);
 	}
 } 
 
@@ -115,7 +113,7 @@ const createAxesLabels = (width, height) => {
 	// Add the text label for the Y axis
     svg.append('text')
 	    	.attr('class', 'label y')
-	        .attr("transform", "rotate(-90)")
+	        .attr('transform', 'rotate(-90)')
 	        .attr('y', 0 + 20)
 	        .attr('x',0 - (height / 2))
 	        .attr('dy', '1em')
@@ -379,8 +377,7 @@ const renderDots = (datasrc, tooltip) => {
 				.attr('cx', (d) => xScale(d.year))
 				.attr('cy', (d) => yScale(d.vote))
 				.attr('r', 5.5)
-				.style('stroke', (d) => colors(d.party));
-			
+				.style('stroke', (d) => colors(d.party));	
 	});
 }
 
@@ -408,7 +405,7 @@ const renderBody = (width, height, DOMTarget, datasrc) => {
 	renderDots(datasrc, tooltip);
 }
 
-// Export a function that uses all of the above to generate final chart
+// Export a function to generate final chart
 export const renderChart = (data, width, height, DOMTarget, constitID) => {
 	const chartData = genChartData(data, constitID);
 	generateScales(width, height, chartData);
@@ -416,7 +413,6 @@ export const renderChart = (data, width, height, DOMTarget, constitID) => {
 	defineBodyClip(width, height);
 	renderAxes(width, height);
 	renderBody(width, height, DOMTarget, chartData);
-	//renderButtons(width, height, chartData);
 	renderGraphTitle(width, height, chartData);
 	createAxesLabels(width, height);
 	

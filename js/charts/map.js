@@ -13,12 +13,10 @@ let svg, tooltip, btn;
 const createSVG = (width, height, DOMTarget) => {
 	if (!svg) {
 		svg = d3.select(DOMTarget)
-				.append("svg")
+				.append('svg')
 				.attr('id', 'svg-map')
 				.attr('class', 'main__map-svg')
 				.attr('viewBox', `0 0 ${width} ${height}`);
-				// .attr("width", width)
-				// .attr("height", height);
 	}
 }
 
@@ -30,7 +28,7 @@ const genTooltipHTML = data => {
 	const textArray = text.split(' ');
 	const finalText = textArray
 							.map(el => {
-								if (el === "and") {
+								if (el === 'and') {
 									return el.toLowerCase();
 								} else {
 									return el.substring(0, 1).toUpperCase()+el.substring(1);
@@ -51,7 +49,7 @@ const genDisplayBoxHTML = data => {
 	const textArray = text.split(' ');
 	const finalText = textArray
 							.map(el => {
-								if (el === "and") {
+								if (el === 'and') {
 									return el.toLowerCase();
 								} else {
 									return el.substring(0, 1).toUpperCase()+el.substring(1);
@@ -78,7 +76,7 @@ const genProfileHTML = (d, data) => {
 	
 	const constitName = d.properties.PC_NAME.toLowerCase();
 	const constitNameFormatted = constitName.split(' ').map(el => {
-		if (el === "and") {
+		if (el === 'and') {
 			return el.toLowerCase();
 		} else {
 			return el.substring(0, 1).toUpperCase()+el.substring(1);
@@ -163,15 +161,15 @@ const renderBody = (mapData, data, DOMTarget) => {
 					  .style('opacity', 0);
 	}
 
-	const mapLines = svg.selectAll("path.constit")
+	const mapLines = svg.selectAll('path.constit')
 						   .data(mapData.features);
 
 						   mapLines.enter()
-						   .append("path")
+						   .append('path')
 						   .merge(mapLines)
-						   .attr("d", path)
+						   .attr('d', path)
 						   .attr('pointer-events', 'auto')
-						   .attr("class", (d, i) => {
+						   .attr('class', (d, i) => {
 						   		const constitID = d.properties.PC_ID;
 						   		if (d.properties.JURI === 'NORN') {
 					   				return `constit ${constitID}`;
@@ -179,8 +177,8 @@ const renderBody = (mapData, data, DOMTarget) => {
 						   			return 'constit-rep';	
 						   		} 
 						   })
-						   .style("stroke-width", "2")
-						   .style("stroke", 'white')
+						   .style('stroke-width', '2')
+						   .style('stroke', 'white')
 						   .style('fill', '#c6c6c6')
 						   .on('mouseover', function(d, i) {
 						   		if (d.properties.JURI === 'NORN') {

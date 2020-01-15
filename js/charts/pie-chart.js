@@ -70,14 +70,12 @@ const createSVG = (width, height, DOMTarget) => {
 		svg = d3.select(DOMTarget)
 			.append('svg')
 			.attr('viewBox', `0 0 ${width} ${height}`);
-			// .attr('height', height)
-			// .attr('width', width);
 	}
 } 
 
 const renderLegend = (width, height, data, arc, outerRadius) => {
 	if (!legend) {
-		legend = svg.append("g")
+		legend = svg.append('g')
 						.attr('class', 'legendGroup')
 						.attr('transform', `translate(20, ${height - 65})`);
 	}
@@ -126,8 +124,8 @@ const renderLegend = (width, height, data, arc, outerRadius) => {
 						.transition()
 						.attr('x', 35)
 						.attr('y', (d, i) => i * 25 + 31)
-						.attr("font-family", "sans-serif")
-                		.attr("font-size", "1rem")
+						.attr('font-family', 'sans-serif')
+                		.attr('font-size', '1rem')
 						.attr('fill', (d, i) => colors(i))
 						.text(d => d.id.toUpperCase());  
 }
