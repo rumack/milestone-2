@@ -1,7 +1,7 @@
-# NI Elections Dashboard - 2019
+# NI Elections Dashboard
 
 ## Stream two milestone project
-## Interactive Frontend Development - Code Institute
+## Interactive Frontend Development - Code Institute (Jan 2020)
 \
 \
 \

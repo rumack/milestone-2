@@ -524,6 +524,8 @@ select.linechart-select-menu {
     @media only screen and (max-width: 37.5em) {
       .profile__para {
         font-size: 1.4rem; } }
+  .profile__heading-ghost {
+    display: none; }
 
 .updateable-charts {
   width: 100%;
@@ -536,3 +538,5 @@ select.linechart-select-menu {
   @media only screen and (max-width: 37.5em) {
     .updateable-charts {
       padding: 2rem; } }
+  .updateable-charts__heading-ghost {
+    display: none; }
