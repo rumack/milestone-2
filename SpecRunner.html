@@ -7,20 +7,20 @@
   <link rel="shortcut icon" type="image/png" href="lib/jasmine-3.5.0/jasmine_favicon.png">
   <link rel="stylesheet" href="lib/jasmine-3.5.0/jasmine.css">
 
-  <script src="lib/jasmine-3.5.0/jasmine.js"></script>
-  <script src="lib/jasmine-3.5.0/jasmine-html.js"></script>
-  <script src="lib/jasmine-3.5.0/boot.js"></script>
-
   <!-- include dependencies here... -->
   <script type="text/javascript" src="js/d3.js"></script>
 
   <!-- include source files here... -->
-  <script src="js/bar-chart.js"></script>
-  <script src="js/line-chart.js"></script>
+  <script type="module" src="js/index.js"></script>
+  
+  <!-- include jasmine suite here... -->
+  <script src="lib/jasmine-3.5.0/jasmine.js"></script>
+  <script src="lib/jasmine-3.5.0/jasmine-html.js"></script>
+  <script src="lib/jasmine-3.5.0/boot.js"></script>
 
   <!-- include spec files here... -->
-  <script src="spec/BarchartSpec.js"></script>
-  <script src="spec/LinechartSpec.js"></script>
+  <script type="module" src="spec/chartsSpec.js"></script>
+  
 
 </head>
 

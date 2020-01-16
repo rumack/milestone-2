@@ -90,7 +90,7 @@ const renderGraphTitle = (width, height, year, chartData) => {
 		// Get constituency name
 		const constitName = chartData[0].constit;
 		const text = svg.append('text')
-			.attr('class', 'title')
+			.attr('class', 'title title-barchart')
 	        .attr('x', (width / 2))             
 	        .attr('y', (0 + 25));
 
@@ -218,7 +218,7 @@ const renderBars = (DOMTarget, width, height, datasrc) => {
 	if (!tooltip) {
 		tooltip = d3.select(DOMTarget)
 					  .append('div')
-					  .attr('class', 'tooltip barchart-tooltip')
+					  .attr('class', 'tooltip barchart--tooltip')
 					  .style('opacity', 0);
 	}
 	

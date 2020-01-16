@@ -84,6 +84,7 @@ const createSVG = (width, height, DOMTarget) => {
 	if (!svg) {
 		svg = d3.select(DOMTarget)
 			.append('svg')
+			.attr('class', 'svg--line')
 			.attr('viewBox', `0 0 ${width} ${height}`);
 	}
 } 
@@ -93,7 +94,7 @@ const renderGraphTitle = (width, height, chartData) => {
 	svg.selectAll('text.title').remove();
 		
 		const text = svg.append('text')
-			.attr('class', 'title')
+			.attr('class', 'title title-linechart')
 	        .attr('x', (width / 2))             
 	        .attr('y', (0 + 25));
 

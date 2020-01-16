@@ -69,6 +69,7 @@ const createSVG = (width, height, DOMTarget) => {
 	if (!svg) {
 		svg = d3.select(DOMTarget)
 			.append('svg')
+			.attr('class', 'svg--pie')
 			.attr('viewBox', `0 0 ${width} ${height}`);
 	}
 } 
@@ -135,10 +136,10 @@ const renderGraphTitle = (width, height, chartData, constitID) => {
 	// Prepare for update - if title, remove title
 	svg.selectAll('text.title').remove();
 
-	if (constitID) {
+	// if (constitID) {
 
 		const text = svg.append('text')
-			.attr('class', 'title')
+			.attr('class', 'title title-piechart')
 	      	.attr('x', (width / 2))             
 	       	.attr('y', (0 + 25));
 
@@ -150,23 +151,7 @@ const renderGraphTitle = (width, height, chartData, constitID) => {
         text.append('tspan')
 	    	.attr('x', (width / 2))
 	    	.attr('dy', '2em')
-	    	.text(`Constituency: ${chartData[0].constit}`);
-	} else {
-		const text = svg.append('text')
-			.attr('class', 'title')
-	      	.attr('x', (width / 2))             
-	       	.attr('y', (0 + 25));
-
-        text.append('tspan')
-	    	.attr('dx', 0)
-	    	.attr('dy', 0)
-	        .text(`Result: Brexit referendum, 2016`);
-
-        text.append('tspan')
-	    	.attr('x', (width / 2))
-	    	.attr('dy', '2em')
-	    	.text(`All constituencies`);
-	}
+	    	.text(() => chartData[0].constit ? `Constituency: ${chartData[0].constit}` : `All constituencies`)
 }
 
 // Tweening function for arc hover effect - adapted from a Mike Bostock block

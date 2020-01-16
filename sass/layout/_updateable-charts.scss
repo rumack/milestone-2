@@ -1,5 +1,5 @@
 .updateable-charts {
-<<<<<<< HEAD
+
     width: 100%;
     height: 100%;
     grid-row: 4 / span 1;
@@ -7,23 +7,13 @@
     background-color: #f4f4f4;
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(32rem, 1fr));
-=======
-  width: 100%;
-  height: 100%;
-    grid-row: 4 / span 1;
-   	padding: 10rem;
-   	background-color: #f4f4f4;
-
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(32rem, 1fr));
-
->>>>>>> sync
 
     @media only screen and (max-width: 37.5em) {
         padding: 2rem;
     }
-  &__heading-ghost {
-    display: none;
-  }
+
+    &__heading-ghost {
+        display: none;
+    }
 
 }
