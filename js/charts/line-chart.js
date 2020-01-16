@@ -41,7 +41,7 @@ const genChartData = (data, constitID) => {
 		let dataset = [[], [], [], [], [], []];
 		const parties = ['DUP', 'SF', 'SDLP', 'UUP', 'Alliance', 'Others'];
 		parties.forEach((el, idx) => {
-			['2005', '2010', '2015', '2017'].forEach(elem => {
+			['2001', '2005', '2010', '2015', '2017', '2019'].forEach(elem => {
 				const obj = {
 					constituency: constitName,
 					party: el,

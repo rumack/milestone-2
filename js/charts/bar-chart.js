@@ -26,7 +26,7 @@ const colors = (party) => {
 	return colorRange[party];
 }
 
-// Function to parse data for chart specific data
+// Function to parse data
 const genChartData = (data, year, constitID) => {
 	if (constitID) {
 		// Create array of all constituencies
@@ -195,20 +195,20 @@ const defineBodyClip = (width, height) => {
 	// Set padding for body clip
 	const padding = 1;
 	svg.append('defs')
-	.append('clipPath')
-	.attr('id', 'body-clip-bars')
-	.append('rect')
-	.attr('x', 0 - padding)
-	.attr('y', 0 - padding)
-	.attr('width', width - (margin.left + margin.right) + (2 * padding))
-	.attr('height', height - (margin.top + margin.bottom) + (2 * padding));
+		.append('clipPath')
+		.attr('id', 'body-clip-bars')
+		.append('rect')
+		.attr('x', 0 - padding)
+		.attr('y', 0 - padding)
+		.attr('width', width - (margin.left + margin.right) + (2 * padding))
+		.attr('height', height - (margin.top + margin.bottom) + (2 * padding));
 }
 
 // Function to render html for tooltip
 const genHTML = data => {
 	const html = `
-	<h4>${data.party}: <span>${data.score}%</span></h4>
-	`;
+					<h4>${data.party}: <span>${data.score}%</span></h4>
+				`;
 	return html;
 };
 
