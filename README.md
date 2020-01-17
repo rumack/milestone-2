@@ -40,11 +40,11 @@ The bulk of the application is written in vanilla javascript (although making ve
 
 **HTML**, **CSS** and **JavaScript**.
 
-**Sass** is used for styling and organising CSS stylesheets.
+**[Sass](https://sass-lang.com/)** is used for styling and organising CSS stylesheets.
 
-**d3.js** or data driven documents, used for joining the data to DOM elements and visualisation.
+**[d3.js](https://d3js.org/)** or data driven documents, used for joining the data to DOM elements and visualisation.
 
-**Jasmine** is used for unit testing.
+**[Jasmine](https://jasmine.github.io/index.html)** is used for unit testing.
 
 ## Testing 
 
@@ -92,7 +92,7 @@ The election data comes from a range of sources:
 
 ### Developer
 
-RoRo - [email](roro@mailbox.org): 
+RoRo - email: roro at mailbox dot org 
 
 ### Resources
 
