@@ -8,6 +8,7 @@
 \
 ![](/img/gif_dashboard-min.gif)
 <br />
+<br />
 **Click here to see a working [demo](https://rumack.github.io/milestone-2/).**
 <br />
 <br />
