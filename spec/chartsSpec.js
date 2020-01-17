@@ -2,7 +2,7 @@ import * as barChart from '../js/charts/bar-chart.js';
 import * as lineChart from '../js/charts/line-chart.js';
 import * as pieChart from '../js/charts/pie-chart.js';
 
-/*------------ A suite of automatic tests for the updateable charts (barchart, linechart and piechart -------------*/
+/*------------ A suite of 26 automatic tests for the updateable charts (barchart, linechart and piechart -------------*/
 
 describe('bar, line, and pie charts', function() {
     // create containers for the charts and render them invisible (so as not to display in the SpecRunner.html)
